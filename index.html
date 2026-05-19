@@ -10,7 +10,14 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
     <style>
-      /* PIE DE PÁGINA (FOOTER) CORPORATIVO */
+      /* PARRILLA DE PRODUCTOS ADICIONALES AUTO-RESPONSIVA */
+        .sub-grid-products {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 24px;
+            margin-top: 32px;
+        }
+        /* PIE DE PÁGINA (FOOTER) CORPORATIVO */
         footer {
             border-top: 1px solid #141414;
             padding: 80px 0;
@@ -423,6 +430,31 @@
             </div>
         <div class="sub-grid-products">
                    <div class="product-card">
+                        <div>
+                            <div class="product-meta">
+                                <span class="product-status" style="background-color: rgba(76, 217, 100, 0.1); color: #4cd964;">Active Map</span>
+                            </div>
+                            <h4 style="font-size: 22px;">Axiom Earth</h4>
+                            <p style="font-size: 14px; margin-bottom: 24px;">A 1:1 scale digital twin simulation pipeline mapping physical reality. Utilizes zero-copy geometry streaming in Rust to deliver high-fidelity spatial environments without server-side lag.</p>
+                        </div>
+                        <div class="tech-spec" style="font-size: 12px;">
+                            <i class="fa-solid fa-earth-americas"></i> Engine: Spatial Map | Core: Zero-Copy Stream
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <div>
+                            <div class="product-meta">
+                                <span class="product-status" style="background-color: rgba(0, 122, 255, 0.1); color: #007AFF;">Hardware Target</span>
+                            </div>
+                            <h4 style="font-size: 22px;">Axiom Lens</h4>
+                            <p style="font-size: 14px; margin-bottom: 24px;">Advanced optical hardware layer driving Iris and Glass. Delivers sub-nanosecond physical light alignment, bypassing standard display buffers to eliminate motion sickness entirely.</p>
+                        </div>
+                        <div class="tech-spec" style="font-size: 12px;">
+                            <i class="fa-solid fa-eye"></i> Optics: Waveguide Core | Focus: Sub-Nanosecond Sync
+                        </div>
+                    </div>
+            <div class="product-card">
                         <div>
                             <div class="product-meta">
                                 <span class="product-status" style="background-color: rgba(0, 122, 255, 0.1); color: #007AFF;">Proto v2</span>
