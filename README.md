@@ -135,6 +135,24 @@ Next-generation transparent hardware architecture featuring native, bare-metal s
 
 ---
 
+### 🌍 Axiom Earth
+A 1:1 scale digital twin rendering pipeline that maps physical reality into a high-fidelity spatial environment. Built for real-time situational awareness and distributed simulation, it updates dynamic global layers natively without server-side latency spikes.
+
+* **Simulation Engine:** Massive data scaling layer compiled in Rust, running zero-copy geometry streaming.
+* **Network Sync:** Directly integrated with Axiom Sync's decentralized mesh topologies.
+
+---
+
+### 🔎 Axiom Lens
+The advanced optical hardware layer driving Axiom Iris and Axiom Glass. It focuses on raw photons, delivering sub-nanosecond physical light alignment and eliminating the standard digital rendering latency that causes motion sickness in legacy AR devices.
+
+| System Component | Core Architecture | Current Target |
+| :--- | :--- | :--- |
+| **Axiom Earth** | 1:1 Spatial Simulation | `Beta Map Deployment` |
+| **Axiom Lens** | Physical Waveguide Optics | `Hardware Proto v2` |
+
+---
+
 ## Technical Auditing & Verification
 
 Axiom Systems operates entirely within deterministic, memory-safe execution models. For access to physical testing benches, architecture whitepapers, or institutional validation matrices, contact the core engineering group.
