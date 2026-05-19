@@ -75,7 +75,7 @@ A highly specialized real-time computing kernel built for multi-axis autonomous 
 
 ## Spatial Interfaces & Digital Twin Infrastructure
 
-### 🌐 Axiom Horizon & Action Flora
+### 🌐 Axiom Horizon & Axiom Flora
 The execution environment for real-time digital twins and spatial computing frameworks. It drives uncompressed, ultra-low latency augmented reality rendering directly on raw hardware, bypassing traditional cloud rendering bottlenecks.
 
 * **Graphics Kernel:** Zero-cache pipeline optimized for 1:1 real-time physical space synchronization.
@@ -84,7 +84,7 @@ The execution environment for real-time digital twins and spatial computing fram
 | Layer | Architecture Target | Latency Profile |
 | :--- | :--- | :--- |
 | **Axiom Horizon** | Spatial Runtime Engine | `Sub-2ms Processing` |
-| **Action Flora** | Digital Twin Ecosystem | `Hard Real-Time Sync` |
+| **Axiom Flora** | Digital Twin Ecosystem | `Hard Real-Time Sync` |
 
 ---
 
