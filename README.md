@@ -40,6 +40,7 @@ A high-performance transit routing and global automation kernel built for ultra-
 | **Architecture** | Distributed Real-Time Kernel | `In Development` |
 | **Context Switch** | < 1.5 microseconds | `Benchmark Target` |
 | **Integration** | Automated Transit Systems | `Concept` |
+
 ---
 
 ## Communication & Spatial Telemetry Layers
@@ -71,6 +72,7 @@ A highly specialized real-time computing kernel built for multi-axis autonomous 
 | **Compute Model** | Vectorized Matrix Math | `Hard Real-Time` |
 | **Environment** | Air-Gapped Physical Layers | `Zero Leakage` |
 | **Telemetry Ingestion**| Sub-millisecond Reaction Loop | `Active Optimization` |
+
 ---
 
 ## Spatial Interfaces & Digital Twin Infrastructure
@@ -85,6 +87,37 @@ The execution environment for real-time digital twins and spatial computing fram
 | :--- | :--- | :--- |
 | **Axiom Horizon** | Spatial Runtime Engine | `Sub-2ms Processing` |
 | **Axiom Flora** | Digital Twin Ecosystem | `Hard Real-Time Sync` |
+
+---
+
+## Spatial Interfaces & Digital Twin Infrastructure
+
+### 👁️ Axiom Iris
+An ultra-thin, smart contact lens system running a dedicated, bare-metal Rust runtime environment. Designed for seamless spatial computing interfaces with zero desktop overhead, sub-1.5ms latency, and high-efficiency power management networks.
+
+* **Display Framework:** Raw hardware pixel pipeline driven directly by the integrated micro-kernel.
+* **Biocompatible Telemetry:** Encrypted, low-voltage biometric streaming utilizing localized UWB connections.
+
+| Feature | Axiom Iris Specification | Status |
+| :--- | :--- | :--- |
+| **Runtime** | Bare-Metal Rust (no_std) | `Prototype v2` |
+| **Sensory Latency** | < 1.5ms Processing Loop | `Benchmark Stable` |
+| **Power Profile** | Micro-watt Inductive Charging | `Testing Phase` |
+
+---
+
+## Autonomous Agents & Robotics Infrastructure
+
+### 🤖 Axiom Agent & Axiom Sentient
+A decentralized multi-agent execution framework built for hard real-time AI inference and autonomous robotic orchestration. Axiom Agent manages deterministic task allocation across distributed clusters, while the Sentient Core bridges sub-1.5ms neural network processing with bare-metal biological and mechanical sensory hardware.
+
+* **Agent Engine:** Zero-allocation orchestration protocol compiled in Rust for edge-compute hardware nodes.
+* **Sentient Core:** High-concurrency matrix computing loops for real-time tactile, spatial, and multi-sensor fusion.
+
+| Module | Core Architecture | Operational Profile |
+| :--- | :--- | :--- |
+| **Axiom Agent** | Multi-Agent Runtime | `Deterministic Inference` |
+| **Axiom Sentient** | Robotics Sensory Core | `Hard Real-Time Latency` |
 
 ---
 
