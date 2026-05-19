@@ -169,6 +169,17 @@ The flagship unified application layer designed to consolidate the entire Axiom 
 
 ---
 
+### 🌐 Axiom Stream Network (ASN)
+A high-throughput, decentralized data routing network engineered for real-time telemetry streaming and massive geometry distribution. ASN bypasses traditional TCP/IP congestion bottlenecks, utilizing custom peer-to-peer transport protocols compiled in Rust to deliver raw data packets directly between edge nodes.
+
+* **Transport Layer:** Custom low-overhead protocol optimized for high-concurrency spatial computing streams.
+* **Node Topology:** Self-healing mesh network architecture that guarantees zero single points of failure.
+
+| Component | Architecture Protocol | Throughput Metric |
+| :--- | :--- | :--- |
+| **ASN Core** | Decentralized Mesh Transport| `Line-Rate Saturation` |
+| **Stream Routing**| Zero-Copy Packet Forwarding | `Hard Real-Time Latency` |
+
 ## Technical Auditing & Verification
 
 Axiom Systems operates entirely within deterministic, memory-safe execution models. For access to physical testing benches, architecture whitepapers, or institutional validation matrices, contact the core engineering group.
