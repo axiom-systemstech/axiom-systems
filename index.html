@@ -19,8 +19,8 @@
         }
 
         body {
-            background-color: #050505; /* Negro profundo corporativo */
-            color: #F5F5F7; /* Blanco suave estilo Apple */
+            background-color: #050505;
+            color: #F5F5F7;
             font-family: 'Inter', sans-serif;
             overflow-x: hidden;
         }
@@ -37,7 +37,7 @@
             width: 100%;
             border-bottom: 1px solid #141414;
             background-color: rgba(5, 5, 5, 0.8);
-            backdrop-filter: blur(12px); /* Efecto cristal traslúcido */
+            backdrop-filter: blur(12px);
             position: fixed;
             top: 0;
             left: 0;
@@ -60,7 +60,7 @@
         }
 
         .logo span {
-            color: #007AFF; /* Azul eléctrico Axiom */
+            color: #007AFF;
         }
 
         .nav-links {
@@ -101,10 +101,9 @@
             margin-top: 80px;
         }
 
-        /* SECCIÓN HERO (PRINCIPAL) */
+        /* SECCIÓN HERO */
         .hero {
-            padding: 160px 0 100px 0;
-            text-align: left;
+            padding: 140px 0 80px 0;
             position: relative;
         }
 
@@ -122,7 +121,8 @@
         }
 
         .hero-content-wrapper {
-            max-width: 720px;
+            max-width: 750px;
+            text-align: left;
         }
 
         .hero-tag {
@@ -151,15 +151,13 @@
         .hero p {
             font-size: 20px;
             color: #86868B;
-            max-width: 680px;
-            margin-bottom: 40px;
             line-height: 1.5;
+            margin-bottom: 40px;
         }
 
         .hero-buttons {
             display: flex;
             gap: 16px;
-            margin-bottom: 32px;
         }
 
         .btn-primary {
@@ -199,13 +197,13 @@
             position: absolute;
             top: 40px;
             right: 0;
-            width: 320px;
-            background-color: rgba(11, 11, 12, 0.9);
+            width: 340px;
+            background-color: rgba(11, 11, 12, 0.95);
             border: 1px solid #1c1c1e;
-            border-radius: 8px;
-            padding: 24px;
+            border-radius: 12px;
+            padding: 28px;
             text-align: left;
-            backdrop-filter: blur(8px);
+            backdrop-filter: blur(12px);
             z-index: 10;
             text-decoration: none;
             display: block;
@@ -214,12 +212,12 @@
 
         .value-proposition-sidebar:hover {
             border-color: #007AFF !important;
-            background-color: rgba(20, 20, 22, 0.95) !important;
+            background-color: rgba(20, 20, 22, 0.98) !important;
             transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(0, 122, 255, 0.1);
+            box-shadow: 0 12px 40px rgba(0, 122, 255, 0.15);
         }
 
-        /* CUADRÍCULA DE PROYECTOS AUTO-RESPONSIVA (Horizontal garantizado) */
+        /* SECCIÓN DEL ECOSISTEMA Y GRID */
         .ecosystem-section {
             padding: 100px 0;
             border-top: 1px solid #141414;
@@ -227,6 +225,7 @@
 
         .section-header {
             margin-bottom: 60px;
+            text-align: left;
         }
 
         .section-header p {
@@ -250,6 +249,7 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
             gap: 32px;
+            width: 100%;
         }
 
         .product-card {
@@ -261,6 +261,8 @@
             flex-direction: column;
             justify-content: space-between;
             transition: border-color 0.3s ease, transform 0.3s ease;
+            position: relative;
+            overflow: hidden;
         }
 
         .product-card:hover {
@@ -308,12 +310,13 @@
             border: 1px solid #141414;
             padding: 12px 16px;
             border-radius: 6px;
-            color: #4cd964; /* Verde consola */
+            color: #4cd964;
             font-size: 13px;
             margin-bottom: 20px;
+            line-height: 1.4;
         }
 
-        /* PIE DE PÁGINA (FOOTER) CORPORATIVO */
+        /* FOOTER */
         footer {
             border-top: 1px solid #141414;
             padding: 80px 0;
@@ -371,15 +374,15 @@
             text-transform: uppercase;
         }
 
-        /* REGLAS COMPORTAMIENTO MÓVIL (MEDIA QUERIES) */
-        @media (max-width: 1024px) {
+        /* MEDIA QUERIES RESPONSIVAS */
+        @media (max-width: 1160px) {
             .hero {
                 text-align: center;
                 padding: 120px 0 60px 0;
             }
             .hero-content-wrapper {
                 max-width: 100%;
-                margin: 0 auto;
+                text-align: center;
             }
             .hero-buttons {
                 justify-content: center;
@@ -400,6 +403,9 @@
             }
             .hero h2 {
                 font-size: 42px;
+            }
+            .nav-links {
+                display: none; /* Limpieza en móvil */
             }
         }
     </style>
@@ -503,7 +509,7 @@
                         <div class="tech-spec">
                             <i class="fa-solid fa-video"></i> Latency: 1.3ms Target | Ingestion: Zero-Copy | Architecture: Unified Memory (UMA)
                         </div>
-                        <a href="https://github.com/echeparesmanuel36-design/axiom-holotrack" target="_blank" style="display: inline-block; width: 100%; text-align: center; background: #1f2937; color
+                        <a href="https://github.com/echeparesmanuel36-design/axiom-holotrack" target="_blank" style="display: inline-block; width: 100%; text-align: center; background: #1f2937; color: #f3f4f6; font-family: monospace; font-size: 0.9rem; padding: 10px 0; border-radius: 6px; text-decoration: none; border: 1px solid #374151; transition: background 0.2s;">
                             Inspect Architecture (GitHub) →
                         </a>
                     </div>
