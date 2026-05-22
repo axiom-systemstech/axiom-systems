@@ -29,6 +29,7 @@
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 24px;
+            position: relative;
         }
 
         /* BARRA DE NAVEGACIÓN SUPERIOR */
@@ -103,7 +104,7 @@
         /* SECCIÓN HERO (PRINCIPAL) */
         .hero {
             padding: 160px 0 100px 0;
-            text-align: center;
+            text-align: left;
             position: relative;
         }
 
@@ -118,6 +119,10 @@
             background: radial-gradient(circle, rgba(0, 122, 255, 0.08) 0%, transparent 70%);
             z-index: -1;
             pointer-events: none;
+        }
+
+        .hero-content-wrapper {
+            max-width: 720px;
         }
 
         .hero-tag {
@@ -147,14 +152,14 @@
             font-size: 20px;
             color: #86868B;
             max-width: 680px;
-            margin: 0 auto 40px auto;
+            margin-bottom: 40px;
             line-height: 1.5;
         }
 
         .hero-buttons {
             display: flex;
             gap: 16px;
-            justify-content: center;
+            margin-bottom: 32px;
         }
 
         .btn-primary {
@@ -187,6 +192,31 @@
         .btn-secondary:hover {
             background-color: #1a1a1a;
             border-color: #333333;
+        }
+
+        /* INTERFAZ DEL PANEL DE ADQUISICIÓN LATERAL RESPONSIVO */
+        .value-proposition-sidebar {
+            position: absolute;
+            top: 40px;
+            right: 0;
+            width: 320px;
+            background-color: rgba(11, 11, 12, 0.9);
+            border: 1px solid #1c1c1e;
+            border-radius: 8px;
+            padding: 24px;
+            text-align: left;
+            backdrop-filter: blur(8px);
+            z-index: 10;
+            text-decoration: none;
+            display: block;
+            transition: all 0.2s ease-in-out;
+        }
+
+        .value-proposition-sidebar:hover {
+            border-color: #007AFF !important;
+            background-color: rgba(20, 20, 22, 0.95) !important;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 122, 255, 0.1);
         }
 
         /* CUADRÍCULA DE PROYECTOS AUTO-RESPONSIVA (Horizontal garantizado) */
@@ -222,15 +252,6 @@
             gap: 32px;
         }
 
-        @media (max-width: 768px) {
-            .grid-products {
-                grid-template-columns: 1fr;
-            }
-            .hero h2 {
-                font-size: 42px;
-            }
-        }
-
         .product-card {
             background-color: #0b0b0c;
             border: 1px solid #1c1c1e;
@@ -255,7 +276,7 @@
         }
 
         .product-status {
-            font-size: 12px;
+            font-size: 11px;
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 1px;
@@ -263,6 +284,7 @@
             border-radius: 20px;
             background-color: rgba(0, 122, 255, 0.1);
             color: #007AFF;
+            display: inline-block;
         }
 
         .product-card h4 {
@@ -348,6 +370,38 @@
             letter-spacing: 1px;
             text-transform: uppercase;
         }
+
+        /* REGLAS COMPORTAMIENTO MÓVIL (MEDIA QUERIES) */
+        @media (max-width: 1024px) {
+            .hero {
+                text-align: center;
+                padding: 120px 0 60px 0;
+            }
+            .hero-content-wrapper {
+                max-width: 100%;
+                margin: 0 auto;
+            }
+            .hero-buttons {
+                justify-content: center;
+            }
+            .value-proposition-sidebar {
+                position: relative;
+                top: 0;
+                right: 0;
+                width: 100%;
+                max-width: 500px;
+                margin: 40px auto 0 auto;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .grid-products {
+                grid-template-columns: 1fr;
+            }
+            .hero h2 {
+                font-size: 42px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -369,32 +423,34 @@
     <main class="main-content">
         <section class="hero" id="core">
             <div class="container">
-                <div class="hero-tag">Axiom Systems ◤A-S◢ · Core Technologies</div>
-                <h2>ENGINEERING<br><span>SOVEREIGNTY.</span></h2>
-                <p>High-performance DeepTech blueprint architectures and verified engineering dossiers for industrial defense, spatial systems, and hardware control layers. We design and sell proprietary IP ready for enterprise acquisition and native implementation.</p>
-                <div class="hero-buttons">
-                    <a href="https://github.com/echeparesmanuel36-design" class="btn-primary">Explore Core Repositories</a>
-                    <a href="#ecosystem" class="btn-secondary">View Ecosystem</a>
-                </div>
                 
-                    <div class="product-status" style="border-color: #007AFF; color: #007AFF; background-color: rgba(0, 122, 255, 0.1); display: inline-block; margin-bottom: 16px; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; padding: 6px 12px; border-radius: 20px;">
+                <div class="hero-content-wrapper">
+                    <div class="hero-tag">Axiom Systems ◤A-S◢ · Core Technologies</div>
+                    <h2>ENGINEERING<br><span>SOVEREIGNTY.</span></h2>
+                    <p>High-performance DeepTech blueprint architectures and verified engineering dossiers for industrial defense, spatial systems, and hardware control layers. We design and sell proprietary IP ready for enterprise acquisition and native implementation.</p>
+                    <div class="hero-buttons">
+                        <a href="https://github.com/echeparesmanuel36-design" class="btn-primary">Explore Core Repositories</a>
+                        <a href="#ecosystem" class="btn-secondary">View Ecosystem</a>
+                    </div>
+                </div>
+
+                <a href="https://github.com/echeparesmanuel36-design/echeparesmanuel36-design" target="_blank" class="value-proposition-sidebar">
+                    <div class="product-status" style="border-color: #007AFF; color: #007AFF; background-color: rgba(0, 122, 255, 0.1); margin-bottom: 16px;">
                         BUSINESS ACQUISITION MODEL
                     </div>
-                    
                     <h4 style="font-size: 20px; font-weight: 700; color: #FFFFFF; margin-bottom: 12px; font-family: 'Urbanist', sans-serif;">
                         Verified IP & Engineering Dossiers
                     </h4>
-                    
                     <p style="font-size: 14px; color: #86868B; line-height: 1.6; margin-bottom: 16px;">
                         Axiom Systems engineers proprietary bare-metal architectures and comprehensive technical dossiers. Our full stack is designed for direct technology transfer, enterprise acquisition, and industrial implementation.
                     </p>
-                    
                     <div style="font-family: monospace; font-size: 0.85rem; color: #007AFF; text-align: right; font-weight: bold; letter-spacing: 0.5px;">
                         Inspect IP Manifesto →
                     </div>
                 </a>
+
             </div>
-                </section>
+        </section>
 
         <section class="ecosystem-section" id="ecosystem">
             <div class="container">
@@ -402,17 +458,7 @@
                     <p>Core Ecosystem</p>
                     <h3>Sovereign Hardware & Software Systems</h3>
                 </div>
-                <a href="https://github.com/echeparesmanuel36-design/echeparesmanuel36-design" target="_blank" class="value-proposition-sidebar" style="position: absolute; top: 0px; right: 24px; width: 280px; background-color: rgba(11, 11, 12, 0.9); border: 1px solid #1c1c1e; border-radius: 8px; padding: 24px; text-align: left; backdrop-filter: blur(8px); z-index: 10; text-decoration: none; display: block; transition: all 0.2s ease-in-out;">
-                    <style>
-                        /* Efecto hover interactivo estilo Apple/Silicon Valley */
-                        .value-proposition-sidebar:hover {
-                            border-color: #007AFF !important;
-                            background-color: rgba(20, 20, 22, 0.95) !important;
-                            transform: translateY(-2px);
-                            box-shadow: 0 10px 30px rgba(0, 122, 255, 0.1);
-                        }
-                    </style>
-                    
+                
                 <div class="grid-products">
                     <div class="product-card">
                         <div>
@@ -457,7 +503,7 @@
                         <div class="tech-spec">
                             <i class="fa-solid fa-video"></i> Latency: 1.3ms Target | Ingestion: Zero-Copy | Architecture: Unified Memory (UMA)
                         </div>
-                        <a href="https://github.com/echeparesmanuel36-design/axiom-holotrack" target="_blank" style="display: inline-block; width: 100%; text-align: center; background: #1f2937; color: #f3f4f6; font-family: monospace; font-size: 0.9rem; padding: 10px 0; border-radius: 6px; text-decoration: none; border: 1px solid #374151; transition: background 0.2s;">
+                        <a href="https://github.com/echeparesmanuel36-design/axiom-holotrack" target="_blank" style="display: inline-block; width: 100%; text-align: center; background: #1f2937; color
                             Inspect Architecture (GitHub) →
                         </a>
                     </div>
@@ -465,7 +511,7 @@
                     <div class="product-card">
                         <div>
                             <div class="product-meta">
-                                <span class="product-status" style="border-color: #22c55e; color: #22c55e; background-color: rgba(34, 197, 94, 0.1);">BARE-METAL</span>
+                                <span class="product-status" style="border-color: #22c55e; color: #22c55e; background-color: rgba(34, 197, 94, 0.1);">BARE-METAL CYBERNETICS</span>
                             </div>
                             <h4>Axiom Reflex ◤A-S◢</h4>
                             <p>Experimental neuro-synchronization firmware engineered in pure Rust for active cybernetic prosthetics and neural implant arrays. Bypasses standard OS scheduler layers to map peripheral nervous system micro-volt potentials directly into mechanical actuators with a strict deterministic execution window of <span style="color: #22c55e; font-weight: bold;">sub-1.5ms</span>.</p>
@@ -596,7 +642,7 @@
                             </div>
                             <h4>Sovereign App ◤A-S◢</h4>
                             <p>The unified decentralised flagship hub anchoring the Axiom matrix. Consolidates mesh networks, multi-agent AI nodes, 1:1 digital twins, and AR profiles into a single sovereign user interface.</p>
-                            </div>
+                        </div>
                         <div class="tech-spec">
                             <i class="fa-solid fa-crown"></i> Platform: System Integrator | Security: Zero-Knowledge
                         </div>
