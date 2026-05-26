@@ -492,32 +492,20 @@
                 </div>
                 
                 <div class="grid-products">
-                                  <div class="product-card" style="border: 1px solid rgba(255, 87, 34, 0.2); background: rgba(10, 10, 12, 0.6); backdrop-filter: blur(8px); padding: 24px; border-radius: 4px; margin-bottom: 20px; transition: all 0.3s ease;" onmouseover="this.style.borderColor='#FF5722'; this.style.boxShadow='0 0 15px rgba(255, 87, 34, 0.15)'" onmouseout="this.style.borderColor='rgba(255, 87, 34, 0.2)'; this.style.boxShadow='none'">
-    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
-        <span style="font-family: 'Courier New', Courier, monospace; font-size: 0.75rem; color: #FF5722; letter-spacing: 2px; font-weight: bold; text-transform: uppercase;">IP MULTI-CORE // SYS-HARDWARE</span>
-        <span style="font-family: 'Courier New', Courier, monospace; font-size: 0.75rem; color: #888;">LATENCY: 1.2ms</span>
-    </div>
-    
-    <h3 style="font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 1.4rem; color: #fff; margin: 0 0 8px 0; font-weight: 600; letter-spacing: -0.5px;">Axiom Torque-Sync + Mirage AR</h3>
-    
-    <p style="font-family: 'Courier New', Courier, monospace; font-size: 0.85rem; color: #aaa; margin: 0 0 16px 0; line-height: 1.5;">
-        Dual-core bare-metal firmware (#![no_std]) designed for ultra-low latency simulation hardware. Synchronizes magnetic direct-drive force feedback loops at 40kHz with asynchronous spatial coordinate mapping onto low-profile micro-LED holographic AR lenses. Bypasses kernel overhead for mission-critical determinism.
-    </p>
-    
-    <div style="display: flex; gap: 8px; margin-bottom: 20px; flex-wrap: wrap;">
-        <span style="font-family: 'Courier New', Courier, monospace; font-size: 0.7rem; background: rgba(255, 87, 34, 0.1); color: #FF5722; padding: 4px 8px; border-radius: 2px; border: 1px solid rgba(255, 87, 34, 0.2);">#![no_std]</span>
-        <span style="font-family: 'Courier New', Courier, monospace; font-size: 0.7rem; background: rgba(255, 255, 255, 0.05); color: #ccc; padding: 4px 8px; border-radius: 2px;">Direct-Drive FOC</span>
-        <span style="font-family: 'Courier New', Courier, monospace; font-size: 0.7rem; background: rgba(255, 255, 255, 0.05); color: #ccc; padding: 4px 8px; border-radius: 2px;">MMIO Mapping</span>
-        <span style="font-family: 'Courier New', Courier, monospace; font-size: 0.7rem; background: rgba(255, 255, 255, 0.05); color: #ccc; padding: 4px 8px; border-radius: 2px;">ARM Cortex-M7</span>
-    </div>
-    
-    <div style="display: flex; justify-content: space-between; align-items: center;">
-        <a href="https://github.com/echeparesmanuel36-design/axiom-torque-sync-mirage-ar" target="_blank" style="font-family: 'Courier New', Courier, monospace; font-size: 0.8rem; color: #fff; text-decoration: none; border-bottom: 1px solid #fff; padding-bottom: 2px; transition: color 0.2s;" onmouseover="this.style.color='#FF5722'; this.style.borderColor='#FF5722'" onmouseout="this.style.color='#fff'; this.style.borderColor='#fff'">VIEW ARCHITECTURE Blueprint →</a>
-        <span style="font-family: 'Courier New', Courier, monospace; font-size: 0.75rem; color: #555;">STATUS: VERIFIED</span>
-    </div>
-</div>
-
- <div class="product-card" style="box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4), inset 0 0 15px rgba(255, 42, 133, 0.05); border-color: rgba(255, 42, 133, 0.15);">
+     <div class="product-meta">
+                                <span class="product-status" style="border-color: #ff5722; color: #ff5722; background-color: rgba(255, 87, 34, 0.1);">BARE-METAL DUAL-CORE ACTUATION</span>
+                            </div>
+                            <h4>Axiom Torque-Sync + Mirage AR</h4>
+                            <p>Dual-core bare-metal firmware engineered in native Rust under #![no_std] constraints for ultra-low latency simulation hardware. Synchronizes magnetic direct-drive force feedback loops at 40kHz (Core 0) via direct volatile register mapping, eliminating OS kernel jitter and context switching. Asynchronously processes 6-DoF spatial head-tracking matrices (Core 1) to project real-time holographic racing trajectories and telemetry markers directly onto dynamic optical viewports within a strict deterministic envelope of <span style="color: #ff5722; font-weight: bold;">1.2ms execution latency</span>.</p>
+                        </div>
+                        <div class="tech-spec" style="color: #4cd964; border-color: rgba(76, 217, 100, 0.15); background-color: rgba(5, 5, 5, 0.5);">
+                            <i class="fa-solid fa-microchip"></i> Core: Direct-Drive FOC | Latency: 1.2ms Flat | Interface: Holographic MMIO
+                        </div>
+                        <a href="https://github.com/echeparesmanuel36-design/axiom-torque-sync-mirage-ar" target="_blank" style="display: inline-block; width: 100%; text-align: center; background: #1f2937; color: #f3f4f6; font-family: monospace; font-size: 0.9rem; padding: 10px 0; border-radius: 6px; text-decoration: none; border: 1px solid #374151; transition: background 0.2s;">
+                            Inspect Architecture (GitHub) →
+                        </a>
+                    </div>   
+<div class="product-card" style="box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4), inset 0 0 15px rgba(139, 92, 246, 0.05); border-color: rgba(139, 92, 246, 0.15);">
                         <div>
                             <div class="product-meta">
                                 <span class="product-status" style="border-color: #ff2a85; color: #ff2a85; background-color: rgba(255, 42, 133, 0.1);">BARE-METAL FLUID KINEMATICS</span>
