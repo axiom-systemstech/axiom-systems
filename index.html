@@ -15,13 +15,13 @@
            ========================================================================== */
         :root[data-theme="dark"] {
             --bg-main: #0a1128; /* Azul abisal profundo */
-            --bg-canvas: rgba(10, 25, 64, 0.4);
+            --bg-canvas: rgba(10, 25, 64, 0.5);
             --text-main: #f5f5f7;
             --text-muted: #8a9fc4;
             --accent-blue: #007aff;
             --accent-neon: #00f5ff;
             --border-mercury: linear-gradient(135deg, rgba(255,255,255,0.2) 0%, rgba(0,122,255,0.4) 50%, rgba(255,255,255,0.05) 100%);
-            --card-bg: rgba(13, 27, 65, 0.4);
+            --card-bg: rgba(13, 27, 65, 0.5);
             --glow-neon: rgba(0, 245, 255, 0.15);
             --shadow-convex: 10px 10px 20px #050914, -10px -10px 20px #0f193c;
             --shadow-concave: inset 5px 5px 10px #050914, inset -5px -5px 10px #0f193c;
@@ -31,13 +31,13 @@
 
         :root[data-theme="light"] {
             --bg-main: #f0f4f8; /* Blanco clínico refractivo */
-            --bg-canvas: rgba(235, 242, 250, 0.4);
+            --bg-canvas: rgba(235, 242, 250, 0.5);
             --text-main: #0a1128;
             --text-muted: #5c6b89;
             --accent-blue: #007aff;
             --accent-neon: #0056b3;
             --border-mercury: linear-gradient(135deg, rgba(0,122,255,0.4) 0%, rgba(255,255,255,0.8) 50%, rgba(0,122,255,0.1) 100%);
-            --card-bg: rgba(255, 255, 255, 0.6);
+            --card-bg: rgba(255, 255, 255, 0.7);
             --glow-neon: rgba(0, 122, 255, 0.1);
             --shadow-convex: 8px 8px 16px #cbd5e1, -8px -8px 16px #ffffff;
             --shadow-concave: inset 4px 4px 8px #cbd5e1, inset -4px -4px 8px #ffffff;
@@ -50,7 +50,6 @@
             margin: 0;
             padding: 0;
             -webkit-font-smoothing: antialiased;
-            transition: background-color 0.4s cubic-bezier(0.16, 1, 0.3, 1), color 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         html {
@@ -64,25 +63,22 @@
             overflow-x: hidden;
             position: relative;
             min-height: 100vh;
+            transition: background-color 0.4s cubic-bezier(0.16, 1, 0.3, 1), color 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        /* LIENZOS DE HARDWARE EN SEGUNDO PLANO (WEBGL / THREE.JS / GLSL SHADERS) */
+        /* CAPAS DE SEGUNDO PLANO HARDWARE */
         #viewport-container {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
+            top: 0; left: 0;
+            width: 100vw; height: 100vh;
             z-index: -1;
             pointer-events: none;
         }
 
         #canvas-3d, #canvas-shader {
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
         }
 
         #canvas-shader {
@@ -107,8 +103,7 @@
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             position: fixed;
-            top: 0;
-            left: 0;
+            top: 0; left: 0;
             z-index: 100;
         }
 
@@ -133,10 +128,10 @@
         .header-controls {
             display: flex;
             align-items: center;
-            gap: 20px;
+            gap: 16px;
         }
 
-        /* BOTONES CON EXTRUSIÓN REFRACRIVA NEUMÓRFICA (SE HUNDEN AL PULSAR) */
+        /* BOTONES CON EXTRUSIÓN REFACTRIVA NEUMÓRFICA TRIDIMENSIONAL */
         .theme-toggle, .btn-account-toggle, .btn-mail, .btn-launch {
             background: var(--card-bg);
             border: none;
@@ -153,7 +148,8 @@
             box-shadow: var(--shadow-convex);
             position: relative;
             overflow: hidden;
-            transition: transform 0.1s ease, box-shadow 0.1s ease;
+            user-select: none;
+            -webkit-user-select: none;
         }
 
         .theme-toggle::before, .btn-account-toggle::before, .btn-mail::before, .btn-launch::before {
@@ -170,15 +166,14 @@
         }
 
         .theme-toggle:active, .btn-account-toggle:active, .btn-mail:active, .btn-launch:active {
-            box-shadow: var(--shadow-concave);
-            transform: scale(0.98) translateY(1px);
+            box-shadow: var(--shadow-concave) !important;
+            transform: scale(0.97) translateY(2px) !important;
         }
 
         /* PANEL CONSOLA DE CUENTAS OPERADOR */
         .accounts-dropdown {
             position: absolute;
-            top: 90px;
-            right: 24px;
+            top: 90px; right: 24px;
             width: 280px;
             background: var(--card-bg);
             backdrop-filter: blur(25px);
@@ -228,14 +223,14 @@
         }
 
         /* ==========================================================================
-           HERO & INTERFAZ PRINCIPAL - TEXTO CON DISTORSIÓN KINÉTICA SVG
+           HERO & INTERFAZ PRINCIPAL - CON DISTORSIÓN KINÉTICA SVG
            ========================================================================== */
         .main-content {
             margin-top: 80px;
         }
 
         .hero {
-            padding: 100px 0 60px 0;
+            padding: 80px 0 40px 0;
         }
 
         .hero-content-wrapper {
@@ -254,7 +249,7 @@
         /* DISTORSIÓN DE TEXTO CINÉTICO POR TURBULENCIA FRACTAL */
         .distort-title {
             font-family: 'Urbanist', sans-serif;
-            font-size: 7.5vw;
+            font-size: 5.5vw;
             font-weight: 900;
             line-height: 0.95;
             letter-spacing: -3px;
@@ -314,14 +309,13 @@
         }
 
         /* ==========================================================================
-           SECCIONES RECTRACTIVAS EN ACORDEÓN ELÁSTICO
+           SISTEMA DE ACORDEONES RECTRACTILES REPARADO Y DINÁMICO
            ========================================================================== */
         .section-accordion {
             margin-bottom: 24px;
             border-radius: 16px;
             background: var(--card-bg);
             box-shadow: var(--shadow-convex);
-            overflow: hidden;
             position: relative;
             backdrop-filter: blur(15px);
             -webkit-backdrop-filter: blur(15px);
@@ -354,37 +348,34 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            user-select: none;
+            -webkit-user-select: none;
         }
 
         .accordion-trigger .chevron {
             font-size: 18px;
             color: var(--accent-blue);
-            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         .section-accordion.active .accordion-trigger .chevron {
             transform: rotate(180deg);
         }
 
+        /* Reparación de altura absoluta por JavaScript */
         .accordion-content {
-            max-height: 0;
+            height: 0;
             overflow: hidden;
-            transition: max-height 0.6s cubic-bezier(0.16, 1, 0.3, 1), padding 0.6s ease;
+            transition: height 0.5s cubic-bezier(0.16, 1, 0.3, 1), padding 0.5s cubic-bezier(0.16, 1, 0.3, 1);
             padding: 0 32px;
         }
 
-        .section-accordion.active .accordion-content {
-            max-height: 8000px;
-            padding-bottom: 40px;
-        }
-
-        /* CAROUSEL / GRID CON PERSPECTIVA 3D DE ANILLO (EJE Z) */
         .grid-products {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
             gap: 28px;
-            margin-top: 20px;
-            perspective: 1200px; /* Base para transformaciones de profundidad de anillo */
+            padding-top: 10px;
+            perspective: 1200px; /* Base para la distorsión del eje Z */
         }
 
         /* ==========================================================================
@@ -402,8 +393,8 @@
             overflow: hidden;
             border: 1px solid rgba(0, 122, 255, 0.05);
             transform-style: preserve-3d;
-            will-change: transform, opacity;
-            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
+            will-change: transform;
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         .product-card::before {
@@ -420,16 +411,13 @@
             opacity: 0.8;
         }
 
-        /* Reflejo oblicuo dinámico al pasar el ratón */
         .product-card::after {
             content: ''; position: absolute; top: 0; left: -100%; width: 200%; height: 100%;
             background: linear-gradient(115deg, transparent, rgba(255, 255, 255, 0.04), transparent);
-            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1); pointer-events: none;
+            transition: all 0.6s ease; pointer-events: none;
         }
 
-        .product-card:hover::after {
-            left: 100%;
-        }
+        .product-card:hover::after { left: 100%; }
 
         .product-meta {
             margin-bottom: 20px;
@@ -476,18 +464,8 @@
             line-height: 1.4;
         }
 
-        .btn-launch {
-            display: block;
-            width: 100%;
-            text-align: center;
-            font-family: monospace;
-            font-size: 13px;
-            font-weight: bold;
-            padding: 14px 0;
-        }
-
         /* ==========================================================================
-           FOOTER INGRESS TERMINAL & CONTACT LAYER
+           FOOTER INGRESS MAIL TERMINAL
            ========================================================================== */
         footer {
             border-top: 1px solid rgba(0, 122, 255, 0.1);
@@ -528,13 +506,24 @@
             opacity: 0.5;
         }
 
+        /* ==========================================================================
+           MEDIA QUERIES - RESPONSIVIDAD INTELIGENTE MÓVIL VS PC REAL
+           ========================================================================== */
         @media (max-width: 992px) {
-            .distort-title { font-size: 10vw; }
+            .distort-title { font-size: 10vw; letter-spacing: -1px; }
+            .grid-products { grid-template-columns: 1fr; gap: 24px; perspective: none; }
+            .accordion-trigger { padding: 24px 16px; font-size: 18px; }
+            .accordion-content { padding: 0 16px; }
+            .product-card { padding: 24px; }
+            .telemetry-hud { width: 100%; display: flex; flex-direction: column; align-items: flex-start; gap: 10px; }
+            .bar-container { width: 100%; }
+            .btn-account-toggle span { display: none; } /* Ocultar texto de consola en móviles */
         }
     </style>
 </head>
 <body>
 
+    <!-- FILTRO SVG DE TURBULENCIA NO LINEAL CUÁNTICA PARA DISTORSIÓN DEL TEXTO -->
     <svg style="display: none;">
         <filter id="kinetic-distort">
             <feTurbulence type="fractalNoise" baseFrequency="0.01 0.04" numOctaves="2" result="noise" />
@@ -542,8 +531,11 @@
         </filter>
     </svg>
 
+    <!-- LIENZOS DE PROCESAMIENTO GRÁFICO LOCAL COMPARTIDO -->
     <div id="viewport-container">
-        <canvas id="canvas-shader"></canvas> <div id="canvas-3d"></div> </div>
+        <canvas id="canvas-shader"></canvas> <!-- Radar CRT Shader -->
+        <div id="canvas-3d"></div> <!-- Objeto Interactivo 3D Cylinder -->
+    </div>
 
     <header>
         <div class="container nav-wrapper">
@@ -559,6 +551,7 @@
         </div>
     </header>
 
+    <!-- DROPDOWN FLOTANTE SOBERANO DE TERMINALES -->
     <div class="accounts-dropdown" id="accountsDropdown">
         <h4 style="font-family: 'Urbanist', sans-serif; font-size: 16px; margin-bottom: 12px; color: var(--accent-blue);">Nodos Operadores</h4>
         <a href="https://github.com/echeparesmanuel36-design" target="_blank" class="account-link">
@@ -570,12 +563,14 @@
     </div>
 
     <main class="main-content">
+        <!-- HÉROE PRINCIPAL CON TITULO DE DISTORSIÓN Y CONTADORES HUD -->
         <section class="hero">
             <div class="container">
                 <div class="hero-content-wrapper">
                     <div class="hero-tag">Axiom Systems ◤A-S◢ · Core Technologies</div>
                     <h2 class="distort-title" id="distort-text">ENGINEERING<br><span>SOVEREIGNTY.</span></h2>
                     
+                    <!-- Skill 6: Telemetría Visual y Contadores Reactivos -->
                     <div class="telemetry-hud">
                         <i class="fa-solid fa-bolt" style="color: var(--accent-blue);"></i>
                         <span>AXIOM COMPUTE INFRASTRUCTURE:</span>
@@ -588,8 +583,10 @@
             </div>
         </section>
 
+        <!-- CONTENEDOR DE SECCIONES MODULARES EN ACORDEÓN ANILLADO -->
         <section class="container">
 
+            <!-- ◤ SECCIÓN 01 ◢ DECENTRALIZED DAILY UTILITIES (TUS 3 NUEVAS REVOLUCIONES + SHREDDER) -->
             <div class="section-accordion active">
                 <button class="accordion-trigger">
                     <span>◤01◢ Core Media, Audio & Log Decentralized Utilities</span>
@@ -598,13 +595,14 @@
                 <div class="accordion-content">
                     <div class="grid-products">
 
+                        <!-- AXIOM_MEDIA_CRUSHER -->
                         <div class="product-card">
                             <div>
                                 <div class="product-meta">
                                     <span class="product-status">Local Media Optimization Buffer</span>
                                 </div>
                                 <h4>Axiom Media Crusher 🧬</h4>
-                                <p>Optimiza, recalibra, recorta y purifica vectores o imágenes pesadas al instante en el navegador de manera 100% descentralizada y local. Ejecuta procesamiento binario emulando la velocidad del motor compilado en Rust (WebAssembly) sobre buffers de datos locales en memoria a velocidad O(1). Cuenta con muro de bloqueo Premium Supabase Auth al superar los 10 archivos por lote y micro-recompensa elástica en el cliente.</p>
+                                <p>Optimiza, recalibra, recorta y purifica vectores o imágenes pesadas al instante en el navegador de manera 100% descentralizada y local. Ejecuta procesamiento binario emulando la velocidad del motor编译 en Rust (WebAssembly) sobre buffers de datos locales en memoria a velocidad O(1). Cuenta con muro de bloqueo Premium Supabase Auth al superar los 10 archivos por lote y micro-recompensa elástica en el cliente.</p>
                             </div>
                             <div>
                                 <div class="tech-spec">
@@ -616,6 +614,7 @@
                             </div>
                         </div>
 
+                        <!-- AXIOM_LOG_PURGE -->
                         <div class="product-card">
                             <div>
                                 <div class="product-meta">
@@ -634,6 +633,7 @@
                             </div>
                         </div>
 
+                        <!-- AXIOM_MUTE_POP -->
                         <div class="product-card">
                             <div>
                                 <div class="product-meta">
@@ -652,6 +652,7 @@
                             </div>
                         </div>
 
+                        <!-- AXIOM DOC SHREDDER -->
                         <div class="product-card">
                             <div>
                                 <div class="product-meta">
@@ -674,6 +675,7 @@
                 </div>
             </div>
 
+            <!-- ◤ SECCIÓN 02 ◢ VISUAL CRYPTOGRAPHY & COMPENDIUMS -->
             <div class="section-accordion">
                 <button class="accordion-trigger">
                     <span>◤02◢ Visual Cryptography, Gastronomy & Financial Optimization</span>
@@ -682,6 +684,7 @@
                 <div class="accordion-content">
                     <div class="grid-products">
 
+                        <!-- PRISM CODE CRYPTOR -->
                         <div class="product-card">
                             <div>
                                 <div class="product-meta">
@@ -700,6 +703,7 @@
                             </div>
                         </div>
 
+                        <!-- AXIOM RECETAS -->
                         <div class="product-card">
                             <div>
                                 <div class="product-meta">
@@ -718,6 +722,7 @@
                             </div>
                         </div>
 
+                        <!-- AXIOM ANIMALS -->
                         <div class="product-card">
                             <div>
                                 <div class="product-meta">
@@ -736,6 +741,7 @@
                             </div>
                         </div>
 
+                        <!-- AXIOM SPLIT WISE -->
                         <div class="product-card">
                             <div>
                                 <div class="product-meta">
@@ -758,6 +764,7 @@
                 </div>
             </div>
 
+            <!-- ◤ SECCIÓN 03 ◢ TELEMETRY, DIAGNOSTICS & HARDWARE LAYERS -->
             <div class="section-accordion">
                 <button class="accordion-trigger">
                     <span>◤03◢ Hardware Telemetry, Diagnostics & Local Simulation</span>
@@ -766,6 +773,7 @@
                 <div class="accordion-content">
                     <div class="grid-products">
 
+                        <!-- AXIOM BATTERY HUD -->
                         <div class="product-card">
                             <div>
                                 <div class="product-meta">
@@ -784,6 +792,7 @@
                             </div>
                         </div>
 
+                        <!-- AXIOM CAFFEINE -->
                         <div class="product-card">
                             <div>
                                 <div class="product-meta">
@@ -802,6 +811,7 @@
                             </div>
                         </div>
 
+                        <!-- AXIOM AERO SIM -->
                         <div class="product-card">
                             <div>
                                 <div class="product-meta">
@@ -820,6 +830,7 @@
                             </div>
                         </div>
 
+                        <!-- AXIOM PET TRANSLATE -->
                         <div class="product-card">
                             <div>
                                 <div class="product-meta">
@@ -842,6 +853,7 @@
                 </div>
             </div>
 
+            <!-- ◤ SECCIÓN 04 ◢ LOW-LEVEL BARE-METAL CORE INFRASTRUCTURE (RUST / NO_STD) -->
             <div class="section-accordion">
                 <button class="accordion-trigger">
                     <span>◤04◢ Low-Level Bare-Metal Core Infrastructure (Rust / no_std)</span>
@@ -850,6 +862,7 @@
                 <div class="accordion-content">
                     <div class="grid-products">
 
+                        <!-- AXIOM ZERO-CRYPTO -->
                         <div class="product-card">
                             <div>
                                 <div class="product-meta">
@@ -868,6 +881,7 @@
                             </div>
                         </div>
 
+                        <!-- AXIOM AERO-INGRESS -->
                         <div class="product-card">
                             <div>
                                 <div class="product-meta">
@@ -886,6 +900,7 @@
                             </div>
                         </div>
 
+                        <!-- AXIOM OXIDE-KV -->
                         <div class="product-card">
                             <div>
                                 <div class="product-meta">
@@ -904,6 +919,7 @@
                             </div>
                         </div>
 
+                        <!-- AXIOM TORQUE-SYNC -->
                         <div class="product-card">
                             <div>
                                 <div class="product-meta">
@@ -926,6 +942,7 @@
                 </div>
             </div>
 
+            <!-- ◤ SECCIÓN 05 ◢ SPATIAL COMPUTING LAYERS -->
             <div class="section-accordion">
                 <button class="accordion-trigger">
                     <span>◤05◢ Spatial Computing & Real-Time Simulation Core</span>
@@ -934,6 +951,7 @@
                 <div class="accordion-content">
                     <div class="grid-products">
 
+                        <!-- AXIOM GRAFF -->
                         <div class="product-card">
                             <div>
                                 <div class="product-meta">
@@ -952,6 +970,7 @@
                             </div>
                         </div>
 
+                        <!-- AXIOM SHADOWPLAY AR -->
                         <div class="product-card">
                             <div>
                                 <div class="product-meta">
@@ -970,6 +989,7 @@
                             </div>
                         </div>
 
+                        <!-- AXIOM MIRROR-SELF AR -->
                         <div class="product-card">
                             <div>
                                 <div class="product-meta">
@@ -988,6 +1008,7 @@
                             </div>
                         </div>
 
+                        <!-- AXIOM BALLISTICA -->
                         <div class="product-card">
                             <div>
                                 <div class="product-meta">
@@ -1006,6 +1027,7 @@
                             </div>
                         </div>
 
+                        <!-- AXIOM PHANTOM OS -->
                         <div class="product-card">
                             <div>
                                 <div class="product-meta">
@@ -1024,6 +1046,7 @@
                             </div>
                         </div>
 
+                        <!-- AXIOM OVERDRIVE -->
                         <div class="product-card">
                             <div>
                                 <div class="product-meta">
@@ -1042,6 +1065,7 @@
                             </div>
                         </div>
 
+                        <!-- AXIOM NETRUN -->
                         <div class="product-card">
                             <div>
                                 <div class="product-meta">
@@ -1060,6 +1084,7 @@
                             </div>
                         </div>
 
+                        <!-- AXIOM PULSE AUDIO -->
                         <div class="product-card">
                             <div>
                                 <div class="product-meta">
@@ -1082,6 +1107,7 @@
                 </div>
             </div>
 
+            <!-- ◤ SECCIÓN 06 ◢ SPATIAL ECOSYSTEM AND FLAGSHIP HUBS -->
             <div class="section-accordion">
                 <button class="accordion-trigger">
                     <span>◤06◢ Spatial Ecosystem & Flagship Hubs</span>
@@ -1090,6 +1116,7 @@
                 <div class="accordion-content">
                     <div class="grid-products">
 
+                        <!-- AXIOM HOLOTRACK -->
                         <div class="product-card">
                             <div>
                                 <div class="product-meta">
@@ -1108,6 +1135,7 @@
                             </div>
                         </div>
 
+                        <!-- AXIOM REFLEX -->
                         <div class="product-card">
                             <div>
                                 <div class="product-meta">
@@ -1126,6 +1154,7 @@
                             </div>
                         </div>
 
+                        <!-- AXIOM NEURAL-UI -->
                         <div class="product-card">
                             <div>
                                 <div class="product-meta">
@@ -1144,6 +1173,7 @@
                             </div>
                         </div>
 
+                        <!-- AXIOM KINETIC -->
                         <div class="product-card">
                             <div>
                                 <div class="product-meta">
@@ -1162,6 +1192,7 @@
                             </div>
                         </div>
 
+                        <!-- AXIOM CORE INPUT -->
                         <div class="product-card">
                             <div>
                                 <div class="product-meta">
@@ -1180,6 +1211,7 @@
                             </div>
                         </div>
 
+                        <!-- AXIOM AEGIS -->
                         <div class="product-card">
                             <div>
                                 <div class="product-meta">
@@ -1198,6 +1230,7 @@
                             </div>
                         </div>
 
+                        <!-- AXIOM FLORA -->
                         <div class="product-card">
                             <div>
                                 <div class="product-meta">
@@ -1216,6 +1249,7 @@
                             </div>
                         </div>
 
+                        <!-- AXIOM IRIS -->
                         <div class="product-card">
                             <div>
                                 <div class="product-meta">
@@ -1234,6 +1268,7 @@
                             </div>
                         </div>
 
+                        <!-- AXIOM STREAM NETWORK -->
                         <div class="product-card">
                             <div>
                                 <div class="product-meta">
@@ -1252,6 +1287,7 @@
                             </div>
                         </div>
 
+                        <!-- SOVEREIGN APP -->
                         <div class="product-card">
                             <div>
                                 <div class="product-meta">
@@ -1270,6 +1306,7 @@
                             </div>
                         </div>
 
+                        <!-- AXIOM EARTH -->
                         <div class="product-card">
                             <div>
                                 <div class="product-meta">
@@ -1288,6 +1325,7 @@
                             </div>
                         </div>
 
+                        <!-- AXIOM GLASS -->
                         <div class="product-card">
                             <div>
                                 <div class="product-meta">
@@ -1306,6 +1344,7 @@
                             </div>
                         </div>
 
+                        <!-- AXIOM AGENT -->
                         <div class="product-card">
                             <div>
                                 <div class="product-meta">
@@ -1324,6 +1363,7 @@
                             </div>
                         </div>
 
+                        <!-- AXIOM SYNC -->
                         <div class="product-card">
                             <div>
                                 <div class="product-meta">
@@ -1342,6 +1382,7 @@
                             </div>
                         </div>
 
+                        <!-- AXIOM OVNI -->
                         <div class="product-card">
                             <div>
                                 <div class="product-meta">
@@ -1360,6 +1401,7 @@
                             </div>
                         </div>
 
+                        <!-- AXIOM HYPERION -->
                         <div class="product-card">
                             <div>
                                 <div class="product-meta">
@@ -1400,8 +1442,8 @@
         </div>
     </footer>
 
+    <!-- INYECCIÓN DE CONTROL SÓNICO Y CINEMÁTICO REAL AL METAL -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <script type="module">
         import * as THREE from 'https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.module.js';
 
@@ -1419,7 +1461,7 @@
         container3D.appendChild(renderer.domElement);
 
         // Geometría del Chasis Monolítico de la lata Axiom Bare-Metric
-        const geometry = new THREE.CylinderGeometry(1.8, 1.8, 5.2, 32);
+        const geometry = new THREE.CylinderGeometry(1.6, 1.6, 5.0, 32);
         const material = new THREE.MeshStandardMaterial({ 
             color: 0x007aff, 
             metalness: 0.9, 
@@ -1442,7 +1484,7 @@
         const ambientLight = new THREE.AmbientLight(0xffffff, 0.4);
         scene.add(ambientLight);
 
-        camera.position.z = 7;
+        camera.position.z = window.innerWidth > 768 ? 6.5 : 8; // Reajuste de zoom óptico para móvil
 
         let mouseX = 0, mouseY = 0;
         window.addEventListener('mousemove', (e) => {
@@ -1450,7 +1492,7 @@
             mouseY = (e.clientY / window.innerHeight) - 0.5;
 
             /* SKILL 3: DISTORSIÓN DINÁMICA DE TEXTO SEGÚN MOVIMIENTO DEL MOUSE */
-            const textDistortScale = Math.min(60, Math.abs(mouseX * 120) + Math.abs(mouseY * 120));
+            const textDistortScale = Math.min(45, Math.abs(mouseX * 100) + Math.abs(mouseY * 100));
             document.getElementById('map-scale').setAttribute('scale', textDistortScale);
         });
 
@@ -1480,24 +1522,30 @@
         /* RESPONSIVIDAD DEL VIEWPORT */
         window.addEventListener('resize', () => {
             camera.aspect = window.innerWidth / window.innerHeight;
+            camera.position.z = window.innerWidth > 768 ? 6.5 : 8;
             camera.updateProjectionMatrix();
             renderer.setSize(window.innerWidth, window.innerHeight);
         });
 
         /* ==========================================================================
-           SKILL 2: ANIMACIÓN POR SCROLL CINEMÁTICO LINKADO CON GSAP
+           SKILL 2: ANIMACIÓN POR SCROLL CINEMÁTICO NATIVO RE-CALIBRADO EN MÓVIL
            ========================================================================== */
-        gsap.registerPlugin(ScrollTrigger);
-        gsap.to(productMesh.position, {
-            scrollTrigger: {
-                trigger: ".main-content",
-                start: "top top",
-                end: "bottom bottom",
-                scrub: 1.2
-            },
-            x: window.innerWidth > 768 ? 2.5 : 0,
-            y: -1.0,
-            z: window.innerWidth > 768 ? 1 : -2
+        window.addEventListener('scroll', () => {
+            const scrollPercent = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight);
+            
+            // Reposicionamiento del elemento 3D según el avance estricto del scroll
+            if(window.innerWidth > 768) {
+                productMesh.position.x = scrollPercent * 4.0;
+                productMesh.position.y = -scrollPercent * 1.5;
+            } else {
+                // En móvil flota centrado abajo para no estorbar
+                productMesh.position.x = 0;
+                productMesh.position.y = -1.2 + (scrollPercent * 0.5);
+            }
+            
+            /* SKILL 3: DISTORSIÓN DE TEXTO AL HACER SCROLL */
+            const scrollScale = Math.min(80, window.scrollY * 0.15);
+            document.getElementById('map-scale').setAttribute('scale', scrollScale);
         });
 
         /* ==========================================================================
@@ -1580,7 +1628,7 @@
                 }
             });
         }
-        triggerTelemetry(45120680); // Iniciar contador con el arranque del Core
+        triggerTelemetry(45120680); // Carga de datos base en FLOPS
 
         // Conmutación Lumínica Dinámica con actualización del material del cilindro 3D
         themeBtn.addEventListener('click', () => {
@@ -1592,7 +1640,46 @@
             }
         });
 
-        /* INTERFAZ FLOTANTE CONSOLA CUENTAS & ACORDEÓN ELÁSTICO */
+        /* REPARACIÓN ABSOLUTA DEL SISTEMA DE ACORDEONES RECTRACTILES POR ALTURA REAL */
+        const accordions = document.querySelectorAll('.section-accordion');
+        accordions.forEach(accordion => {
+            const trigger = accordion.querySelector('.accordion-trigger');
+            const content = accordion.querySelector('.accordion-content');
+            
+            // Configuración inicial de la primera sección activa
+            if (accordion.classList.contains('active')) {
+                content.style.height = content.scrollHeight + "px";
+            }
+
+            trigger.addEventListener('click', () => {
+                const isActive = accordion.classList.contains('active');
+                
+                // Cerrar todos los bloques abiertos recalculando alturas a cero
+                accordions.forEach(acc => {
+                    acc.classList.remove('active');
+                    acc.querySelector('.accordion-content').style.height = "0px";
+                });
+
+                if (!isActive) {
+                    accordion.classList.add('active');
+                    // Inyección de altura real dinámica exacta del DOM vivo
+                    content.style.height = content.scrollHeight + "px";
+                    
+                    /* SKILL 5: CAROUSEL 3D CON AJUSTE DE PROFUNDIDAD (EJE Z) EN CONTENEDORES */
+                    if(window.innerWidth > 992) {
+                        setTimeout(() => {
+                            const cards = accordion.querySelectorAll('.product-card');
+                            cards.forEach((card, index) => {
+                                const rotationY = (index % 2 === 0 ? 4 : -4);
+                                card.style.transform = `translateZ(-30px) rotateY(${rotationY}deg)`;
+                            });
+                        }, 150);
+                    }
+                }
+            });
+        });
+
+        /* INTERFAZ FLOTANTE CONSOLA CUENTAS */
         const accountBtn = document.getElementById('accountBtn');
         const accountsDropdown = document.getElementById('accountsDropdown');
 
@@ -1603,28 +1690,6 @@
 
         document.addEventListener('click', () => {
             accountsDropdown.classList.remove('active');
-        });
-
-        const accordions = document.querySelectorAll('.section-accordion');
-        accordions.forEach(accordion => {
-            const trigger = accordion.querySelector('.accordion-trigger');
-            trigger.addEventListener('click', () => {
-                const isActive = accordion.classList.contains('active');
-                accordions.forEach(acc => acc.classList.remove('active'));
-                if (!isActive) {
-                    accordion.classList.add('active');
-                }
-                
-                /* SKILL 5: CAROUSEL 3D CON AJUSTE DE PROFUNDIDAD (EJE Z) VINCULADO AL ACORDEÓN */
-                setTimeout(() => {
-                    const cards = accordion.querySelectorAll('.product-card');
-                    cards.forEach((card, index) => {
-                        // Forzar una ligera extrusión y rotación inicial en abanico tridimensional
-                        const rotationY = (index % 2 === 0 ? 3 : -3);
-                        card.style.transform = `translateZ(-20px) rotateY(${rotationY}deg)`;
-                    });
-                }, 100);
-            });
         });
     </script>
 </body>
