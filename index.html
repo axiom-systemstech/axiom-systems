@@ -1,21 +1,54 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Axiom Systems ◤A-S◢ | Engineering Sovereignty</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Urbanist:wght@600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Urbanist:wght@700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
     <style>
-        /* ESTILOS DE ÉLITE - ENTORNO GLASSMORPHISM TÁCTICO ◤A-S◢ */
+        /* ==========================================================================
+           CORE LOGIC & VARIABLES - LENGUAJE VISUAL AXIOM BARE-METRIC (CERO NEGRO)
+           ========================================================================== */
+        :root[data-theme="dark"] {
+            --bg-main: #0a1128; /* Azul abisal profundo */
+            --bg-canvas: rgba(10, 25, 64, 0.4);
+            --text-main: #f5f5f7;
+            --text-muted: #8a9fc4;
+            --accent-blue: #007aff;
+            --accent-neon: #00f5ff;
+            --border-mercury: linear-gradient(135deg, rgba(255,255,255,0.15) 0%, rgba(0,122,255,0.3) 50%, rgba(255,255,255,0.05) 100%);
+            --card-bg: rgba(13, 27, 65, 0.4);
+            --glow-neon: rgba(0, 245, 255, 0.15);
+            --shadow-convex: 10px 10px 20px #050914, -10px -10px 20px #0f193c;
+            --shadow-concave: inset 5px 5px 10px #050914, inset -5px -5px 10px #0f193c;
+            --glass-refraction: rgba(255, 255, 255, 0.02);
+        }
+
+        :root[data-theme="light"] {
+            --bg-main: #f0f4f8; /* Blanco clínico refractivo */
+            --bg-canvas: rgba(235, 242, 250, 0.4);
+            --text-main: #0a1128;
+            --text-muted: #5c6b89;
+            --accent-blue: #007aff;
+            --accent-neon: #0056b3;
+            --border-mercury: linear-gradient(135deg, rgba(0,122,255,0.4) 0%, rgba(255,255,255,0.8) 50%, rgba(0,122,255,0.1) 100%);
+            --card-bg: rgba(255, 255, 255, 0.5);
+            --glow-neon: rgba(0, 122, 255, 0.1);
+            --shadow-convex: 8px 8px 16px #cbd5e1, -8px -8px 16px #ffffff;
+            --shadow-concave: inset 4px 4px 8px #cbd5e1, inset -4px -4px 8px #ffffff;
+            --glass-refraction: rgba(0, 122, 255, 0.01);
+        }
+
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
             -webkit-font-smoothing: antialiased;
+            transition: background-color 0.4s ease, color 0.4s ease;
         }
 
         html {
@@ -23,13 +56,22 @@
         }
 
         body {
-            background-color: #030303;
-            background-image: radial-gradient(circle at 80% 20%, rgba(0, 122, 255, 0.05) 0%, transparent 50%),
-                              radial-gradient(circle at 20% 80%, rgba(74, 222, 128, 0.03) 0%, transparent 50%);
-            background-attachment: fixed;
-            color: #F5F5F7;
+            background-color: var(--bg-main);
+            color: var(--text-main);
             font-family: 'Inter', sans-serif;
             overflow-x: hidden;
+            position: relative;
+        }
+
+        #bg-mesh {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1;
+            pointer-events: none;
+            opacity: 0.6;
         }
 
         .container {
@@ -39,13 +81,15 @@
             position: relative;
         }
 
-        /* BARRA DE NAVEGACIÓN SUPERIOR - GLASSMORPHISM */
+        /* ==========================================================================
+           HEADER & CONTROL TERMINAL FLOTANTE
+           ========================================================================== */
         header {
             width: 100%;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-            background-color: rgba(5, 5, 5, 0.4);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(0, 122, 255, 0.1);
+            background-color: var(--bg-canvas);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
             position: fixed;
             top: 0;
             left: 0;
@@ -61,71 +105,130 @@
 
         .logo {
             font-family: 'Urbanist', sans-serif;
-            font-size: 22px;
-            font-weight: 800;
+            font-size: 24px;
+            font-weight: 900;
             letter-spacing: 2px;
-            color: #FFFFFF;
         }
 
         .logo span {
-            color: #007AFF;
+            color: var(--accent-blue);
         }
 
-        .nav-links {
+        .header-controls {
             display: flex;
-            gap: 32px;
-            list-style: none;
+            align-items: center;
+            gap: 20px;
         }
 
-        .nav-links a {
-            color: #86868B;
-            text-decoration: none;
-            font-size: 14px;
-            font-weight: 500;
-            transition: color 0.2s ease;
-        }
-
-        .nav-links a:hover {
-            color: #FFFFFF;
-        }
-
-        .btn-header {
-            background-color: rgba(0, 122, 255, 0.15);
-            color: #FFFFFF;
-            padding: 10px 20px;
-            border-radius: 6px;
+        /* BOTONES DE EXTRUSIÓN REFACTRIVA NEUMÓRFICA */
+        .theme-toggle, .btn-header, .btn-account-toggle {
+            background: var(--card-bg);
+            border: none;
+            color: var(--text-main);
+            padding: 12px 24px;
+            border-radius: 12px;
             font-size: 14px;
             font-weight: 600;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
             text-decoration: none;
-            border: 1px solid rgba(0, 122, 255, 0.3);
-            transition: all 0.2s ease;
+            box-shadow: var(--shadow-convex);
+            position: relative;
+            overflow: hidden;
         }
 
-        .btn-header:hover {
-            background-color: #007AFF;
-            box-shadow: 0 0 15px rgba(0, 122, 255, 0.4);
+        .theme-toggle::before, .btn-header::before, .btn-account-toggle::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: var(--border-mercury);
+            pointer-events: none;
+            border-radius: 12px;
+            padding: 1px;
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
         }
 
-        /* ESPACIADOR PARA CONTENIDO FIXED */
+        .theme-toggle:active, .btn-header:active, .btn-account-toggle:active {
+            box-shadow: var(--shadow-concave);
+            transform: translateY(1px);
+        }
+
+        /* PANEL FLOTANTE DE CUENTAS DEL OPERADOR */
+        .accounts-dropdown {
+            position: absolute;
+            top: 90px;
+            right: 24px;
+            width: 280px;
+            background: var(--card-bg);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border-radius: 16px;
+            padding: 20px;
+            box-shadow: var(--shadow-convex);
+            display: none;
+            z-index: 110;
+        }
+
+        .accounts-dropdown::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: var(--border-mercury);
+            pointer-events: none;
+            border-radius: 16px;
+            padding: 1px;
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+        }
+
+        .accounts-dropdown.active {
+            display: block;
+        }
+
+        .account-link {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: var(--text-main);
+            text-decoration: none;
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 8px;
+            background: rgba(0, 122, 255, 0.03);
+            border: 1px solid rgba(0, 122, 255, 0.05);
+        }
+
+        .account-link:hover {
+            background: rgba(0, 122, 255, 0.1);
+            color: var(--accent-blue);
+        }
+
+        /* ==========================================================================
+           HERO & INTERFAZ PRINCIPAL
+           ========================================================================== */
         .main-content {
             margin-top: 80px;
         }
 
-        /* SECCIÓN HERO */
         .hero {
-            padding: 140px 0 80px 0;
-            position: relative;
+            padding: 120px 0 60px 0;
         }
 
         .hero-content-wrapper {
             max-width: 750px;
-            text-align: left;
         }
 
         .hero-tag {
-            color: #007AFF;
+            color: var(--accent-blue);
             font-size: 13px;
-            font-weight: 600;
+            font-weight: 700;
             letter-spacing: 4px;
             text-transform: uppercase;
             margin-bottom: 24px;
@@ -133,1128 +236,740 @@
 
         .hero h2 {
             font-family: 'Urbanist', sans-serif;
-            font-size: 64px;
-            font-weight: 800;
+            font-size: 56px;
+            font-weight: 900;
             line-height: 1.1;
             letter-spacing: -2px;
-            color: #FFFFFF;
             margin-bottom: 24px;
         }
 
         .hero h2 span {
-            color: #007AFF;
+            color: var(--accent-blue);
+            text-shadow: 0 0 20px var(--glow-neon);
         }
 
         .hero p {
-            font-size: 20px;
-            color: #86868B;
-            line-height: 1.5;
+            font-size: 18px;
+            color: var(--text-muted);
+            line-height: 1.6;
             margin-bottom: 40px;
         }
 
-        .hero-buttons {
-            display: flex;
-            gap: 16px;
+        /* ==========================================================================
+           SECCIONES RECTRACTIVAS EN ACORDEÓN ADAPTABLES
+           ========================================================================== */
+        .section-accordion {
+            margin-bottom: 24px;
+            border-radius: 16px;
+            background: var(--card-bg);
+            box-shadow: var(--shadow-convex);
+            overflow: hidden;
+            position: relative;
         }
 
-        .btn-primary {
-            background-color: #007AFF;
-            color: #FFFFFF;
-            padding: 14px 28px;
-            border-radius: 8px;
-            font-size: 16px;
-            font-weight: 600;
-            text-decoration: none;
-            transition: all 0.2s ease;
-            box-shadow: 0 4px 15px rgba(0, 122, 255, 0.2);
-        }
-
-        .btn-primary:hover {
-            background-color: #0056b3;
-            transform: translateY(-1px);
-            box-shadow: 0 6px 20px rgba(0, 122, 255, 0.4);
-        }
-
-        .btn-secondary {
-            background-color: rgba(255, 255, 255, 0.03);
-            color: #FFFFFF;
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            padding: 14px 28px;
-            border-radius: 8px;
-            font-size: 16px;
-            font-weight: 600;
-            text-decoration: none;
-            backdrop-filter: blur(4px);
-            -webkit-backdrop-filter: blur(4px);
-            transition: all 0.2s ease;
-        }
-
-        .btn-secondary:hover {
-            background-color: rgba(255, 255, 255, 0.08);
-            border-color: rgba(255, 255, 255, 0.2);
-        }
-
-        /* INTERFAZ PANEL DE ADQUISICIÓN LATERAL - GLASSMORPHISM AVANZADO */
-        .value-proposition-sidebar {
+        .section-accordion::before {
+            content: '';
             position: absolute;
-            top: 40px;
-            right: 0;
-            width: 340px;
-            background-color: rgba(15, 15, 17, 0.4);
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            border-radius: 12px;
-            padding: 28px;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: var(--border-mercury);
+            pointer-events: none;
+            border-radius: 16px;
+            padding: 1px;
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+        }
+
+        .accordion-trigger {
+            width: 100%;
+            padding: 32px;
+            background: transparent;
+            border: none;
+            color: var(--text-main);
             text-align: left;
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            z-index: 10;
-            text-decoration: none;
-            display: block;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        .value-proposition-sidebar:hover {
-            border-color: rgba(0, 122, 255, 0.4) !important;
-            background-color: rgba(0, 122, 255, 0.03) !important;
-            transform: translateY(-4px);
-            box-shadow: 0 30px 60px rgba(0, 122, 255, 0.15), 
-                        inset 0 0 20px rgba(0, 122, 255, 0.1);
-        }
-
-        /* SECCIÓN DEL ECOSISTEMA Y GRID */
-        .ecosystem-section {
-            padding: 100px 0;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-        }
-
-        .section-header {
-            margin-bottom: 60px;
-            text-align: left;
-        }
-
-        .section-header p {
-            color: #007AFF;
-            font-size: 14px;
-            font-weight: 600;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            margin-bottom: 12px;
-        }
-
-        .section-header h3 {
             font-family: 'Urbanist', sans-serif;
-            font-size: 42px;
-            font-weight: 700;
-            color: #FFFFFF;
-            letter-spacing: -1px;
+            font-size: 26px;
+            font-weight: 800;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .accordion-trigger .chevron {
+            font-size: 20px;
+            color: var(--accent-blue);
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .section-accordion.active .accordion-trigger .chevron {
+            transform: rotate(180deg);
+        }
+
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            padding: 0 32px;
+        }
+
+        .section-accordion.active .accordion-content {
+            max-height: 5000px; /* Suficiente margen para expandir sin saltos */
+            padding-bottom: 40px;
         }
 
         .grid-products {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
-            gap: 32px;
-            width: 100%;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 24px;
+            margin-top: 20px;
         }
 
-        /* PRODUCT CARD - PREMIUM GLASSMORPHISM ARCHITECTURE */
+        /* ==========================================================================
+           TARJETAS DE PRODUCTO AXIOM BARE-METRIC
+           ========================================================================== */
         .product-card {
-            background-color: rgba(255, 255, 255, 0.01);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            border-radius: 12px;
-            padding: 40px;
+            background: var(--glass-refraction);
+            border-radius: 14px;
+            padding: 32px;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
-            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: var(--shadow-convex);
             position: relative;
             overflow: hidden;
+            border: 1px solid rgba(0, 122, 255, 0.05);
+            box-shadow: inset 0 0 20px rgba(255,255,255,0.01);
         }
 
-        /* Reflejo de luz interno oblicuo para simular el material de cristal */
         .product-card::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: -100%;
-            width: 200%;
-            height: 100%;
-            background: linear-gradient(115deg, transparent, rgba(255, 255, 255, 0.03), transparent);
-            transition: all 0.6s ease;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: var(--border-mercury);
             pointer-events: none;
-        }
-
-        .product-card:hover::before {
-            left: 100%;
-        }
-
-        .product-card:hover {
-            border-color: rgba(255, 255, 255, 0.15);
-            transform: translateY(-4px);
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
+            border-radius: 14px;
+            padding: 1px;
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            opacity: 0.7;
         }
 
         .product-meta {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 24px;
+            margin-bottom: 20px;
         }
 
         .product-status {
-            font-size: 11px;
-            font-weight: 600;
+            font-size: 10px;
+            font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 1.5px;
             padding: 6px 12px;
             border-radius: 20px;
             display: inline-block;
+            background: rgba(0, 122, 255, 0.08);
+            color: var(--accent-blue);
+            border: 1px solid rgba(0, 122, 255, 0.15);
+            box-shadow: 0 0 10px var(--glow-neon);
         }
 
         .product-card h4 {
             font-family: 'Urbanist', sans-serif;
-            font-size: 28px;
-            font-weight: 700;
-            color: #FFFFFF;
-            margin-bottom: 16px;
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--text-main);
+            margin-bottom: 14px;
         }
 
         .product-card p {
-            font-size: 16px;
-            color: #86868B;
+            font-size: 14px;
+            color: var(--text-muted);
             line-height: 1.6;
-            margin-bottom: 32px;
+            margin-bottom: 24px;
         }
 
         .tech-spec {
             font-family: monospace;
-            background-color: rgba(5, 5, 5, 0.5);
-            border: 1px solid rgba(255, 255, 255, 0.04);
-            padding: 12px 16px;
-            border-radius: 6px;
-            color: #4cd964;
-            font-size: 13px;
+            background-color: rgba(0, 122, 255, 0.03);
+            border: 1px solid rgba(0, 122, 255, 0.05);
+            padding: 12px;
+            border-radius: 8px;
+            color: var(--accent-blue);
+            font-size: 12px;
             margin-bottom: 20px;
             line-height: 1.4;
-            backdrop-filter: blur(4px);
         }
 
-        /* FOOTER */
-        footer {
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-            padding: 80px 0;
-            background-color: #030303;
+        /* BOTONES INTERNOS DE ACCIÓN CON EXTRUSIÓN */
+        .btn-launch {
+            display: inline-block;
+            width: 100%;
             text-align: center;
+            background: var(--card-bg);
+            color: var(--text-main);
+            font-family: monospace;
+            font-size: 13px;
+            font-weight: bold;
+            padding: 14px 0;
+            border-radius: 10px;
+            text-decoration: none;
+            box-shadow: var(--shadow-convex);
+            position: relative;
+        }
+
+        .btn-launch::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: var(--border-mercury);
+            pointer-events: none;
+            border-radius: 10px;
+            padding: 1px;
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+        }
+
+        .btn-launch:active {
+            box-shadow: var(--shadow-concave);
+            transform: translateY(1px);
+        }
+
+        /* ==========================================================================
+           FOOTER TERMINAL INFRASTRUCTURE & INGRESS MAIL
+           ========================================================================== */
+        footer {
+            border-top: 1px solid rgba(0, 122, 255, 0.1);
+            padding: 80px 0;
+            background-color: var(--bg-canvas);
+            text-align: center;
+            margin-top: 100px;
         }
 
         .footer-content h5 {
             font-family: 'Urbanist', sans-serif;
-            font-size: 48px;
-            font-weight: 800;
-            color: #FFFFFF;
+            font-size: 36px;
+            font-weight: 900;
             margin-bottom: 16px;
             letter-spacing: -1px;
         }
 
         .footer-content p {
-            font-size: 18px;
-            color: #86868B;
+            font-size: 16px;
+            color: var(--text-muted);
             margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
-        .footer-socials {
-            display: flex;
-            justify-content: center;
-            gap: 24px;
-            margin-bottom: 40px;
-        }
-
-        .social-link {
-            background-color: rgba(255, 255, 255, 0.02);
-            color: #FFFFFF;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            display: flex;
+        .btn-mail {
+            display: inline-flex;
             align-items: center;
-            justify-content: center;
-            font-size: 20px;
+            gap: 10px;
+            background: var(--card-bg);
+            color: var(--text-main);
+            padding: 16px 36px;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 700;
             text-decoration: none;
-            transition: all 0.2s ease;
+            box-shadow: var(--shadow-convex);
+            margin-bottom: 40px;
+            position: relative;
         }
 
-        .social-link:hover {
-            background-color: #007AFF;
-            border-color: #007AFF;
-            color: #FFFFFF;
-            box-shadow: 0 0 15px rgba(0, 122, 255, 0.4);
+        .btn-mail::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: var(--border-mercury);
+            pointer-events: none;
+            border-radius: 12px;
+            padding: 1px;
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+        }
+
+        .btn-mail:active {
+            box-shadow: var(--shadow-concave);
         }
 
         .footer-bottom {
             font-size: 12px;
-            color: #444446;
+            color: var(--text-muted);
             letter-spacing: 1px;
             text-transform: uppercase;
+            opacity: 0.6;
         }
 
-        /* MEDIA QUERIES RESPONSIVAS */
-        @media (max-width: 1160px) {
-            .hero {
-                text-align: center;
-                padding: 120px 0 60px 0;
-            }
-            .hero-content-wrapper {
-                max-width: 100%;
-                text-align: center;
-            }
-            .hero-buttons {
-                justify-content: center;
-            }
-            .value-proposition-sidebar {
-                position: relative;
-                top: 0;
-                right: 0;
-                width: 100%;
-                max-width: 500px;
-                margin: 40px auto 0 auto;
-            }
-        }
-
+        /* RESPONSIVE DESIGN */
         @media (max-width: 768px) {
-            .grid-products {
-                grid-template-columns: 1fr;
-            }
-            .hero h2 {
-                font-size: 42px;
-            }
-            .nav-links {
-                display: none;
-            }
+            .grid-products { grid-template-columns: 1fr; }
+            .hero h2 { font-size: 38px; }
+            .accordion-trigger { font-size: 20px; padding: 24px; }
+            .accordion-content { padding: 0 24px; }
+            .btn-header span { display: none; }
         }
     </style>
 </head>
 <body>
 
+    <!-- MALLA VECTORIAL INTERACTIVA RENDERIZADA EN LOCAL -->
+    <canvas id="bg-mesh"></canvas>
+
     <header>
         <div class="container nav-wrapper">
             <div class="logo">AXIOM<span>SYSTEMS</span></div>
-            <nav>
-                <ul class="nav-links">
-                    <li><a href="#core">Core</a></li>
-                    <li><a href="#ecosystem">Ecosystem</a></li>
-                    <li><a href="#infrastructure">Infrastructure</a></li>
-                </ul>
-            </nav>
-            <a href="https://github.com/echeparesmanuel36-design" class="btn-header">View GitHub</a>
+            <div class="header-controls">
+                <button class="theme-toggle" id="themeBtn" title="Conmutación Lumínica Dinámica">
+                    <i class="fa-solid fa-circle-half-stroke"></i>
+                </button>
+                <button class="btn-account-toggle" id="accountBtn">
+                    <i class="fa-solid fa-terminal"></i> <span>Consola Cuentas</span>
+                </button>
+            </div>
         </div>
     </header>
 
-    <main class="main-content">
-        <section class="hero" id="core">
-            <div class="container">
+    <!-- PANEL FLOTANTE DE CONEXIONES EXTERNAS -->
+    <div class="accounts-dropdown" id="accountsDropdown">
+        <h4 style="font-family: 'Urbanist', sans-serif; font-size: 16px; margin-bottom: 12px; color: var(--accent-blue);">Nodos Operadores</h4>
+        <a href="https://github.com/echeparesmanuel36-design" target="_blank" class="account-link">
+            <i class="fa-brands fa-github" style="font-size: 18px;"></i> GitHub Core
+        </a>
+        <a href="https://x.com/ManuelAxiom" target="_blank" class="account-link">
+            <i class="fa-brands fa-x-twitter" style="font-size: 18px;"></i> X Terminal
+        </a>
+    </div>
 
+    <main class="main-content">
+        <!-- SECCIÓN HERO COMPLETA -->
+        <section class="hero">
+            <div class="container">
                 <div class="hero-content-wrapper">
                     <div class="hero-tag">Axiom Systems ◤A-S◢ · Core Technologies</div>
                     <h2>ENGINEERING<br><span>SOVEREIGNTY.</span></h2>
                     <p>High-performance DeepTech blueprint architectures and verified engineering dossiers for industrial defense, spatial systems, and hardware control layers. We design and sell proprietary IP ready for enterprise acquisition and native implementation.</p>
-                    <div class="hero-buttons">
-                        <a href="https://github.com/echeparesmanuel36-design" class="btn-primary">Explore Core Repositories</a>
-                        <a href="#ecosystem" class="btn-secondary">View Ecosystem</a>
-                    </div>
                 </div>
-
-                <a href="https://github.com/echeparesmanuel36-design/echeparesmanuel36-design" target="_blank" class="value-proposition-sidebar">
-                    <div class="product-status" style="border-color: #007AFF; color: #007AFF; background-color: rgba(0, 122, 255, 0.1); margin-bottom: 16px;">
-                        BUSINESS ACQUISITION MODEL
-                    </div>
-                    <h4 style="font-size: 20px; font-weight: 700; color: #FFFFFF; margin-bottom: 12px; font-family: 'Urbanist', sans-serif;">
-                        Verified IP & Engineering Dossiers
-                    </h4>
-                    <p style="font-size: 14px; color: #86868B; line-height: 1.6; margin-bottom: 16px;">
-                        Axiom Systems engineers proprietary bare-metal architectures and comprehensive technical dossiers. Our full stack is designed for direct technology transfer, enterprise acquisition, and industrial implementation.
-                    </p>
-                    <div style="font-family: monospace; font-size: 0.85rem; color: #007AFF; text-align: right; font-weight: bold; letter-spacing: 0.5px;">
-                        Inspect IP Manifesto →
-                    </div>
-                </a>
-
             </div>
         </section>
 
-        <section class="ecosystem-section" id="ecosystem">
-            <div class="container">
-                <div class="section-header">
-                    <p>Core Ecosystem</p>
-                    <h3>Sovereign Hardware & Software Systems</h3>
+        <!-- SECCIONES MODULARES DESPLEGABLES CON NUESTRO DISEÑO BARE-METRIC -->
+        <section class="container">
+
+            <!-- SECCIÓN 1: DEEPTECH UTILITIES MASS DAILY MÓDULOS (NUEVAS APPS) -->
+            <div class="section-accordion active">
+                <button class="accordion-trigger">
+                    <span>◤01◢ Utility Media & Log Infrastructure</span>
+                    <i class="fa-solid fa-chevron-down"></i>
+                </button>
+                <div class="accordion-content">
+                    <div class="grid-products">
+
+                        <!-- CARD 1: AXIOM_MEDIA_CRUSHER -->
+                        <div class="product-card">
+                            <div>
+                                <div class="product-meta">
+                                    <span class="product-status">Local Media Optimization Buffer</span>
+                                </div>
+                                <h4>Axiom Media Crusher 🧬</h4>
+                                <p>Optimiza, recalibra, recorta y purifica vectores o imágenes pesadas al instante en el navegador de manera 100% descentralizada y local. Ejecuta procesamiento binario emulando la velocidad del motor compilado en Rust (WebAssembly) sobre buffers de datos locales en memoria a velocidad O(1). Cuenta con muro de bloqueo Premium Supabase Auth al superar los 10 archivos por lote y micro-recompensa elástica en el cliente.</p>
+                            </div>
+                            <div>
+                                <div class="tech-spec">
+                                    <i class="fa-solid fa-microchip"></i> Core: Real-Time Buffer O(1) | Presets: WebP / SVG Purge / EXIF Sanitizer | Security: Supabase Auth
+                                </div>
+                                <a href="https://echeparesmanuel36-design.github.io/AXIOM_MEDIA_CRUSHER/" target="_blank" class="btn-launch">
+                                    Launch Media Crusher (GitHub) →
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- CARD 2: AXIOM_LOG_PURGE -->
+                        <div class="product-card">
+                            <div>
+                                <div class="product-meta">
+                                    <span class="product-status">Local Server Log Purification</span>
+                                </div>
+                                <h4>Axiom Log Purge 🔒</h4>
+                                <p>Infraestructura utilitaria diseñada para la limpieza, anonimización de registros y parseo masivo de archivos de logs (.log, .txt, .csv) provenientes de servidores Apache, Nginx o Syslogs. Integra anonimizador de IPs por hashes deterministas, filtros de inyecciones SQLi/XSS, y sintetizador Nginx a JSON instantáneo con un prisma interactivo 3D sincronizado mediante GSAP.</p>
+                            </div>
+                            <div>
+                                <div class="tech-spec">
+                                    <i class="fa-solid fa-shield-halved"></i> Engine: Structural Parser | Feedback: Web Audio API | Limits: Supabase Auth Validation > 10MB
+                                </div>
+                                <a href="https://echeparesmanuel36-design.github.io/AXIOM_LOG_PURGE/" target="_blank" class="btn-launch">
+                                    Launch Log Purge (GitHub) →
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- CARD 3: AXIOM_MUTE_POP -->
+                        <div class="product-card">
+                            <div>
+                                <div class="product-meta">
+                                    <span class="product-status">Local Audio Isolation Matrix</span>
+                                </div>
+                                <h4>Axiom Mute Pop 🎙️</h4>
+                                <p>Extractor, limpiador y aislador instantáneo de pistas de voz y acapellas de cualquier canción, audio de WhatsApp o vídeo viral de forma 100% local y aislada en el navegador. Aplica filtros matemáticos de paso de banda, auto-tune casual por desplazamiento frecuencial de notas y simulación inercial controlada por Lenis con interfaz de cristal de mercurio líquido.</p>
+                            </div>
+                            <div>
+                                <div class="tech-spec">
+                                    <i class="fa-solid fa-sliders"></i> Engine: Web Audio API DSP | Interface: Three.js 3D Vinyl | Link: Navigator Haptic Telemetry
+                                </div>
+                                <a href="https://echeparesmanuel36-design.github.io/AXIOM_MUTE_POP/" target="_blank" class="btn-launch">
+                                    Launch Mute Pop (GitHub) →
+                                </a>
+                            </div>
+                        </div>
+
+                    </div>
                 </div>
+            </div>
 
-                <div class="grid-products">
+            <!-- SECCIÓN 2: CORE GRAPHICS, CYBERNETICS & CORE INTERFACES -->
+            <div class="section-accordion">
+                <button class="accordion-trigger">
+                    <span>◤02◢ Graphics, Cybernetics & Cryptography Core</span>
+                    <i class="fa-solid fa-chevron-down"></i>
+                </button>
+                <div class="accordion-content">
+                    <div class="grid-products">
 
-                    <div class="product-card" style="box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4), inset 0 0 15px rgba(0, 245, 255, 0.05); border-color: rgba(0, 245, 255, 0.15);">
-                        <div>
-                            <div class="product-meta">
-                                <span class="product-status" style="border-color: #00f5ff; color: #00f5ff; background-color: rgba(0, 245, 255, 0.1);">3D WEBGL GRAPHICS & VISUAL CRYPTOGRAPHY</span>
+                        <!-- PRISM CODE CRYPTOR -->
+                        <div class="product-card">
+                            <div>
+                                <div class="product-meta">
+                                    <span class="product-status">3D WebGL Graphics & Cryptography</span>
+                                </div>
+                                <h4>Prism-Code Cryptor Pro v2.0</h4>
+                                <p>Visual cryptographic engine developed in a 3D WebGL environment that transforms plain text strings into unique molecular geometric signatures and light refractions based on cyclical fractals. Maps ASCII directly into vector outputs.</p>
                             </div>
-                            <h4>Prism-Code Cryptor Pro v2.0</h4>
-                            <p>A visual cryptographic engine developed in a 3D WebGL environment that transforms plain text strings, passwords, or seed phrases into unique molecular geometric signatures and light refractions based on cyclical fractals. Powered by Three.js running steady at 60 FPS, the system maps ASCII values directly into quantum optical vector outputs, refractive laser beams, and localized plasma particle explosions.</p>
-                        </div>
-                        <div>
-                            <div class="tech-spec">
-                                <i class="fa-solid fa-cube"></i> Graphics: Three.js (WebGL Core) | Math: Cyclic Fractals | Deployment: Vercel Edge
+                            <div>
+                                <div class="tech-spec">
+                                    <i class="fa-solid fa-cube"></i> Graphics: Three.js WebGL | Math: Cyclic Fractals | Execution: Edge Layer
+                                </div>
+                                <a href="https://prism-code-cryptor.vercel.app/" target="_blank" class="btn-launch">
+                                    Launch Prism Cryptor →
+                                </a>
                             </div>
-                            <a href="https://prism-code-cryptor.vercel.app/" target="_blank" style="display: inline-block; width: 100%; text-align: center; background: #1f2937; color: #f3f4f6; font-family: monospace; font-size: 0.9rem; padding: 10px 0; border-radius: 6px; text-decoration: none; border: 1px solid #374151; transition: background 0.2s;">
-                                Launch Prism Cryptor (Vercel) →
-                            </a>
                         </div>
+
+                        <!-- SCHEMA TO API COPILOT -->
+                        <div class="product-card">
+                            <div>
+                                <div class="product-meta">
+                                    <span class="product-status">Automated Backend DevTools</span>
+                                </div>
+                                <h4>Schema-to-API Copilot Pro v2.5</h4>
+                                <p>Advanced automated backend architecture suite engineered to compile relational database schemas and RESTful endpoints from natural language specifications. High-speed local semantic parser structures execution in 0.1ms.</p>
+                            </div>
+                            <div>
+                                <div class="tech-spec">
+                                    <i class="fa-solid fa-server"></i> Compiler: Frictionless Parser (0.1ms) | Core: Vanilla JS | Network Latency: Zero
+                                </div>
+                                <a href="https://schema-to-api-copilot.vercel.app/" target="_blank" class="btn-launch">
+                                    Launch API Copilot →
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- FRICTIONLESS UI BUILDER -->
+                        <div class="product-card">
+                            <div>
+                                <div class="product-meta">
+                                    <span class="product-status">Generative AI Development</span>
+                                </div>
+                                <h4>Frictionless-UI Builder v2.1</h4>
+                                <p>A generative SaaS development environment engineered to eliminate front-end design friction. Powered by Groq Cloud executing Meta's Llama 3.3 (70B), the system injects production-ready user interfaces in real-time.</p>
+                            </div>
+                            <div>
+                                <div class="tech-spec">
+                                    <i class="fa-solid fa-wand-magic-sparkles"></i> LLM: Llama 3.3 via Groq | Core: Vanilla JS Client Blobs | Presets: 6 Structural
+                                </div>
+                                <a href="https://frictionless-ui-builder.vercel.app/" target="_blank" class="btn-launch">
+                                    Launch UI Builder →
+                                </a>
+                            </div>
+                        </div>
+
                     </div>
+                </div>
+            </div>
 
-                    <div class="product-card" style="box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4), inset 0 0 15px rgba(16, 185, 129, 0.05); border-color: rgba(16, 185, 129, 0.15);">
-                        <div>
-                            <div class="product-meta">
-                                <span class="product-status" style="border-color: #10b981; color: #10b981; background-color: rgba(16, 185, 129, 0.1);">AUTOMATED BACKEND ARCHITECTURE & DEVTOOLS</span>
+            <!-- SECCIÓN 3: HARDWARE KERNEL, SPATIAL COMPUTING & RUNTIME SYSTEMS -->
+            <div class="section-accordion">
+                <button class="accordion-trigger">
+                    <span>◤03◢ Hardware Kernel, Spatial Computing & Runtime Systems</span>
+                    <i class="fa-solid fa-chevron-down"></i>
+                </button>
+                <div class="accordion-content">
+                    <div class="grid-products">
+
+                        <!-- TORQUE SYNC -->
+                        <div class="product-card">
+                            <div>
+                                <div class="product-meta">
+                                    <span class="product-status">Bare-Metal Actuation Loop</span>
+                                </div>
+                                <h4>Axiom Torque-Sync + Mirage AR</h4>
+                                <p>Dual-core bare-metal firmware engineered in native Rust under #![no_std] constraints. Synchronizes magnetic direct-drive force feedback loops at 40kHz via direct volatile register mapping, eliminating OS jitter.</p>
                             </div>
-                            <h4>Schema-to-API Copilot Pro v2.5</h4>
-                            <p>An advanced automated backend architecture suite engineered to compile relational database schemas, RESTful endpoint documentation, and production-ready Node.js servers directly from natural language specifications. Featuring a high-speed local semantic parser, the engine structures complex code execution matrices in 0.1ms with zero network latency.</p>
-                        </div>
-                        <div>
-                            <div class="tech-spec">
-                                <i class="fa-solid fa-server"></i> Compiler: Frictionless Local Parser (0.1ms) | Core: Vanilla JS | Deployment: Vercel Edge
+                            <div>
+                                <div class="tech-spec">
+                                    <i class="fa-solid fa-microchip"></i> Core: Direct-Drive FOC | Latency: 1.2ms Flat | Interface: Holographic MMIO
+                                </div>
+                                <a href="https://github.com/echeparesmanuel36-design/axiom-torque-sync-mirage-ar" target="_blank" class="btn-launch">
+                                    Inspect Architecture →
+                                </a>
                             </div>
-                            <a href="https://schema-to-api-copilot.vercel.app/" target="_blank" style="display: inline-block; width: 100%; text-align: center; background: #1f2937; color: #f3f4f6; font-family: monospace; font-size: 0.9rem; padding: 10px 0; border-radius: 6px; text-decoration: none; border: 1px solid #374151; transition: background 0.2s;">
-                                Launch API Copilot (Vercel) →
-                            </a>
                         </div>
+
+                        <!-- ZERO CRYPTO -->
+                        <div class="product-card">
+                            <div>
+                                <div class="product-meta">
+                                    <span class="product-status">Zero-Trust Cryptographic Core</span>
+                                </div>
+                                <h4>Axiom Zero-Crypto</h4>
+                                <p>Proprietary cryptographic library and digital signature engine natively engineered in pure Rust under #![no_std] constraints for banking. Processes critical TLS/AES matrices in 0.15ms directly on the stack.</p>
+                            </div>
+                            <div>
+                                <div class="tech-spec">
+                                    <i class="fa-solid fa-lock"></i> Architecture: #![no_std] Zero-Heap | Latency: 0.15ms | Safety: Constant-Time
+                                </div>
+                                <a href="https://acquire.com" target="_blank" class="btn-launch">
+                                    Acquire Intellectual Property →
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- PHANTOM OS -->
+                        <div class="product-card">
+                            <div>
+                                <div class="product-meta">
+                                    <span class="product-status">High-Performance Runtime</span>
+                                </div>
+                                <h4>Axiom Phantom OS</h4>
+                                <p>Instant-boot secondary micro-operating system dedicated exclusively to gaming and high-performance execution. Bypasses legacy kernel structures to grant software unmediated access to silicon registers.</p>
+                            </div>
+                            <div>
+                                <div class="tech-spec">
+                                    <i class="fa-solid fa-compact-disc"></i> Latency: 1.2ms | Allocation: Identity Map | Mode: Single-Ring Core
+                                </div>
+                                <a href="https://github.com/echeparesmanuel36-design/axiom-phantom-os" target="_blank" class="btn-launch">
+                                    Inspect Kernel Architecture →
+                                </a>
+                            </div>
+                        </div>
+
                     </div>
+                </div>
+            </div>
 
-                    <div class="product-card" style="box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4), inset 0 0 15px rgba(157, 0, 255, 0.05); border-color: rgba(157, 0, 255, 0.15);">
-                        <div>
-                            <div class="product-meta">
-                                <span class="product-status" style="border-color: #9d00ff; color: #9d00ff; background-color: rgba(157, 0, 255, 0.1);">GENERATIVE AI & LOW-CODE DEVELOPMENT</span>
+            <!-- SECCIÓN 4: LOCAL SIMULATIONS & BIOMETRIC POSITIONING -->
+            <div class="section-accordion">
+                <button class="accordion-trigger">
+                    <span>◤04◢ Local Simulations & Biometric Positioning</span>
+                    <i class="fa-solid fa-chevron-down"></i>
+                </button>
+                <div class="accordion-content">
+                    <div class="grid-products">
+
+                        <!-- NANOBOT SWARM -->
+                        <div class="product-card">
+                            <div>
+                                <div class="product-meta">
+                                    <span class="product-status">Particle Swarm Simulation</span>
+                                </div>
+                                <h4>Nano-Bot Swarm Simulator Pro</h4>
+                                <p>Interactive medical simulation engine designed to coordinate the behavioral mechanics of millions of autonomous micro-robots inside a bloodstream. Built with Particle Swarm Optimization (PSO).</p>
                             </div>
-                            <h4>Frictionless-UI Builder v2.1</h4>
-                            <p>A generative SaaS development environment engineered to eliminate front-end design friction. Powered by the Groq Cloud API executing Meta's Llama 3.3 (70B) model, the system architecture processes natural language prompts and injects production-ready user interfaces in real-time with 6 structural presets.</p>
-                        </div>
-                        <div>
-                            <div class="tech-spec">
-                                <i class="fa-solid fa-wand-magic-sparkles"></i> LLM: Llama 3.3 via Groq | Core: Vanilla JS & Client Blobs | Deployment: Vercel
+                            <div>
+                                <div class="tech-spec">
+                                    <i class="fa-solid fa-dna"></i> Engine: HTML5 Canvas 60FPS | Math: Euclidean Vector Fields | Latency: Local
+                                </div>
+                                <a href="https://nanobot-swarm-simulator.vercel.app/" target="_blank" class="btn-launch">
+                                    Launch Swarm Simulator →
+                                </a>
                             </div>
-                            <a href="https://frictionless-ui-builder.vercel.app/" target="_blank" style="display: inline-block; width: 100%; text-align: center; background: #1f2937; color: #f3f4f6; font-family: monospace; font-size: 0.9rem; padding: 10px 0; border-radius: 6px; text-decoration: none; border: 1px solid #374151; transition: background 0.2s;">
-                                Launch UI Builder (Vercel) →
-                            </a>
                         </div>
+
+                        <!-- AERO SIM -->
+                        <div class="product-card">
+                            <div>
+                                <div class="product-meta">
+                                    <span class="product-status">Kinetic Wind Tunnel Matrix</span>
+                                </div>
+                                <h4>Axiom Aero Sim</h4>
+                                <p>Configurador aerodinámico interactivo en 3D con estética de HUD militar táctico. Permite el ajuste en tiempo real de geometrías de vectores complejos proyectando el flujo cinético del aire para analizar fricción.</p>
+                            </div>
+                            <div>
+                                <div class="tech-spec">
+                                    <i class="fa-solid fa-jet-fighter"></i> Engine: 3D Vector Core | Analytics: Boundary Layer Friction | Pipeline: Local
+                                </div>
+                                <a href="https://echeparesmanuel36-design.github.io/AXIOM_AERO_SIM/" target="_blank" class="btn-launch">
+                                    Launch Aero Sim →
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- WATER LOG -->
+                        <div class="product-card">
+                            <div>
+                                <div class="product-meta">
+                                    <span class="product-status">Biometric Metabolic Tracker</span>
+                                </div>
+                                <h4>Axiom Water Log</h4>
+                                <p>Monitor biométrico de hidratación diaria de alta precisión. Registra consumo en tiempo real, procesa umbrales metabólicos locales y renderiza el nivel volumétrico mediante un algoritmo de simulación física.</p>
+                            </div>
+                            <div>
+                                <div class="tech-spec">
+                                    <i class="fa-solid fa-droplet"></i> Model: Fluid Dynamics Simulation | Matrix: Biometric Tracking | UI: Minimal
+                                </div>
+                                <a href="https://echeparesmanuel36-design.github.io/AXIOM_WATER_LOG/" target="_blank" class="btn-launch">
+                                    Launch Water Log →
+                                </a>
+                            </div>
+                        </div>
+
                     </div>
+                </div>
+            </div>
 
-                    <div class="product-card" style="box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4), inset 0 0 15px rgba(239, 68, 68, 0.05); border-color: rgba(239, 68, 68, 0.15);">
-                        <div>
-                            <div class="product-meta">
-                                <span class="product-status" style="border-color: #ef4444; color: #ef4444; background-color: rgba(239, 68, 68, 0.1);">BIOENGINEERING & MEDICAL SIMULATION</span>
-                            </div>
-                            <h4>Nano-Bot Swarm Simulator Pro v2.0</h4>
-                            <p>An interactive medical simulation engine designed to coordinate the behavioral mechanics of millions of autonomous micro-robots injected into a virtual bloodstream. Built with advanced Particle Swarm Optimization (PSO) and Vectorial Flocking Boids, the system runs physics-based simulations in real-time.</p>
-                        </div>
-                        <div>
-                            <div class="tech-spec">
-                                <i class="fa-solid fa-microchip"></i> Engine: HTML5 Canvas 60FPS | Math: Euclidean Vectors | Deployment: Vercel
-                            </div>
-                            <a href="https://nanobot-swarm-simulator.vercel.app/" target="_blank" style="display: inline-block; width: 100%; text-align: center; background: #1f2937; color: #f3f4f6; font-family: monospace; font-size: 0.9rem; padding: 10px 0; border-radius: 6px; text-decoration: none; border: 1px solid #374151; transition: background 0.2s;">
-                                Launch Swarm Simulator (Vercel) →
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="product-card" style="box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4), inset 0 0 15px rgba(168, 85, 247, 0.05); border-color: rgba(168, 85, 247, 0.15);">
-                        <div>
-                            <div class="product-meta">
-                                <span class="product-status" style="border-color: #a855f7; color: #a855f7; background-color: rgba(168, 85, 247, 0.1);">DATA SANITIZATION & SECURITY PROTOCOLS</span>
-                            </div>
-                            <h4>Axiom Doc Shredder</h4>
-                            <p>La herramienta definitiva para limpiar texto corrupto, código basura y datos desorganizados (PDFs, Excel, copias web, etc.). Integra módulos locales optimizados para purgar saltos de línea, espacios invisibles, extraer emails/URLs, limpiar HTML/SQL, y conversión estructural instantánea a JSON sin buffers intermedios.</p>
-                        </div>
-                        <div>
-                            <div class="tech-spec">
-                                <i class="fa-solid fa-dumpster-fire"></i> Core: Text Sanitizer | Modules: 10 Active Core | Latency: Local 0.1ms
-                            </div>
-                            <a href="https://echeparesmanuel36-design.github.io/AXIOM_DOC_SHREDDER/" target="_blank" style="display: inline-block; width: 100%; text-align: center; background: #1f2937; color: #f3f4f6; font-family: monospace; font-size: 0.9rem; padding: 10px 0; border-radius: 6px; text-decoration: none; border: 1px solid #374151; transition: background 0.2s;">
-                                Launch Doc Shredder (GitHub) →
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="product-card" style="box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4), inset 0 0 15px rgba(239, 68, 68, 0.05); border-color: rgba(239, 68, 68, 0.15);">
-                        <div>
-                            <div class="product-meta">
-                                <span class="product-status" style="border-color: #ef4444; color: #ef4444; background-color: rgba(239, 68, 68, 0.1);">HARDWARE DIAGNOSTICS & TELEMETRY</span>
-                            </div>
-                            <h4>Axiom Battery HUD</h4>
-                            <p>Monitor predictivo de salud y degradación de baterías para sistemas de movilidad y dispositivos (móviles, portátiles, patinetes). Ajusta en tiempo real variables críticas de temperatura, ciclos químicos y curvas de carga, visualizando el estado electroquímico con alertas reactivas de estilo militar.</p>
-                        </div>
-                        <div>
-                            <div class="tech-spec">
-                                <i class="fa-solid fa-battery-three-quarters"></i> Engine: Electrochemical Telemetry | Interface: Tactical HUD | Profile: Local Diagnostics
-                            </div>
-                            <a href="https://echeparesmanuel36-design.github.io/AXIOM_BATTERY_HUD/" target="_blank" style="display: inline-block; width: 100%; text-align: center; background: #1f2937; color: #f3f4f6; font-family: monospace; font-size: 0.9rem; padding: 10px 0; border-radius: 6px; text-decoration: none; border: 1px solid #374151; transition: background 0.2s;">
-                                Launch Battery HUD (GitHub) →
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="product-card" style="box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4), inset 0 0 15px rgba(0, 122, 255, 0.05); border-color: rgba(0, 122, 255, 0.15);">
-                        <div>
-                            <div class="product-meta">
-                                <span class="product-status" style="border-color: #007AFF; color: #007AFF; background-color: rgba(0, 122, 255, 0.1);">BIOMETRIC TRACKING & FLUID SIMULATION</span>
-                            </div>
-                            <h4>Axiom Water Log</h4>
-                            <p>Monitor biométrico de hidratación diaria de alta precisión. Registra tu consumo de agua en tiempo real, procesa umbrales metabólicos locales y renderiza el nivel volumétrico de la botella mediante un algoritmo síncrono de simulación física de fluidos en local.</p>
-                        </div>
-                        <div>
-                            <div class="tech-spec">
-                                <i class="fa-solid fa-droplet"></i> Engine: Fluid Dynamics Simulation | Matrix: Biometric Tracking | UI: Minimal Glass
-                            </div>
-                            <a href="https://echeparesmanuel36-design.github.io/AXIOM_WATER_LOG/" target="_blank" style="display: inline-block; width: 100%; text-align: center; background: #1f2937; color: #f3f4f6; font-family: monospace; font-size: 0.9rem; padding: 10px 0; border-radius: 6px; text-decoration: none; border: 1px solid #374151; transition: background 0.2s;">
-                                Launch Water Log (GitHub) →
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="product-card" style="box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4), inset 0 0 15px rgba(74, 222, 128, 0.05); border-color: rgba(74, 222, 128, 0.15);">
-                        <div>
-                            <div class="product-meta">
-                                <span class="product-status" style="border-color: #4ade80; color: #4ade80; background-color: rgba(74, 222, 128, 0.1);">DECENTRALIZED LEDGER & MATHEMATICAL OPTIMIZATION</span>
-                            </div>
-                            <h4>Axiom Split Wise</h4>
-                            <p>La arquitectura lógica definitiva para la división y liquidación de gastos compartidos en grupos (viajes, proyectos, activos compartidos). Añade flujos financieros, calcula balances en tiempo real y ejecuta matrices de optimización para derivar las transferencias mínimas obligatorias entre nodos.</p>
-                        </div>
-                        <div>
-                            <div class="tech-spec">
-                                <i class="fa-solid fa-money-bill-transfer"></i> Algorithm: Debt Simplification Matrix | Core: Real-Time Balances | Execution: Local
-                            </div>
-                            <a href="https://echeparesmanuel36-design.github.io/AXIOM_SPLIT_WISE/" target="_blank" style="display: inline-block; width: 100%; text-align: center; background: #1f2937; color: #f3f4f6; font-family: monospace; font-size: 0.9rem; padding: 10px 0; border-radius: 6px; text-decoration: none; border: 1px solid #374151; transition: background 0.2s;">
-                                Launch Split Wise (GitHub) →
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="product-card" style="box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4), inset 0 0 15px rgba(234, 179, 8, 0.05); border-color: rgba(234, 179, 8, 0.15);">
-                        <div>
-                            <div class="product-meta">
-                                <span class="product-status" style="border-color: #eab308; color: #eab308; background-color: rgba(234, 179, 8, 0.1);">BIOMETRIC INFERENCE & ETHOLOGY SIMULATION</span>
-                            </div>
-                            <h4>Axiom Pet Translate</h4>
-                            <p>Analizador biométrico y traductor de patrones conductuales para caninos y felinos. Ingesta capturas ópticas o secuencias lógicas de video para procesar matrices de salud superficial, posicionamiento estructural de extremidades y traducción etológica nativa de forma aislada.</p>
-                        </div>
-                        <div>
-                            <div class="tech-spec">
-                                <i class="fa-solid fa-paw"></i> Core: Biometric Parser | Scope: Ethology & Behavioral Logistics | Runtime: Edge Architecture
-                            </div>
-                            <a href="https://echeparesmanuel36-design.github.io/AXIOM_PET_TRANSLATE/" target="_blank" style="display: inline-block; width: 100%; text-align: center; background: #1f2937; color: #f3f4f6; font-family: monospace; font-size: 0.9rem; padding: 10px 0; border-radius: 6px; text-decoration: none; border: 1px solid #374151; transition: background 0.2s;">
-                                Launch Pet Translate (GitHub) →
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="product-card" style="box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4), inset 0 0 15px rgba(120, 80, 50, 0.05); border-color: rgba(120, 80, 50, 0.15);">
-                        <div>
-                            <div class="product-meta">
-                                <span class="product-status" style="border-color: #bfa38a; color: #bfa38a; background-color: rgba(120, 80, 50, 0.1);">MOLECULAR EXTRACTION & FLUID MATHEMATICS</span>
-                            </div>
-                            <h4>Axiom Caffeine v2.0</h4>
-                            <p>Asistente de extracción molecular de precisión matemática para café de especialidad. Mapea perfiles dinámicos para V60, Espresso, Prensa Francesa y Cafetera Italiana, calibrando ratios de solubilidad e hidratación con telemetría de llenado en tiempo real.</p>
-                        </div>
-                        <div>
-                            <div class="tech-spec">
-                                <i class="fa-solid fa-mug-hot"></i> Core: Molecular Chemistry Engine | Ratios: Custom Hydration Matrices | Interface: Precision HUD
-                            </div>
-                            <a href="https://echeparesmanuel36-design.github.io/AXIOM_CAFFEINE/" target="_blank" style="display: inline-block; width: 100%; text-align: center; background: #1f2937; color: #f3f4f6; font-family: monospace; font-size: 0.9rem; padding: 10px 0; border-radius: 6px; text-decoration: none; border: 1px solid #374151; transition: background 0.2s;">
-                                Launch Axiom Caffeine (GitHub) →
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="product-card" style="box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4), inset 0 0 15px rgba(142, 142, 147, 0.05); border-color: rgba(142, 142, 147, 0.15);">
-                        <div>
-                            <div class="product-meta">
-                                <span class="product-status" style="border-color: #8e8e93; color: #8e8e93; background-color: rgba(142, 142, 147, 0.1);">AERODYNAMIC DESIGN & FLUID FLUX TÚNEL</span>
-                            </div>
-                            <h4>Axiom Aero Sim</h4>
-                            <p>Configurador aerodinámico interactivo en 3D con estética de HUD militar táctico. Permite el ajuste en tiempo real de geometrías de vectores complejos (alas, alerones, chasis monolíticos), proyectando el flujo cinético del aire dentro de un túnel de viento virtual para analizar fricción, sustentación y velocidad límite.</p>
-                        </div>
-                        <div>
-                            <div class="tech-spec">
-                                <i class="fa-solid fa-jet-fighter"></i> Engine: 3D Vector Core | Simulations: Wind Tunnel Kinetic Calculations | Profile: Aerodynamic IP
-                            </div>
-                            <a href="https://echeparesmanuel36-design.github.io/AXIOM_AERO_SIM/" target="_blank" style="display: inline-block; width: 100%; text-align: center; background: #1f2937; color: #f3f4f6; font-family: monospace; font-size: 0.9rem; padding: 10px 0; border-radius: 6px; text-decoration: none; border: 1px solid #374151; transition: background 0.2s;">
-                                Launch Aero Sim (GitHub) →
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="product-card" style="box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4), inset 0 0 15px rgba(255, 120, 0, 0.05); border-color: rgba(255, 120, 0, 0.15);">
-                        <div>
-                            <div class="product-meta">
-                                <span class="product-status" style="border-color: #ff9500; color: #ff9500; background-color: rgba(255, 120, 0, 0.1);">GASTRONOMIC COMPENDIUM & 4D INTERFACE MATRIX</span>
-                            </div>
-                            <h4>Axiom Recetas</h4>
-                            <p>Compendio gastronómico de alta fidelidad estructural que cataloga más de 1000 recetas procedentes de 10 matrices culturales del planeta. Indexación en milisegundos mediante filtrado local de ingredientes, técnicas complejas de cocción y esquemas de diseño glassmorphism avanzado.</p>
-                        </div>
-                        <div>
-                            <div class="tech-spec">
-                                <i class="fa-solid fa-kitchen-set"></i> Database: Local Gastronomic Compendium | UI: Glassmorphic Core | Latency: 0.1ms Local
-                            </div>
-                            <a href="https://echeparesmanuel36-design.github.io/Axiom-Recetas/" target="_blank" style="display: inline-block; width: 100%; text-align: center; background: #1f2937; color: #f3f4f6; font-family: monospace; font-size: 0.9rem; padding: 10px 0; border-radius: 6px; text-decoration: none; border: 1px solid #374151; transition: background 0.2s;">
-                                Launch Axiom Recetas (GitHub) →
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="product-card" style="box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4), inset 0 0 15px rgba(34, 197, 94, 0.05); border-color: rgba(34, 197, 94, 0.15);">
-                        <div>
-                            <div class="product-meta">
-                                <span class="product-status" style="border-color: #22c55e; color: #22c55e; background-color: rgba(34, 197, 94, 0.1);">BIO-HISTORICAL COMPENDIUM & ECO-LOGISTICS</span>
-                            </div>
-                            <h4>Axiom Animals</h4>
-                            <p>Un compendio bio-histórico interactivo que reúne y clasifica criaturas reales, extintas de la prehistoria (Smilodón, Megalodón), especímenes mitológicos y arquitecturas evolutivas del futuro. Explora de forma síncrona por eras tectónicas, hábitats y vectores conductuales latentes (fuerza, sigilo, velocidad).</p>
-                        </div>
-                        <div>
-                            <div class="tech-spec">
-                                <i class="fa-solid fa-dna"></i> Database: Local Taxonomy Core | Vectors: Strength/Speed/Stealth Metrics | Platform: Edge UI
-                            </div>
-                            <a href="https://echeparesmanuel36-design.github.io/axiom-Animals/" target="_blank" style="display: inline-block; width: 100%; text-align: center; background: #1f2937; color: #f3f4f6; font-family: monospace; font-size: 0.9rem; padding: 10px 0; border-radius: 6px; text-decoration: none; border: 1px solid #374151; transition: background 0.2s;">
-                                Launch Axiom Animals (GitHub) →
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="product-card" style="box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4), inset 0 0 15px rgba(2, 132, 199, 0.05); border-color: rgba(2, 132, 199, 0.15);">
-                        <div>
-                            <div class="product-meta">
-                                <span class="product-status" style="border-color: #0284c7; color: #0284c7; background-color: rgba(2, 132, 199, 0.1);">ENTERPRISE ZERO-TRUST SECURITY</span>
-                            </div>
-                            <h4>Axiom Zero-Crypto</h4>
-                            <p>A proprietary cryptographic library and digital signature engine natively engineered in pure Rust under #![no_std] constraints for high-security SaaS banking. Processes critical TLS/AES encryption matrices in 0.15ms directly on the stack by leveraging zero dynamic memory allocation.</p>
-                        </div>
-                        <div>
-                            <div class="tech-spec">
-                                <i class="fa-solid fa-shield-halved"></i> Engine: Constant-Time Crypto | Latency: 0.15ms | Profile: #![no_std] Zero-Heap
-                            </div>
-                            <a href="https://acquire.com" target="_blank" style="display: inline-block; width: 100%; text-align: center; background: #1f2937; color: #f3f4f6; font-family: monospace; font-size: 0.9rem; padding: 10px 0; border-radius: 6px; text-decoration: none; border: 1px solid #374151; transition: background 0.2s;">
-                                Acquire Intellectual Property (Acquire) →
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="product-card" style="box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4), inset 0 0 15px rgba(255, 87, 34, 0.05); border-color: rgba(255, 87, 34, 0.15);">
-                        <div>
-                            <div class="product-meta">
-                                <span class="product-status" style="border-color: #ff5722; color: #ff5722; background-color: rgba(255, 87, 34, 0.1);">BARE-METAL KERNEL PROXY</span>
-                            </div>
-                            <h4>Axiom Aero-Ingress</h4>
-                            <p>A proprietary reverse proxy and ultra-fast load balancer natively engineered in Rust under #![no_std] constraints for high-scale SaaS architectures. Processes API routing tables and cryptographic JWT token validation in 0.2ms directly at the kernel level by leveraging zero dynamic memory allocation.</p>
-                        </div>
-                        <div>
-                            <div class="tech-spec">
-                                <i class="fa-solid fa-microchip"></i> Engine: Kernel Routing | Latency: 0.2ms Const. | Profile: #![no_std] Zero-Heap
-                            </div>
-                            <a href="https://acquire.com" target="_blank" style="display: inline-block; width: 100%; text-align: center; background: #1f2937; color: #f3f4f6; font-family: monospace; font-size: 0.9rem; padding: 10px 0; border-radius: 6px; text-decoration: none; border: 1px solid #374151; transition: background 0.2s;">
-                                Acquire Intellectual Property (Acquire) →
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="product-card" style="box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4), inset 0 0 15px rgba(255, 87, 34, 0.05); border-color: rgba(255, 87, 34, 0.15);">
-                        <div>
-                            <div class="product-meta">
-                                <span class="product-status" style="border-color: #ff5722; color: #ff5722; background-color: rgba(255, 87, 34, 0.1);">BARE-METAL EDGE DATABASE</span>
-                            </div>
-                            <h4>Axiom Oxide-KV</h4>
-                            <p>A proprietary embedded key-value database engine natively engineered in Rust under #![no_std] constraints for high-density IoT hardware. Replaces conventional storage engines like SQLite by implementing fixed static arrays directly into the volatile memory stack, eliminating OS kernel overhead.</p>
-                        </div>
-                        <div>
-                            <div class="tech-spec">
-                                <i class="fa-solid fa-microchip"></i> Engine: Static-Array KV | Latency: 0.4ms Const. | Profile: #![no_std] Bare-Metal
-                            </div>
-                            <a href="https://acquire.com" target="_blank" style="display: inline-block; width: 100%; text-align: center; background: #1f2937; color: #f3f4f6; font-family: monospace; font-size: 0.9rem; padding: 10px 0; border-radius: 6px; text-decoration: none; border: 1px solid #374151; transition: background 0.2s;">
-                                Acquire Intellectual Property (Acquire) →
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="product-card" style="box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4), inset 0 0 15px rgba(255, 87, 34, 0.05); border-color: rgba(255, 87, 34, 0.15);">
-                        <div>
-                            <div class="product-meta">
-                                <span class="product-status" style="border-color: #ff5722; color: #ff5722; background-color: rgba(255, 87, 34, 0.1);">BARE-METAL DUAL-CORE ACTUATION</span>
-                            </div>
-                            <h4>Axiom Torque-Sync + Mirage AR</h4>
-                            <p>Dual-core bare-metal firmware engineered in native Rust under #![no_std] constraints for ultra-low latency simulation hardware. Synchronizes magnetic direct-drive force feedback loops at 40kHz (Core 0) via direct volatile register mapping, eliminating OS kernel jitter.</p>
-                        </div>
-                        <div>
-                            <div class="tech-spec">
-                                <i class="fa-solid fa-microchip"></i> Core: Direct-Drive FOC | Latency: 1.2ms Flat | Interface: Holographic MMIO
-                            </div>
-                            <a href="https://github.com/echeparesmanuel36-design/axiom-torque-sync-mirage-ar" target="_blank" style="display: inline-block; width: 100%; text-align: center; background: #1f2937; color: #f3f4f6; font-family: monospace; font-size: 0.9rem; padding: 10px 0; border-radius: 6px; text-decoration: none; border: 1px solid #374151; transition: background 0.2s;">
-                                Inspect Architecture (GitHub) →
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="product-card" style="box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4), inset 0 0 15px rgba(255, 42, 133, 0.05); border-color: rgba(255, 42, 133, 0.15);">
-                        <div>
-                            <div class="product-meta">
-                                <span class="product-status" style="border-color: #ff2a85; color: #ff2a85; background-color: rgba(255, 42, 133, 0.1);">BARE-METAL FLUID KINEMATICS</span>
-                            </div>
-                            <h4>Axiom Graff ◤A-S◢</h4>
-                            <p>Low-level spatial computing core engineered in native Rust under #![no_std] constraints. Tracks raw urban surface and wall meshes using direct LiDAR/ToF register mapping, enabling persistent 3D holographic art structures that project ray-traced physical illumination.</p>
-                        </div>
-                        <div>
-                            <div class="tech-spec">
-                                <i class="fa-solid fa-palette"></i> Core: Fluid Dynamics | Latency: 1.4ms Flat | Interface: Zero-Copy LiDAR MMIO
-                            </div>
-                            <a href="https://github.com/echeparesmanuel36-design/axiom-graff" target="_blank" style="display: inline-block; width: 100%; text-align: center; background: #1f2937; color: #f3f4f6; font-family: monospace; font-size: 0.9rem; padding: 10px 0; border-radius: 6px; text-decoration: none; border: 1px solid #374151; transition: background 0.2s;">
-                                Inspect Architecture (GitHub) →
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="product-card" style="box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4), inset 0 0 15px rgba(139, 92, 246, 0.05); border-color: rgba(139, 92, 246, 0.15);">
-                        <div>
-                            <div class="product-meta">
-                                <span class="product-status" style="border-color: #8b5cf6; color: #8b5cf6; background-color: rgba(139, 92, 246, 0.1);">BARE-METAL PHOTON OCCLUSION</span>
-                            </div>
-                            <h4>Axiom ShadowPlay AR ◤A-S◢</h4>
-                            <p>Low-level software infrastructure engineered in native Rust under #![no_std] constraints. Tracks raw environmental photon interruption boundaries directly at the hardware sensor layer, transforming physical transient silhouettes into portals.</p>
-                        </div>
-                        <div>
-                            <div class="tech-spec">
-                                <i class="fa-solid fa-moon"></i> Core: Penumbra Tracking | Latency: 1.2ms Flat | Interface: Zero-Copy ToF MMIO
-                            </div>
-                            <a href="https://github.com/echeparesmanuel36-design/axiom-shadowplay-ar" target="_blank" style="display: inline-block; width: 100%; text-align: center; background: #1f2937; color: #f3f4f6; font-family: monospace; font-size: 0.9rem; padding: 10px 0; border-radius: 6px; text-decoration: none; border: 1px solid #374151; transition: background 0.2s;">
-                                Inspect Architecture (GitHub) →
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="product-card" style="box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4), inset 0 0 15px rgba(234, 179, 8, 0.05); border-color: rgba(234, 179, 8, 0.15);">
-                        <div>
-                            <div class="product-meta">
-                                <span class="product-status" style="border-color: #eab308; color: #eab308; background-color: rgba(234, 179, 8, 0.1);">BARE-METAL SPATIAL OPTICS</span>
-                            </div>
-                            <h4>Axiom Mirror-Self AR ◤A-S◢</h4>
-                            <p>High-performance volumetric body-scanning and real-time cloth deformation matrix written in native Rust under #![no_std]. Bypasses operating system rendering layers to stream a hyper-realistic digital twin directly into optical layers.</p>
-                        </div>
-                        <div>
-                            <div class="tech-spec">
-                                <i class="fa-solid fa-shirt"></i> Core: Mass-Spring Kinetics | Latency: 1.5ms Flat | Buffer: Zero-Copy Unified Memory
-                            </div>
-                            <a href="https://github.com/echeparesmanuel36-design/axiom-mirror-self-ar" target="_blank" style="display: inline-block; width: 100%; text-align: center; background: #1f2937; color: #f3f4f6; font-family: monospace; font-size: 0.9rem; padding: 10px 0; border-radius: 6px; text-decoration: none; border: 1px solid #374151; transition: background 0.2s;">
-                                Inspect Architecture (GitHub) →
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="product-card" style="box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4), inset 0 0 15px rgba(0, 122, 255, 0.05); border-color: rgba(0, 122, 255, 0.15);">
-                        <div>
-                            <div class="product-meta">
-                                <span class="product-status" style="border-color: #007AFF; color: #007AFF; background-color: rgba(0, 122, 255, 0.1);">REAL-TIME PHYSICS CO-PROCESSOR</span>
-                            </div>
-                            <h4>Axiom Ballistica ◤A-S◢</h4>
-                            <p>Bare-metal, real-time tactical physics and ballistic trajectory engine engineered for aerospace environments. Bypasses legacy operating system schedulers to compute millions of multi-body collisions per second directly on silicon registers.</p>
-                        </div>
-                        <div>
-                            <div class="tech-spec">
-                                <i class="fa-solid fa-rocket"></i> Throughput: 1M+ Collisions/sec | Pipeline: SIMD AVX-512 | Memory: Zero-Heap Ring
-                            </div>
-                            <a href="https://github.com/echeparesmanuel36-design/axiom-ballistica" target="_blank" style="display: inline-block; width: 100%; text-align: center; background: #1f2937; color: #f3f4f6; font-family: monospace; font-size: 0.9rem; padding: 10px 0; border-radius: 6px; text-decoration: none; border: 1px solid #374151; transition: background 0.2s;">
-                                Inspect Architecture (GitHub) →
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="product-card" style="box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4), inset 0 0 15px rgba(74, 222, 128, 0.05); border-color: rgba(74, 222, 128, 0.15);">
-                        <div>
-                            <div class="product-meta">
-                                <span class="product-status" style="border-color: #4ade80; color: #4ade80; background-color: rgba(74, 222, 128, 0.1);">BARE-METAL RUNTIME ENVIRONMENT</span>
-                            </div>
-                            <h4>Axiom Phantom OS ◤A-S◢</h4>
-                            <p>Instant-boot secondary micro-operating system dedicated exclusively to gaming and high-performance applications. Bypasses legacy kernel structures to grant software unmediated bare-metal access to underlying silicon.</p>
-                        </div>
-                        <div>
-                            <div class="tech-spec">
-                                <i class="fa-solid fa-microchip"></i> Latency: 1.2ms | Execution: Single-Ring | Allocation: Zero-Heap Identity Map
-                            </div>
-                            <a href="https://github.com/echeparesmanuel36-design/axiom-phantom-os" target="_blank" style="display: inline-block; width: 100%; text-align: center; background: #1f2937; color: #f3f4f6; font-family: monospace; font-size: 0.9rem; padding: 10px 0; border-radius: 6px; text-decoration: none; border: 1px solid #374151; transition: background 0.2s;">
-                                Inspect Architecture (GitHub) →
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="product-card" style="box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4), inset 0 0 15px rgba(0, 122, 255, 0.03); border-color: rgba(0, 122, 255, 0.1);">
-                        <div>
-                            <div class="product-meta">
-                                <span class="product-status" style="border-color: #007AFF; color: #007AFF; background-color: rgba(0, 122, 255, 0.1);">INTELLIGENT THERMAL INFRASTRUCTURE</span>
-                            </div>
-                            <h4>Axiom Overdrive ◤A-S◢</h4>
-                            <p>External, magnetically coupled intelligent liquid cooling architecture engineered for ultra-dense mobile SoC. Governed by a hard real-time hardware loop that dynamically scales thermal dissipation based on direct telemetry.</p>
-                        </div>
-                        <div>
-                            <div class="tech-spec">
-                                <i class="fa-solid fa-temperature-arrow-down"></i> Response: 1.5ms Adaptive | Coupling: Mag-Lock | Target: Zero-Throttling UMA
-                            </div>
-                            <a href="https://github.com/echeparesmanuel36-design/axiom-overdrive" target="_blank" style="display: inline-block; width: 100%; text-align: center; background: #1f2937; color: #f3f4f6; font-family: monospace; font-size: 0.9rem; padding: 10px 0; border-radius: 6px; text-decoration: none; border: 1px solid #374151; transition: background 0.2s;">
-                                Inspect Architecture (GitHub) →
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="product-card" style="box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4), inset 0 0 15px rgba(239, 68, 68, 0.05); border-color: rgba(239, 68, 68, 0.15);">
-                        <div>
-                            <div class="product-meta">
-                                <span class="product-status" style="border-color: #ef4444; color: #ef4444; background-color: rgba(239, 68, 68, 0.1);">BARE-METAL ROUTING FIRMWARE</span>
-                            </div>
-                            <h4>Axiom NetRun ◤A-S◢</h4>
-                            <p>Bare-metal micro-firmware engineered in native Rust under #![no_std] for next-generation tactical networks. Establishes a direct interface with physical NIC registers to process data-in-transit encryption and line-rate DDoS mitigation.</p>
-                        </div>
-                        <div>
-                            <div class="tech-spec">
-                                <i class="fa-solid fa-network-wired"></i> Architecture: Kernel Bypass | Filter: Line-Rate Drop | Cryptography: Quantum-Resistant
-                            </div>
-                            <a href="https://github.com/echeparesmanuel36-design/axiom-netrun" target="_blank" style="display: inline-block; width: 100%; text-align: center; background: #1f2937; color: #f3f4f6; font-family: monospace; font-size: 0.9rem; padding: 10px 0; border-radius: 6px; text-decoration: none; border: 1px solid #374151; transition: background 0.2s;">
-                                Inspect Architecture (GitHub) →
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="product-card" style="box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4), inset 0 0 15px rgba(234, 179, 8, 0.05); border-color: rgba(234, 179, 8, 0.15);">
-                        <div>
-                            <div class="product-meta">
-                                <span class="product-status" style="border-color: #eab308; color: #eab308; background-color: rgba(234, 179, 8, 0.1);">LOW-LATENCY AUDIO INFRASTRUCTURE</span>
-                            </div>
-                            <h4>Axiom Pulse Audio ◤A-S◢</h4>
-                            <p>High-performance Digital Signal Processing (DSP) and analog-modeled virtualization engine engineered in pure native Rust under #![no_std]. Routes live microphone feeds directly to hardware registers to achieve sub-1.2ms latency.</p>
-                        </div>
-                        <div>
-                            <div class="tech-spec">
-                                <i class="fa-solid fa-sliders"></i> Architecture: Bare-Metal DSP | Latency: 1.2ms Target | Buffer: Lock-Free Chain
-                            </div>
-                            <a href="https://github.com/echeparesmanuel36-design/axiom-pulse-audio" target="_blank" style="display: inline-block; width: 100%; text-align: center; background: #1f2937; color: #f3f4f6; font-family: monospace; font-size: 0.9rem; padding: 10px 0; border-radius: 6px; text-decoration: none; border: 1px solid #374151; transition: background 0.2s;">
-                                Inspect Architecture (GitHub) →
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="product-card" style="box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4), inset 0 0 15px rgba(59, 130, 246, 0.05); border-color: rgba(59, 130, 246, 0.15);">
-                        <div>
-                            <div class="product-meta">
-                                <span class="product-status" style="border-color: #3b82f6; color: #3b82f6; background-color: rgba(59, 130, 246, 0.1);">LIVE MOBILE ENGINE</span>
-                            </div>
-                            <h4>Axiom HoloTrack ◤A-S◢</h4>
-                            <p>Real-time VFX engine for low latency (1.3ms) 3D hyper-realistic asset compositing on live mobile video feeds. Driven by custom Vulkan/Metal compute shaders under #![no_std] to eliminate OS bottlenecks.</p>
-                        </div>
-                        <div>
-                            <div class="tech-spec">
-                                <i class="fa-solid fa-video"></i> Latency: 1.3ms Target | Ingestion: Zero-Copy | Architecture: Unified Memory (UMA)
-                            </div>
-                            <a href="https://github.com/echeparesmanuel36-design/axiom-holotrack" target="_blank" style="display: inline-block; width: 100%; text-align: center; background: #1f2937; color: #f3f4f6; font-family: monospace; font-size: 0.9rem; padding: 10px 0; border-radius: 6px; text-decoration: none; border: 1px solid #374151; transition: background 0.2s;">
-                                Inspect Architecture (GitHub) →
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="product-card" style="box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4), inset 0 0 15px rgba(34, 197, 94, 0.05); border-color: rgba(34, 197, 94, 0.15);">
-                        <div>
-                            <div class="product-meta">
-                                <span class="product-status" style="border-color: #22c55e; color: #22c55e; background-color: rgba(34, 197, 94, 0.1);">BARE-METAL CYBERNETICS</span>
-                            </div>
-                            <h4>Axiom Reflex ◤A-S◢</h4>
-                            <p>Experimental neuro-synchronization firmware engineered in pure Rust for active cybernetic prosthetics. Bypasses standard OS scheduler layers to map peripheral nervous system micro-volt potentials directly into actuators.</p>
-                        </div>
-                        <div>
-                            <div class="tech-spec">
-                                <i class="fa-solid fa-bolt"></i> Target: Cortex-M4/M7 / RISC-V | Allocation: Zero-Heap | Jitter: Asymptotically Zero
-                            </div>
-                            <a href="https://github.com/echeparesmanuel36-design/axiom-reflex" target="_blank" style="display: inline-block; width: 100%; text-align: center; background: #1f2937; color: #f3f4f6; font-family: monospace; font-size: 0.9rem; padding: 10px 0; border-radius: 6px; text-decoration: none; border: 1px solid #374151; transition: background 0.2s;">
-                                Inspect Architecture (GitHub) →
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="product-card" style="box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4), inset 0 0 15px rgba(168, 85, 247, 0.05); border-color: rgba(168, 85, 247, 0.15);">
-                        <div>
-                            <div class="product-meta">
-                                <span class="product-status" style="border-color: #a855f7; color: #a855f7; background-color: rgba(168, 85, 247, 0.1);">NEURAL INTERFACE GRAPHICS</span>
-                            </div>
-                            <h4>Axiom Neural-UI ◤A-S◢</h4>
-                            <p>Bare-metal interface engine and neural synchronization framework written in native Rust. Processes real-time eye-tracking and volumetric telemetry to project high-frequency vector layouts directly onto smart glass HUD layers.</p>
-                        </div>
-                        <div>
-                            <div class="tech-spec">
-                                <i class="fa-solid fa-eye"></i> Core: Rust (no_std) | Target Refresh: 240 Hz Native | Telemetry: Retina Async
-                            </div>
-                            <a href="https://github.com/echeparesmanuel36-design/axiom-neural-ui" target="_blank" style="display: inline-block; width: 100%; text-align: center; background: #1f2937; color: #f3f4f6; font-family: monospace; font-size: 0.9rem; padding: 10px 0; border-radius: 6px; text-decoration: none; border: 1px solid #374151; transition: background 0.2s;">
-                                Inspect Architecture (GitHub) →
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="product-card" style="box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4), inset 0 0 15px rgba(239, 68, 68, 0.05); border-color: rgba(239, 68, 68, 0.15);">
-                        <div>
-                            <div class="product-meta">
-                                <span class="product-status" style="border-color: #ef4444; color: #ef4444; background-color: rgba(239, 68, 68, 0.1);">REAL-TIME PHYSICS ENGINE</span>
-                            </div>
-                            <h4>Axiom Kinetic ◤A-S◢</h4>
-                            <p>Next-gen procedurally driven physics and destruction engine written in native Rust. Maps heavy matrix parallel compute pipelines directly to the GPU to simulate millions of fluid particles and structural collapses.</p>
-                        </div>
-                        <div>
-                            <div class="tech-spec">
-                                <i class="fa-solid fa-display"></i> Core Engine: Rust Matrix | Performance: 4K @ 120 FPS | Compute Path: Direct GPU
-                            </div>
-                            <a href="https://github.com/echeparesmanuel36-design/axiom-kinetic" target="_blank" style="display: inline-block; width: 100%; text-align: center; background: #1f2937; color: #f3f4f6; font-family: monospace; font-size: 0.9rem; padding: 10px 0; border-radius: 6px; text-decoration: none; border: 1px solid #374151; transition: background 0.2s;">
-                                Inspect Architecture (GitHub) →
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="product-card" style="box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4), inset 0 0 15px rgba(59, 130, 246, 0.05); border-color: rgba(59, 130, 246, 0.15);">
-                        <div>
-                            <div class="product-meta">
-                                <span class="product-status" style="border-color: #3b82f6; color: #3b82f6; background-color: rgba(59, 130, 246, 0.1);">8000Hz Firmware</span>
-                            </div>
-                            <h4>Axiom Core Input ◤A-S◢</h4>
-                            <p>Next-gen bare-metal infrastructure optimized for magnetic levitation analog inputs. Bypasses operating system processing layers to achieve an absolute input telemetry pipeline of sub-1.1ms.</p>
-                        </div>
-                        <div>
-                            <div class="tech-spec">
-                                <i class="fa-solid fa-microchip"></i> Core: Rust (no_std) | Native Polling: 8000 Hz | Hardware Link: Direct DMA
-                            </div>
-                            <a href="https://github.com/echeparesmanuel36-design/axiom-core-input" target="_blank" style="display: inline-block; width: 100%; text-align: center; background: #1f2937; color: #f3f4f6; font-family: monospace; font-size: 0.9rem; padding: 10px 0; border-radius: 6px; text-decoration: none; border: 1px solid #374151; transition: background 0.2s;">
-                                Inspect Architecture (GitHub) →
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="product-card" style="box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4), inset 0 0 15px rgba(0, 122, 255, 0.05); border-color: rgba(0, 122, 255, 0.15);">
-                        <div>
-                            <div class="product-meta">
-                                <span class="product-status" style="border-color: #007AFF; color: #007AFF; background-color: rgba(0, 122, 255, 0.1);">RECURSIVE AI DEFENSE</span>
-                            </div>
-                            <h4>Axiom Aegis ◤A-S◢</h4>
-                            <p>Type-1 micro-hypervisor engineered for safety-critical autonomous mobility. Delivers strict hardware-level MMU isolation, zero-allocation real-time runtime, and deterministic scheduling.</p>
-                        </div>
-                        <div>
-                            <div class="tech-spec">
-                                <i class="fa-solid fa-microchip"></i> Target: ARMv8-A / RISC-V | Core: Bare-Metal Rust
-                            </div>
-                            <a href="https://github.com/echeparesmanuel36-design/axiom-aegis-core" target="_blank" style="display: inline-block; width: 100%; text-align: center; background: #1f2937; color: #f3f4f6; font-family: monospace; font-size: 0.9rem; padding: 10px 0; border-radius: 6px; text-decoration: none; border: 1px solid #374151; transition: background 0.2s;">
-                                Inspect Architecture (GitHub) →
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="product-card" style="box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4), inset 0 0 15px rgba(76, 217, 100, 0.05); border-color: rgba(76, 217, 100, 0.15);">
-                        <div>
-                            <div class="product-meta">
-                                <span class="product-status" style="border-color: #4cd964; color: #4cd964; background-color: rgba(76, 217, 100, 0.1);">BIOLOGICAL SIMULATION MATRIX</span>
-                            </div>
-                            <h4>Axiom Flora ◤A-S◢</h4>
-                            <p>The environmental AR layer and biological simulation matrix of Axiom Earth. Built with a bare-metal execution pipeline to render real-time, interactive ecological systems at 2.15ms latency.</p>
-                        </div>
-                        <div>
-                            <div class="tech-spec">
-                                <i class="fa-solid fa-leaf"></i> Core: Ecological AR | Render: Bare-Metal Pipeline
-                            </div>
-                            <a href="https://github.com/echeparesmanuel36-design/Axiom-Flora" target="_blank" style="display: inline-block; width: 100%; text-align: center; background: #1f2937; color: #f3f4f6; font-family: monospace; font-size: 0.9rem; padding: 10px 0; border-radius: 6px; text-decoration: none; border: 1px solid #374151; transition: background 0.2s;">
-                                Inspect Architecture (GitHub) →
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="product-card" style="box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4), inset 0 0 15px rgba(0, 122, 255, 0.05); border-color: rgba(0, 122, 255, 0.15);">
-                        <div>
-                            <div class="product-meta">
-                                <span class="product-status" style="border-color: #007AFF; color: #007AFF; background-color: rgba(0, 122, 255, 0.1);">SPATIAL SENSORY INTERFACE</span>
-                            </div>
-                            <h4>Axiom Iris ◤A-S◢</h4>
-                            <p>Ultra-thin smart contact lens system running a bare-metal Rust runtime. Delivers seamless spatial computing interfaces with sub-1.5ms sensory latency and integrated biocompatible telemetry.</p>
-                        </div>
-                        <div>
-                            <div class="tech-spec">
-                                <i class="fa-solid fa-eye"></i> Runtime: Bare-Metal Rust | Latency: &lt; 1.5ms
-                            </div>
-                            <a href="https://github.com/echeparesmanuel36-design/axiom-iris" target="_blank" style="display: inline-block; width: 100%; text-align: center; background: #1f2937; color: #f3f4f6; font-family: monospace; font-size: 0.9rem; padding: 10px 0; border-radius: 6px; text-decoration: none; border: 1px solid #374151; transition: background 0.2s;">
-                                Inspect Architecture (GitHub) →
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="product-card" style="box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4), inset 0 0 15px rgba(76, 217, 100, 0.05); border-color: rgba(76, 217, 100, 0.15);">
-                        <div>
-                            <div class="product-meta">
-                                <span class="product-status" style="border-color: #4cd964; color: #4cd964; background-color: rgba(76, 217, 100, 0.1);">DECENTRALIZED DATA ROUTING</span>
-                            </div>
-                            <h4>Axiom Stream Network ◤A-S◢</h4>
-                            <p>High-throughput decentralized data routing network (ASN). Bypasses legacy TCP/IP bottlenecks using custom P2P protocols in Rust to stream massive spatial geometries in hard real-time.</p>
-                        </div>
-                        <div>
-                            <div class="tech-spec">
-                                <i class="fa-solid fa-network-wired"></i> Protocol: ASN Transport | Topology: Self-Healing Mesh
-                            </div>
-                            <a href="https://github.com/echeparesmanuel36-design/Axiom-Stream-Network" target="_blank" style="display: inline-block; width: 100%; text-align: center; background: #1f2937; color: #f3f4f6; font-family: monospace; font-size: 0.9rem; padding: 10px 0; border-radius: 6px; text-decoration: none; border: 1px solid #374151; transition: background 0.2s;">
-                                Inspect Architecture (GitHub) →
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="product-card" style="box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4), inset 0 0 15px rgba(255, 255, 255, 0.03); border-color: rgba(255, 255, 255, 0.08);">
-                        <div>
-                            <div class="product-meta">
-                                <span class="product-status" style="border-color: #8e8e93; color: #8e8e93; background-color: rgba(142, 142, 147, 0.1);">SOVEREIGN USER INTERFACE</span>
-                            </div>
-                            <h4>Sovereign App ◤A-S◢</h4>
-                            <p>The unified decentralised flagship hub anchoring the Axiom matrix. Consolidates mesh networks, multi-agent AI nodes, 1:1 digital twins, and AR profiles into a single sovereign user interface.</p>
-                        </div>
-                        <div>
-                            <div class="tech-spec">
-                                <i class="fa-solid fa-crown"></i> Platform: System Integrator | Security: Zero-Knowledge
-                            </div>
-                            <a href="https://github.com/echeparesmanuel36-design/sovereign" target="_blank" style="display: inline-block; width: 100%; text-align: center; background: #1f2937; color: #f3f4f6; font-family: monospace; font-size: 0.9rem; padding: 10px 0; border-radius: 6px; text-decoration: none; border: 1px solid #374151; transition: background 0.2s;">
-                                Inspect Architecture (GitHub) →
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="product-card" style="box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4), inset 0 0 15px rgba(76, 217, 100, 0.05); border-color: rgba(76, 217, 100, 0.15);">
-                        <div>
-                            <div class="product-meta">
-                                <span class="product-status" style="border-color: #4cd964; color: #4cd964; background-color: rgba(76, 217, 100, 0.1);">DIGITAL TWIN PIPELINE</span>
-                            </div>
-                            <h4>Axiom Earth ◤A-S◢</h4>
-                            <p>A 1:1 scale digital twin simulation pipeline mapping physical reality. Utilizes zero-copy geometry streaming in Rust to deliver high-fidelity spatial environments without server-side lag.</p>
-                        </div>
-                        <div>
-                            <div class="tech-spec">
-                                <i class="fa-solid fa-earth-americas"></i> Engine: Spatial Map | Core: Zero-Copy Stream
-                            </div>
-                            <a href="https://github.com/echeparesmanuel36-design/Axiom-Earth" target="_blank" style="display: inline-block; width: 100%; text-align: center; background: #1f2937; color: #f3f4f6; font-family: monospace; font-size: 0.9rem; padding: 10px 0; border-radius: 6px; text-decoration: none; border: 1px solid #374151; transition: background 0.2s;">
-                                Inspect Architecture (GitHub) →
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="product-card" style="box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4), inset 0 0 15px rgba(0, 122, 255, 0.05); border-color: rgba(0, 122, 255, 0.15);">
-                        <div>
-                            <div class="product-meta">
-                                <span class="product-status" style="border-color: #007AFF; color: #007AFF; background-color: rgba(0, 122, 255, 0.1);">SPATIAL DISPLAY ARCHITECTURE</span>
-                            </div>
-                            <h4>Axiom Glass ◤A-S◢</h4>
-                            <p>Next-gen transparent hardware architecture featuring native, bare-metal spatial rendering. Bypasses standard OS display compositors to stream lag-free augmented environments under 1.5ms.</p>
-                        </div>
-                        <div>
-                            <div class="tech-spec">
-                                <i class="fa-solid fa-glasses"></i> Engine: Waveguide Driver | Arch: Zero-Cache Direct
-                            </div>
-                            <a href="https://github.com/echeparesmanuel36-design/axiom-glass-core" target="_blank" style="display: inline-block; width: 100%; text-align: center; background: #1f2937; color: #f3f4f6; font-family: monospace; font-size: 0.9rem; padding: 10px 0; border-radius: 6px; text-decoration: none; border: 1px solid #374151; transition: background 0.2s;">
-                                Inspect Architecture (GitHub) →
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="product-card" style="box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4), inset 0 0 15px rgba(0, 122, 255, 0.05); border-color: rgba(0, 122, 255, 0.15);">
-                        <div>
-                            <div class="product-meta">
-                                <span class="product-status" style="border-color: #007AFF; color: #007AFF; background-color: rgba(0, 122, 255, 0.1);">ROBOTICS INFERENCE ENGINE</span>
-                            </div>
-                            <h4>Axiom Agent ◤A-S◢</h4>
-                            <p>Decentralized multi-agent execution framework and Sentient robotics core. Compiles native AI inference engines in Rust to deliver hard real-time tactile and sensor fusion loops under 1.5ms.</p>
-                        </div>
-                        <div>
-                            <div class="tech-spec">
-                                <i class="fa-solid fa-robot"></i> Core: Multi-Agent AI | Engine: Bare-Metal Inference
-                            </div>
-                            <a href="https://github.com/echeparesmanuel36-design/axiom-agent" target="_blank" style="display: inline-block; width: 100%; text-align: center; background: #1f2937; color: #f3f4f6; font-family: monospace; font-size: 0.9rem; padding: 10px 0; border-radius: 6px; text-decoration: none; border: 1px solid #374151; transition: background 0.2s;">
-                                Inspect Architecture (GitHub) →
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="product-card" style="box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4), inset 0 0 15px rgba(76, 217, 100, 0.05); border-color: rgba(76, 217, 100, 0.15);">
-                        <div>
-                            <div class="product-meta">
-                                <span class="product-status" style="border-color: #4cd964; color: #4cd964; background-color: rgba(76, 217, 100, 0.1);">WIRELESS PROTOCOL CORE</span>
-                            </div>
-                            <h4>Axiom Sync ◤A-S◢</h4>
-                            <p>Ultra-wideband (UWB) wireless protocol engineered to replace legacy Bluetooth stack. Bypasses standard OS layers to stream raw bits with wire-like stability and ultra-low deterministic latencies.</p>
-                        </div>
-                        <div>
-                            <div class="tech-spec">
-                                <i class="fa-solid fa-wifi"></i> Core: UWB Bare-Metal | Latency: 2.15ms
-                            </div>
-                            <a href="https://github.com/echeparesmanuel36-design/AXIOM-SYNC-PROTOCOL" target="_blank" style="display: inline-block; width: 100%; text-align: center; background: #1f2937; color: #f3f4f6; font-family: monospace; font-size: 0.9rem; padding: 10px 0; border-radius: 6px; text-decoration: none; border: 1px solid #374151; transition: background 0.2s;">
-                                Inspect Architecture (GitHub) →
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="product-card" style="box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4), inset 0 0 15px rgba(142, 142, 147, 0.03); border-color: rgba(142, 142, 147, 0.15);">
-                        <div>
-                            <div class="product-meta">
-                                <span class="product-status" style="border-color: #8e8e93; color: #8e8e93; background-color: rgba(142, 142, 147, 0.1);">PROPULSION POSITIONING KERNEL</span>
-                            </div>
-                            <h4>Axiom Ovni ◤A-S◢</h4>
-                            <p>Advanced telemetry and spatial propulsion positioning kernel. Designed for zero-overhead matrix computing, providing sub-millisecond reaction times for multi-axis autonomous tracking.</p>
-                        </div>
-                        <div>
-                            <div class="tech-spec">
-                                <i class="fa-solid fa-jet-fighter"></i> Stack: Matrix Processing | OS: Air-Gapped
-                            </div>
-                            <a href="https://github.com/echeparesmanuel36-design/axiom-ovni" target="_blank" style="display: inline-block; width: 100%; text-align: center; background: #1f2937; color: #f3f4f6; font-family: monospace; font-size: 0.9rem; padding: 10px 0; border-radius: 6px; text-decoration: none; border: 1px solid #374151; transition: background 0.2s;">
-                                Inspect Architecture (GitHub) →
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="product-card" style="box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4), inset 0 0 15px rgba(0, 122, 255, 0.05); border-color: rgba(0, 122, 255, 0.15);">
-                        <div>
-                            <div class="product-meta">
-                                <span class="product-status" style="border-color: #007AFF; color: #007AFF; background-color: rgba(0, 122, 255, 0.1);">SPATIAL COMPUTING RUNTIME</span>
-                            </div>
-                            <h4>Axiom Hyperion ◤A-S◢</h4>
-                            <p>Spatial computing runtime and digital twin ecosystem powering Axiom Flora. Renders real-time 1:1 augmented reality environments without data caching or corporate middleware bottlenecks.</p>
-                        </div>
-                        <div>
-                            <div class="tech-spec">
-                                <i class="fa-solid fa-vr-cardboard"></i> UI: Spatial Engine | Platform: AR Core
-                            </div>
-                            <a href="https://github.com/echeparesmanuel36-design/axiom-hyperion-core" target="_blank" style="display: inline-block; width: 100%; text-align: center; background: #1f2937; color: #f3f4f6; font-family: monospace; font-size: 0.9rem; padding: 10px 0; border-radius: 6px; text-decoration: none; border: 1px solid #374151; transition: background 0.2s;">
-                                Inspect Architecture (GitHub) →
-                            </a>
-                        </div>
-                    </div>
-
-                </div> 
-            </div> 
         </section>
     </main>
 
-    <footer id="infrastructure">
+    <!-- FOOTER TERMINAL CON BOTÓN CORREO DIRECTO -->
+    <footer>
         <div class="container footer-content">
             <h5>BE SOVEREIGN. AXIOM SYSTEMS ◤A-S◢</h5>
             <p>Connect with our core engineering team for institutional inquiries and technical deep dives | IP architectures + full engineering dossiers for enterprise deployment.</p>
-
-            <div class="footer-socials">
-                <a href="https://github.com/echeparesmanuel36-design" class="social-link" target="_blank" title="GitHub Core">
-                    <i class="fa-brands fa-github"></i>
-                </a>
-                <a href="https://x.com/ManuelAxiom" class="social-link" target="_blank" title="X Profile">
-                    <i class="fa-brands fa-x-twitter"></i>
-                </a>
-            </div>
+            
+            <a href="mailto:echeparesmanuel36@gmail.com" class="btn-mail">
+                <i class="fa-solid fa-envelope"></i> Contactar Canal de Inyección Core
+            </a>
 
             <div class="footer-bottom">
                 &copy; 2026 Axiom Systems. All rights reserved. Sovereign DeepTech Infrastructure.
             </div>
         </div>
     </footer>
+
+    <!-- INTERFAZ DE ANIMACIÓN Y COREOGRAFÍA DE COMPORTAMIENTO LOCAL INTERNO -->
+    <script>
+        /* CONMUTACIÓN LUMÍNICA SÍNCRONA INTERNA DEL ENTORNO */
+        const htmlElement = document.documentElement;
+        const themeBtn = document.getElementById('themeBtn');
+
+        themeBtn.addEventListener('click', () => {
+            const currentTheme = htmlElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            htmlElement.setAttribute('data-theme', newTheme);
+            themeBtn.querySelector('i').className = newTheme === 'dark' ? 'fa-solid fa-circle-half-stroke' : 'fa-solid fa-sun';
+        });
+
+        /* CONTROLADOR DE APERTURA DEL PANEL FLOTANTE DE LA CONSOLA DE CUENTAS */
+        const accountBtn = document.getElementById('accountBtn');
+        const accountsDropdown = document.getElementById('accountsDropdown');
+
+        accountBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            accountsDropdown.classList.toggle('active');
+        });
+
+        document.addEventListener('click', () => {
+            accountsDropdown.classList.remove('active');
+        });
+
+        /* COREOGRAFÍA DE APERTURA DE SECCIONES MODULARES RETRACTILES */
+        const accordions = document.querySelectorAll('.section-accordion');
+
+        accordions.forEach(accordion => {
+            const trigger = accordion.querySelector('.accordion-trigger');
+            trigger.addEventListener('click', () => {
+                const isActive = accordion.classList.contains('active');
+                
+                // Cierre de bloques adyacentes para limpieza del chasis visual
+                accordions.forEach(acc => acc.classList.remove('active'));
+                
+                if (!isActive) {
+                    accordion.classList.add('active');
+                }
+            });
+        });
+
+        /* RENDERIZADO INTERACTIVO SÍNCRONO DEL FONDO VECTORIAL BARE-METRIC */
+        const canvas = document.getElementById('bg-mesh');
+        const ctx = canvas.getContext('2d');
+
+        let particles = [];
+        const maxParticles = 45;
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+
+        class CoreParticle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.vx = (Math.random() - 0.5) * 0.6;
+                this.vy = (Math.random() - 0.5) * 0.6;
+                this.radius = Math.random() * 2 + 1;
+            }
+            update() {
+                this.x += this.vx;
+                this.y += this.vy;
+                if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
+                if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
+            }
+            draw() {
+                const isDark = htmlElement.getAttribute('data-theme') === 'dark';
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+                ctx.fillStyle = isDark ? 'rgba(0, 245, 255, 0.3)' : 'rgba(0, 122, 255, 0.2)';
+                ctx.fill();
+            }
+        }
+
+        for (let i = 0; i < maxParticles; i++) {
+            particles.push(new CoreParticle());
+        }
+
+        function animateMesh() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            const isDark = htmlElement.getAttribute('data-theme') === 'dark';
+            
+            // Dibujar líneas de conexión del tensor local
+            for (let i = 0; i < particles.length; i++) {
+                for (let j = i + 1; j < particles.length; j++) {
+                    const dx = particles[i].x - particles[j].x;
+                    const dy = particles[i].y - particles[j].y;
+                    const dist = Math.sqrt(dx * dx + dy * dy);
+
+                    if (dist < 150) {
+                        ctx.beginPath();
+                        ctx.moveTo(particles[i].x, particles[i].y);
+                        ctx.lineTo(particles[j].x, particles[j].y);
+                        const alpha = (1 - (dist / 150)) * 0.08;
+                        ctx.strokeStyle = isDark ? `rgba(0, 245, 255, ${alpha})` : `rgba(0, 122, 255, ${alpha})`;
+                        ctx.lineWidth = 1;
+                        ctx.stroke();
+                    }
+                }
+                particles[i].update();
+                particles[i].draw();
+            }
+            requestAnimationFrame(animateMesh);
+        }
+        animateMesh();
+    </script>
 </body>
 </html>
