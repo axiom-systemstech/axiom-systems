@@ -120,8 +120,7 @@
             gap: 20px;
         }
 
-        /* BOTONES DE EXTRUSIÓN REFACTRIVA NEUMÓRFICA */
-        .theme-toggle, .btn-header, .btn-account-toggle {
+        .theme-toggle, .btn-account-toggle {
             background: var(--card-bg);
             border: none;
             color: var(--text-main);
@@ -139,7 +138,7 @@
             overflow: hidden;
         }
 
-        .theme-toggle::before, .btn-header::before, .btn-account-toggle::before {
+        .theme-toggle::before, .btn-account-toggle::before {
             content: '';
             position: absolute;
             top: 0; left: 0; width: 100%; height: 100%;
@@ -152,12 +151,11 @@
             mask-composite: exclude;
         }
 
-        .theme-toggle:active, .btn-header:active, .btn-account-toggle:active {
+        .theme-toggle:active, .btn-account-toggle:active {
             box-shadow: var(--shadow-concave);
             transform: translateY(1px);
         }
 
-        /* PANEL FLOTANTE DE CUENTAS DEL OPERADOR */
         .accounts-dropdown {
             position: absolute;
             top: 90px;
@@ -288,7 +286,7 @@
             color: var(--text-main);
             text-align: left;
             font-family: 'Urbanist', sans-serif;
-            font-size: 26px;
+            font-size: 24px;
             font-weight: 800;
             cursor: pointer;
             display: flex;
@@ -314,7 +312,7 @@
         }
 
         .section-accordion.active .accordion-content {
-            max-height: 5000px; /* Suficiente margen para expandir sin saltos */
+            max-height: 7000px; /* Incrementado para albergar todas las IPs reales sin cortes */
             padding-bottom: 40px;
         }
 
@@ -339,7 +337,6 @@
             position: relative;
             overflow: hidden;
             border: 1px solid rgba(0, 122, 255, 0.05);
-            box-shadow: inset 0 0 20px rgba(255,255,255,0.01);
         }
 
         .product-card::before {
@@ -401,7 +398,6 @@
             line-height: 1.4;
         }
 
-        /* BOTONES INTERNOS DE ACCIÓN CON EXTRUSIÓN */
         .btn-launch {
             display: inline-block;
             width: 100%;
@@ -505,19 +501,16 @@
             opacity: 0.6;
         }
 
-        /* RESPONSIVE DESIGN */
         @media (max-width: 768px) {
             .grid-products { grid-template-columns: 1fr; }
             .hero h2 { font-size: 38px; }
-            .accordion-trigger { font-size: 20px; padding: 24px; }
+            .accordion-trigger { font-size: 18px; padding: 24px; }
             .accordion-content { padding: 0 24px; }
-            .btn-header span { display: none; }
         }
     </style>
 </head>
 <body>
 
-    <!-- MALLA VECTORIAL INTERACTIVA RENDERIZADA EN LOCAL -->
     <canvas id="bg-mesh"></canvas>
 
     <header>
@@ -534,7 +527,6 @@
         </div>
     </header>
 
-    <!-- PANEL FLOTANTE DE CONEXIONES EXTERNAS -->
     <div class="accounts-dropdown" id="accountsDropdown">
         <h4 style="font-family: 'Urbanist', sans-serif; font-size: 16px; margin-bottom: 12px; color: var(--accent-blue);">Nodos Operadores</h4>
         <a href="https://github.com/echeparesmanuel36-design" target="_blank" class="account-link">
@@ -546,7 +538,6 @@
     </div>
 
     <main class="main-content">
-        <!-- SECCIÓN HERO COMPLETA -->
         <section class="hero">
             <div class="container">
                 <div class="hero-content-wrapper">
@@ -557,19 +548,19 @@
             </div>
         </section>
 
-        <!-- SECCIONES MODULARES DESPLEGABLES CON NUESTRO DISEÑO BARE-METRIC -->
+        <!-- SECCIONES EN ACORDEÓN DESPLEGABLE - TODAS LAS IPS VERIFICADAS DE AXIOM -->
         <section class="container">
 
-            <!-- SECCIÓN 1: DEEPTECH UTILITIES MASS DAILY MÓDULOS (NUEVAS APPS) -->
+            <!-- ◤ SECCIÓN 01 ◢ CORE UTILITIES MASS DAILY MÓDULOS -->
             <div class="section-accordion active">
                 <button class="accordion-trigger">
-                    <span>◤01◢ Utility Media & Log Infrastructure</span>
+                    <span>◤01◢ Core Media, Audio & Log Decentralized Utilities</span>
                     <i class="fa-solid fa-chevron-down"></i>
                 </button>
                 <div class="accordion-content">
                     <div class="grid-products">
 
-                        <!-- CARD 1: AXIOM_MEDIA_CRUSHER -->
+                        <!-- AXIOM_MEDIA_CRUSHER -->
                         <div class="product-card">
                             <div>
                                 <div class="product-meta">
@@ -588,33 +579,33 @@
                             </div>
                         </div>
 
-                        <!-- CARD 2: AXIOM_LOG_PURGE -->
+                        <!-- AXIOM_LOG_PURGE -->
                         <div class="product-card">
                             <div>
                                 <div class="product-meta">
                                     <span class="product-status">Local Server Log Purification</span>
                                 </div>
                                 <h4>Axiom Log Purge 🔒</h4>
-                                <p>Infraestructura utilitaria diseñada para la limpieza, anonimización de registros y parseo masivo de archivos de logs (.log, .txt, .csv) provenientes de servidores Apache, Nginx o Syslogs. Integra anonimizador de IPs por hashes deterministas, filtros de inyecciones SQLi/XSS, y sintetizador Nginx a JSON instantáneo con un prisma interactivo 3D sincronizado mediante GSAP.</p>
+                                <p>Infraestructura utilitaria diseñada para la limpieza, anonimización de registros y parseo masivo de archivos de logs (.log, .txt, .csv) provenientes de servidores Apache, Nginx o Syslogs. Integra anonimizador de IPs por hashes deterministas, filtros de inyecciones SQLi/XSS, y shattered Nginx a JSON instantáneo con un prisma interactivo 3D de Three.js sincronizado mediante GSAP.</p>
                             </div>
                             <div>
                                 <div class="tech-spec">
                                     <i class="fa-solid fa-shield-halved"></i> Engine: Structural Parser | Feedback: Web Audio API | Limits: Supabase Auth Validation > 10MB
                                 </div>
-                                <a href="https://echeparesmanuel36-design.github.io/AXIOM_LOG_PURGE/" target="_blank" class="btn-launch">
+                                <a href="https://echeparesmanuel36-design.github.io/AXIOG_LOG_PURGE/" target="_blank" class="btn-launch">
                                     Launch Log Purge (GitHub) →
                                 </a>
                             </div>
                         </div>
 
-                        <!-- CARD 3: AXIOM_MUTE_POP -->
+                        <!-- AXIOM_MUTE_POP -->
                         <div class="product-card">
                             <div>
                                 <div class="product-meta">
                                     <span class="product-status">Local Audio Isolation Matrix</span>
                                 </div>
                                 <h4>Axiom Mute Pop 🎙️</h4>
-                                <p>Extractor, limpiador y aislador instantáneo de pistas de voz y acapellas de cualquier canción, audio de WhatsApp o vídeo viral de forma 100% local y aislada en el navegador. Aplica filtros matemáticos de paso de banda, auto-tune casual por desplazamiento frecuencial de notas y simulación inercial controlada por Lenis con interfaz de cristal de mercurio líquido.</p>
+                                <p>Extractor, limpiador y aislador instantáneo de pistas de voz y acapellas de cualquier canción, audio de WhatsApp o vídeo viral de forma 100% local y aislada en el navegador. Aplica filtros matemáticos de paso de banda, auto-tune casual por desplazamiento frecuencial de notas y simulación inercial de fluidos de mercurio líquido controlada por Lenis.</p>
                             </div>
                             <div>
                                 <div class="tech-spec">
@@ -626,14 +617,33 @@
                             </div>
                         </div>
 
+                        <!-- AXIOM DOC SHREDDER -->
+                        <div class="product-card">
+                            <div>
+                                <div class="product-meta">
+                                    <span class="product-status">Data Sanitization & Security Protocols</span>
+                                </div>
+                                <h4>Axiom Doc Shredder 🗑️</h4>
+                                <p>La herramienta definitiva para limpiar texto corrupto, código basura y datos desorganizados (PDFs, Excel, copias web). Integra módulos locales optimizados para purgar saltos de línea, espacios invisibles, extraer emails/URLs, limpiar HTML/SQL, y conversión estructural instantánea a JSON sin buffers intermedios.</p>
+                            </div>
+                            <div>
+                                <div class="tech-spec">
+                                    <i class="fa-solid fa-dumpster-fire"></i> Core: Text Sanitizer | Modules: 10 Active Core | Latency: Local 0.1ms Flat
+                                </div>
+                                <a href="https://echeparesmanuel36-design.github.io/AXIOM_DOC_SHREDDER/" target="_blank" class="btn-launch">
+                                    Launch Doc Shredder (GitHub) →
+                                </a>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </div>
 
-            <!-- SECCIÓN 2: CORE GRAPHICS, CYBERNETICS & CORE INTERFACES -->
+            <!-- ◤ SECCIÓN 02 ◢ GRAPHICS, COMPENDIUMS & SAVINGS OPTIMIZATION -->
             <div class="section-accordion">
                 <button class="accordion-trigger">
-                    <span>◤02◢ Graphics, Cybernetics & Cryptography Core</span>
+                    <span>◤02◢ Visual Cryptography, Gastronomy & Financial Optimization</span>
                     <i class="fa-solid fa-chevron-down"></i>
                 </button>
                 <div class="accordion-content">
@@ -643,14 +653,14 @@
                         <div class="product-card">
                             <div>
                                 <div class="product-meta">
-                                    <span class="product-status">3D WebGL Graphics & Cryptography</span>
+                                    <span class="product-status">3D WebGL Visual Cryptography</span>
                                 </div>
                                 <h4>Prism-Code Cryptor Pro v2.0</h4>
-                                <p>Visual cryptographic engine developed in a 3D WebGL environment that transforms plain text strings into unique molecular geometric signatures and light refractions based on cyclical fractals. Maps ASCII directly into vector outputs.</p>
+                                <p>A visual cryptographic engine developed in a 3D WebGL environment that transforms plain text strings, passwords, or seed phrases into unique molecular geometric signatures and light refractions based on cyclical fractals. Powered by Three.js running steady at 60 FPS.</p>
                             </div>
                             <div>
                                 <div class="tech-spec">
-                                    <i class="fa-solid fa-cube"></i> Graphics: Three.js WebGL | Math: Cyclic Fractals | Execution: Edge Layer
+                                    <i class="fa-solid fa-cube"></i> Graphics: Three.js (WebGL Core) | Math: Cyclic Fractals | Deployment: Vercel Edge
                                 </div>
                                 <a href="https://prism-code-cryptor.vercel.app/" target="_blank" class="btn-launch">
                                     Launch Prism Cryptor →
@@ -658,110 +668,59 @@
                             </div>
                         </div>
 
-                        <!-- SCHEMA TO API COPILOT -->
+                        <!-- AXIOM RECETAS -->
                         <div class="product-card">
                             <div>
                                 <div class="product-meta">
-                                    <span class="product-status">Automated Backend DevTools</span>
+                                    <span class="product-status">Gastronomic Compendium Matrix</span>
                                 </div>
-                                <h4>Schema-to-API Copilot Pro v2.5</h4>
-                                <p>Advanced automated backend architecture suite engineered to compile relational database schemas and RESTful endpoints from natural language specifications. High-speed local semantic parser structures execution in 0.1ms.</p>
+                                <h4>Axiom Recetas 🍳</h4>
+                                <p>Compendio gastronómico de alta fidelidad estructural que cataloga más de 1000 recetas procedentes de 10 matrices culturales del planeta. Indexación en milisegundos mediante filtrado local de ingredientes, técnicas complejas de cocción y esquemas de diseño Bare-Metric.</p>
                             </div>
                             <div>
                                 <div class="tech-spec">
-                                    <i class="fa-solid fa-server"></i> Compiler: Frictionless Parser (0.1ms) | Core: Vanilla JS | Network Latency: Zero
+                                    <i class="fa-solid fa-kitchen-set"></i> Database: Local Compendium | UI: Glassmorphic Core | Latency: 0.1ms Local
                                 </div>
-                                <a href="https://schema-to-api-copilot.vercel.app/" target="_blank" class="btn-launch">
-                                    Launch API Copilot →
+                                <a href="https://echeparesmanuel36-design.github.io/Axiom-Recetas/" target="_blank" class="btn-launch">
+                                    Launch Axiom Recetas (GitHub) →
                                 </a>
                             </div>
                         </div>
 
-                        <!-- FRICTIONLESS UI BUILDER -->
+                        <!-- AXIOM ANIMALS -->
                         <div class="product-card">
                             <div>
                                 <div class="product-meta">
-                                    <span class="product-status">Generative AI Development</span>
+                                    <span class="product-status">Bio-Historical Taxonomy Compendium</span>
                                 </div>
-                                <h4>Frictionless-UI Builder v2.1</h4>
-                                <p>A generative SaaS development environment engineered to eliminate front-end design friction. Powered by Groq Cloud executing Meta's Llama 3.3 (70B), the system injects production-ready user interfaces in real-time.</p>
+                                <h4>Axiom Animals 🧬</h4>
+                                <p>Un compendio bio-histórico interactivo que reúne y clasifica criaturas reales, extintas de la prehistoria (Smilodón, Megalodón), especímenes mitológicos y arquitecturas evolutivas del futuro. Explora de forma síncrona por eras tectónicas, hábitats y vectores conductuales.</p>
                             </div>
                             <div>
                                 <div class="tech-spec">
-                                    <i class="fa-solid fa-wand-magic-sparkles"></i> LLM: Llama 3.3 via Groq | Core: Vanilla JS Client Blobs | Presets: 6 Structural
+                                    <i class="fa-solid fa-dna"></i> Database: Local Taxonomy Core | Vectors: Strength/Speed Metrics | Platform: Edge UI
                                 </div>
-                                <a href="https://frictionless-ui-builder.vercel.app/" target="_blank" class="btn-launch">
-                                    Launch UI Builder →
+                                <a href="https://echeparesmanuel36-design.github.io/axiom-Animals/" target="_blank" class="btn-launch">
+                                    Launch Axiom Animals (GitHub) →
                                 </a>
                             </div>
                         </div>
 
-                    </div>
-                </div>
-            </div>
-
-            <!-- SECCIÓN 3: HARDWARE KERNEL, SPATIAL COMPUTING & RUNTIME SYSTEMS -->
-            <div class="section-accordion">
-                <button class="accordion-trigger">
-                    <span>◤03◢ Hardware Kernel, Spatial Computing & Runtime Systems</span>
-                    <i class="fa-solid fa-chevron-down"></i>
-                </button>
-                <div class="accordion-content">
-                    <div class="grid-products">
-
-                        <!-- TORQUE SYNC -->
+                        <!-- AXIOM SPLIT WISE -->
                         <div class="product-card">
                             <div>
                                 <div class="product-meta">
-                                    <span class="product-status">Bare-Metal Actuation Loop</span>
+                                    <span class="product-status">Decentralized Ledger Optimization</span>
                                 </div>
-                                <h4>Axiom Torque-Sync + Mirage AR</h4>
-                                <p>Dual-core bare-metal firmware engineered in native Rust under #![no_std] constraints. Synchronizes magnetic direct-drive force feedback loops at 40kHz via direct volatile register mapping, eliminating OS jitter.</p>
+                                <h4>Axiom Split Wise 📊</h4>
+                                <p>La arquitectura lógica definitiva para la división y liquidación de gastos compartidos en grupos (viajes, activos compartidos). Añade flujos financieros, calcula balances en tiempo real y ejecuta matrices de optimización para derivar las transferencias mínimas obligatorias.</p>
                             </div>
                             <div>
                                 <div class="tech-spec">
-                                    <i class="fa-solid fa-microchip"></i> Core: Direct-Drive FOC | Latency: 1.2ms Flat | Interface: Holographic MMIO
+                                    <i class="fa-solid fa-money-bill-transfer"></i> Algorithm: Debt Simplification Matrix | Core: Real-Time Balances | Execution: Local
                                 </div>
-                                <a href="https://github.com/echeparesmanuel36-design/axiom-torque-sync-mirage-ar" target="_blank" class="btn-launch">
-                                    Inspect Architecture →
-                                </a>
-                            </div>
-                        </div>
-
-                        <!-- ZERO CRYPTO -->
-                        <div class="product-card">
-                            <div>
-                                <div class="product-meta">
-                                    <span class="product-status">Zero-Trust Cryptographic Core</span>
-                                </div>
-                                <h4>Axiom Zero-Crypto</h4>
-                                <p>Proprietary cryptographic library and digital signature engine natively engineered in pure Rust under #![no_std] constraints for banking. Processes critical TLS/AES matrices in 0.15ms directly on the stack.</p>
-                            </div>
-                            <div>
-                                <div class="tech-spec">
-                                    <i class="fa-solid fa-lock"></i> Architecture: #![no_std] Zero-Heap | Latency: 0.15ms | Safety: Constant-Time
-                                </div>
-                                <a href="https://acquire.com" target="_blank" class="btn-launch">
-                                    Acquire Intellectual Property →
-                                </a>
-                            </div>
-                        </div>
-
-                        <!-- PHANTOM OS -->
-                        <div class="product-card">
-                            <div>
-                                <div class="product-meta">
-                                    <span class="product-status">High-Performance Runtime</span>
-                                </div>
-                                <h4>Axiom Phantom OS</h4>
-                                <p>Instant-boot secondary micro-operating system dedicated exclusively to gaming and high-performance execution. Bypasses legacy kernel structures to grant software unmediated access to silicon registers.</p>
-                            </div>
-                            <div>
-                                <div class="tech-spec">
-                                    <i class="fa-solid fa-compact-disc"></i> Latency: 1.2ms | Allocation: Identity Map | Mode: Single-Ring Core
-                                </div>
-                                <a href="https://github.com/echeparesmanuel36-design/axiom-phantom-os" target="_blank" class="btn-launch">
-                                    Inspect Kernel Architecture →
+                                <a href="https://echeparesmanuel36-design.github.io/AXIOM_SPLIT_WISE/" target="_blank" class="btn-launch">
+                                    Launch Split Wise (GitHub) →
                                 </a>
                             </div>
                         </div>
@@ -770,68 +729,658 @@
                 </div>
             </div>
 
-            <!-- SECCIÓN 4: LOCAL SIMULATIONS & BIOMETRIC POSITIONING -->
+            <!-- ◤ SECCIÓN 03 ◢ TELEMETRY, DIAGNOSTICS & HARDWARE LAYERS -->
             <div class="section-accordion">
                 <button class="accordion-trigger">
-                    <span>◤04◢ Local Simulations & Biometric Positioning</span>
+                    <span>◤03◢ Hardware Telemetry, Diagnostics & Local Simulation</span>
                     <i class="fa-solid fa-chevron-down"></i>
                 </button>
                 <div class="accordion-content">
                     <div class="grid-products">
 
-                        <!-- NANOBOT SWARM -->
+                        <!-- AXIOM BATTERY HUD -->
                         <div class="product-card">
                             <div>
                                 <div class="product-meta">
-                                    <span class="product-status">Particle Swarm Simulation</span>
+                                    <span class="product-status">Hardware Diagnostics & Telemetry</span>
                                 </div>
-                                <h4>Nano-Bot Swarm Simulator Pro</h4>
-                                <p>Interactive medical simulation engine designed to coordinate the behavioral mechanics of millions of autonomous micro-robots inside a bloodstream. Built with Particle Swarm Optimization (PSO).</p>
+                                <h4>Axiom Battery HUD 🔋</h4>
+                                <p>Monitor predictivo de salud y degradación de baterías para sistemas de movilidad y dispositivos (móviles, portátiles, patinetes). Ajusta en tiempo real variables críticas de temperatura, ciclos químicos y curvas de carga, visualizando el estado electroquímico con alertas reactivas de estilo militar.</p>
                             </div>
                             <div>
                                 <div class="tech-spec">
-                                    <i class="fa-solid fa-dna"></i> Engine: HTML5 Canvas 60FPS | Math: Euclidean Vector Fields | Latency: Local
+                                    <i class="fa-solid fa-battery-three-quarters"></i> Engine: Electrochemical Telemetry | Interface: Tactical HUD | Profile: Local Diagnostics
                                 </div>
-                                <a href="https://nanobot-swarm-simulator.vercel.app/" target="_blank" class="btn-launch">
-                                    Launch Swarm Simulator →
+                                <a href="https://echeparesmanuel36-design.github.io/AXIOM_BATTERY_HUD/" target="_blank" class="btn-launch">
+                                    Launch Battery HUD (GitHub) →
                                 </a>
                             </div>
                         </div>
 
-                        <!-- AERO SIM -->
+                        <!-- AXIOM CAFFEINE -->
                         <div class="product-card">
                             <div>
                                 <div class="product-meta">
-                                    <span class="product-status">Kinetic Wind Tunnel Matrix</span>
+                                    <span class="product-status">Molecular Extraction Fluid Mathematics</span>
                                 </div>
-                                <h4>Axiom Aero Sim</h4>
-                                <p>Configurador aerodinámico interactivo en 3D con estética de HUD militar táctico. Permite el ajuste en tiempo real de geometrías de vectores complejos proyectando el flujo cinético del aire para analizar fricción.</p>
+                                <h4>Axiom Caffeine v2.0 ☕</h4>
+                                <p>Asistente de extracción molecular de precisión matemática para café de especialidad. Mapea perfiles dinámicos para V60, Espresso, Prensa Francesa y Cafetera Italiana, calibrando ratios de solubilidad e hidratación con telemetría de llenado en tiempo real.</p>
                             </div>
                             <div>
                                 <div class="tech-spec">
-                                    <i class="fa-solid fa-jet-fighter"></i> Engine: 3D Vector Core | Analytics: Boundary Layer Friction | Pipeline: Local
+                                    <i class="fa-solid fa-mug-hot"></i> Core: Molecular Chemistry Engine | Ratios: Custom Hydration Matrices | Interface: Precision HUD
+                                </div>
+                                <a href="https://echeparesmanuel36-design.github.io/AXIOM_CAFFEINE/" target="_blank" class="btn-launch">
+                                    Launch Axiom Caffeine (GitHub) →
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- AXIOM AERO SIM -->
+                        <div class="product-card">
+                            <div>
+                                <div class="product-meta">
+                                    <span class="product-status">Aerodynamic Design & Fluid Flux Tunnel</span>
+                                </div>
+                                <h4>Axiom Aero Sim ✈️</h4>
+                                <p>Configurador aerodinámico interactivo en 3D con estética de HUD militar táctico. Permite el ajuste en tiempo real de geometrías de vectores complejos (alas, alerones, chasis monolíticos), proyectando el flujo cinético del aire dentro de un túnel de viento virtual para analizar fricción.</p>
+                            </div>
+                            <div>
+                                <div class="tech-spec">
+                                    <i class="fa-solid fa-jet-fighter"></i> Engine: 3D Vector Core | Simulations: Wind Tunnel Kinetic Calculations | Profile: Aerodynamic IP
                                 </div>
                                 <a href="https://echeparesmanuel36-design.github.io/AXIOM_AERO_SIM/" target="_blank" class="btn-launch">
-                                    Launch Aero Sim →
+                                    Launch Aero Sim (GitHub) →
                                 </a>
                             </div>
                         </div>
 
-                        <!-- WATER LOG -->
+                        <!-- AXIOM PET TRANSLATE -->
                         <div class="product-card">
                             <div>
                                 <div class="product-meta">
-                                    <span class="product-status">Biometric Metabolic Tracker</span>
+                                    <span class="product-status">Biometric Inference & Ethology Simulation</span>
                                 </div>
-                                <h4>Axiom Water Log</h4>
-                                <p>Monitor biométrico de hidratación diaria de alta precisión. Registra consumo en tiempo real, procesa umbrales metabólicos locales y renderiza el nivel volumétrico mediante un algoritmo de simulación física.</p>
+                                <h4>Axiom Pet Translate 🐾</h4>
+                                <p>Analizador biométrico y traductor de patrones conductuales para caninos y felinos. Ingesta capturas ópticas o secuencias lógicas de video para procesar matrices de salud superficial, posicionamiento estructural de extremidades y traducción etológica nativa de forma aislada.</p>
                             </div>
                             <div>
                                 <div class="tech-spec">
-                                    <i class="fa-solid fa-droplet"></i> Model: Fluid Dynamics Simulation | Matrix: Biometric Tracking | UI: Minimal
+                                    <i class="fa-solid fa-paw"></i> Core: Biometric Parser | Scope: Ethology Behavioral Logistics | Runtime: Edge Architecture
                                 </div>
-                                <a href="https://echeparesmanuel36-design.github.io/AXIOM_WATER_LOG/" target="_blank" class="btn-launch">
-                                    Launch Water Log →
+                                <a href="https://echeparesmanuel36-design.github.io/AXIOM_PET_TRANSLATE/" target="_blank" class="btn-launch">
+                                    Launch Pet Translate (GitHub) →
+                                </a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- ◤ SECCIÓN 04 ◢ LOW-LEVEL BARE-METAL CORE INFRASTRUCTURE (RUST / NO_STD) -->
+            <div class="section-accordion">
+                <button class="accordion-trigger">
+                    <span>◤04◢ Low-Level Bare-Metal Core Infrastructure (Rust / no_std)</span>
+                    <i class="fa-solid fa-chevron-down"></i>
+                </button>
+                <div class="accordion-content">
+                    <div class="grid-products">
+
+                        <!-- AXIOM ZERO-CRYPTO -->
+                        <div class="product-card">
+                            <div>
+                                <div class="product-meta">
+                                    <span class="product-status">Enterprise Zero-Trust Security</span>
+                                </div>
+                                <h4>Axiom Zero-Crypto</h4>
+                                <p>A proprietary cryptographic library and digital signature engine natively engineered in pure Rust under #![no_std] constraints for high-security SaaS banking. Processes critical TLS/AES encryption matrices in 0.15ms directly on the stack by leveraging zero dynamic memory allocation.</p>
+                            </div>
+                            <div>
+                                <div class="tech-spec">
+                                    <i class="fa-solid fa-shield-halved"></i> Engine: Constant-Time Crypto | Latency: 0.15ms | Profile: #![no_std] Zero-Heap
+                                </div>
+                                <a href="https://acquire.com" target="_blank" class="btn-launch">
+                                    Acquire Intellectual Property (Acquire) →
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- AXIOM AERO-INGRESS -->
+                        <div class="product-card">
+                            <div>
+                                <div class="product-meta">
+                                    <span class="product-status">Bare-Metal Kernel Proxy</span>
+                                </div>
+                                <h4>Axiom Aero-Ingress</h4>
+                                <p>A proprietary reverse proxy and ultra-fast load balancer natively engineered in Rust under #![no_std] constraints for high-scale SaaS architectures. Processes API routing tables and cryptographic JWT token validation in 0.2ms directly at the kernel level by leveraging zero dynamic memory allocation.</p>
+                            </div>
+                            <div>
+                                <div class="tech-spec">
+                                    <i class="fa-solid fa-microchip"></i> Engine: Kernel Routing | Latency: 0.2ms Const. | Profile: #![no_std] Zero-Heap
+                                </div>
+                                <a href="https://acquire.com" target="_blank" class="btn-launch">
+                                    Acquire Intellectual Property (Acquire) →
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- AXIOM OXIDE-KV -->
+                        <div class="product-card">
+                            <div>
+                                <div class="product-meta">
+                                    <span class="product-status">Bare-Metal Edge Database</span>
+                                </div>
+                                <h4>Axiom Oxide-KV</h4>
+                                <p>A proprietary embedded key-value database engine natively engineered in Rust under #![no_std] constraints for high-density IoT hardware. Replaces conventional storage engines like SQLite by implementing fixed static arrays directly into the volatile memory stack, eliminating OS kernel overhead.</p>
+                            </div>
+                            <div>
+                                <div class="tech-spec">
+                                    <i class="fa-solid fa-database"></i> Engine: Static-Array KV | Latency: 0.4ms Const. | Profile: #![no_std] Bare-Metal
+                                </div>
+                                <a href="https://acquire.com" target="_blank" class="btn-launch">
+                                    Acquire Intellectual Property (Acquire) →
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- AXIOM TORQUE-SYNC -->
+                        <div class="product-card">
+                            <div>
+                                <div class="product-meta">
+                                    <span class="product-status">Bare-Metal Dual-Core Actuation</span>
+                                </div>
+                                <h4>Axiom Torque-Sync + Mirage AR</h4>
+                                <p>Dual-core bare-metal firmware engineered in native Rust under #![no_std] constraints for ultra-low latency simulation hardware. Synchronizes magnetic direct-drive force feedback loops at 40kHz (Core 0) via direct volatile register mapping, eliminating OS kernel jitter.</p>
+                            </div>
+                            <div>
+                                <div class="tech-spec">
+                                    <i class="fa-solid fa-gamepad"></i> Core: Direct-Drive FOC | Latency: 1.2ms Flat | Interface: Holographic MMIO
+                                </div>
+                                <a href="https://github.com/echeparesmanuel36-design/axiom-torque-sync-mirage-ar" target="_blank" class="btn-launch">
+                                    Inspect Architecture (GitHub) →
+                                </a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- ◤ SECCIÓN 05 ◢ SPATIAL COMPUTING & REAL-TIME SIMULATION CORE -->
+            <div class="section-accordion">
+                <button class="accordion-trigger">
+                    <span>◤05◢ Spatial Computing & Real-Time Simulation Core</span>
+                    <i class="fa-solid fa-chevron-down"></i>
+                </button>
+                <div class="accordion-content">
+                    <div class="grid-products">
+
+                        <!-- AXIOM GRAFF -->
+                        <div class="product-card">
+                            <div>
+                                <div class="product-meta">
+                                    <span class="product-status">Bare-Metal Fluid Kinematics</span>
+                                </div>
+                                <h4>Axiom Graff ◤A-S◢</h4>
+                                <p>Low-level spatial computing core engineered in native Rust under #![no_std] constraints. Tracks raw urban surface and wall meshes using direct LiDAR/ToF register mapping, enabling persistent 3D holographic art structures that project ray-traced physical illumination.</p>
+                            </div>
+                            <div>
+                                <div class="tech-spec">
+                                    <i class="fa-solid fa-palette"></i> Core: Fluid Dynamics | Latency: 1.4ms Flat | Interface: Zero-Copy LiDAR MMIO
+                                </div>
+                                <a href="https://github.com/echeparesmanuel36-design/axiom-graff" target="_blank" class="btn-launch">
+                                    Inspect Architecture (GitHub) →
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- AXIOM SHADOWPLAY AR -->
+                        <div class="product-card">
+                            <div>
+                                <div class="product-meta">
+                                    <span class="product-status">Bare-Metal Photon Occlusion</span>
+                                </div>
+                                <h4>Axiom ShadowPlay AR ◤A-S◢</h4>
+                                <p>Low-level software infrastructure engineered in native Rust under #![no_std] constraints. Tracks raw environmental photon interruption boundaries directly at the hardware sensor layer, transforming physical transient silhouettes into portals.</p>
+                            </div>
+                            <div>
+                                <div class="tech-spec">
+                                    <i class="fa-solid fa-moon"></i> Core: Penumbra Tracking | Latency: 1.2ms Flat | Interface: Zero-Copy ToF MMIO
+                                </div>
+                                <a href="https://github.com/echeparesmanuel36-design/axiom-shadowplay-ar" target="_blank" class="btn-launch">
+                                    Inspect Architecture (GitHub) →
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- AXIOM MIRROR-SELF AR -->
+                        <div class="product-card">
+                            <div>
+                                <div class="product-meta">
+                                    <span class="product-status">Bare-Metal Spatial Optics</span>
+                                </div>
+                                <h4>Axiom Mirror-Self AR ◤A-S◢</h4>
+                                <p>High-performance volumetric body-scanning and real-time cloth deformation matrix written in native Rust under #![no_std]. Bypasses operating system rendering layers to stream a hyper-realistic digital twin directly into optical layers.</p>
+                            </div>
+                            <div>
+                                <div class="tech-spec">
+                                    <i class="fa-solid fa-shirt"></i> Core: Mass-Spring Kinetics | Latency: 1.5ms Flat | Buffer: Zero-Copy Unified Memory
+                                </div>
+                                <a href="https://github.com/echeparesmanuel36-design/axiom-mirror-self-ar" target="_blank" class="btn-launch">
+                                    Inspect Architecture (GitHub) →
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- AXIOM BALLISTICA -->
+                        <div class="product-card">
+                            <div>
+                                <div class="product-meta">
+                                    <span class="product-status">Real-Time Physics Co-Processor</span>
+                                </div>
+                                <h4>Axiom Ballistica ◤A-S◢</h4>
+                                <p>Bare-metal, real-time tactical physics and ballistic trajectory engine engineered for aerospace environments. Bypasses legacy operating system schedulers to compute millions of multi-body collisions per second directly on silicon registers.</p>
+                            </div>
+                            <div>
+                                <div class="tech-spec">
+                                    <i class="fa-solid fa-rocket"></i> Throughput: 1M+ Collisions/sec | Pipeline: SIMD AVX-512 | Memory: Zero-Heap Ring
+                                </div>
+                                <a href="https://github.com/echeparesmanuel36-design/axiom-ballistica" target="_blank" class="btn-launch">
+                                    Inspect Architecture (GitHub) →
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- AXIOM PHANTOM OS -->
+                        <div class="product-card">
+                            <div>
+                                <div class="product-meta">
+                                    <span class="product-status">Bare-Metal Runtime Environment</span>
+                                </div>
+                                <h4>Axiom Phantom OS ◤A-S◢</h4>
+                                <p>Instant-boot secondary micro-operating system dedicated exclusively to gaming and high-performance applications. Bypasses legacy kernel structures to grant software unmediated bare-metal access to underlying silicon.</p>
+                            </div>
+                            <div>
+                                <div class="tech-spec">
+                                    <i class="fa-solid fa-microchip"></i> Latency: 1.2ms | Execution: Single-Ring | Allocation: Zero-Heap Identity Map
+                                </div>
+                                <a href="https://github.com/echeparesmanuel36-design/axiom-phantom-os" target="_blank" class="btn-launch">
+                                    Inspect Architecture (GitHub) →
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- AXIOM OVERDRIVE -->
+                        <div class="product-card">
+                            <div>
+                                <div class="product-meta">
+                                    <span class="product-status">Intelligent Thermal Infrastructure</span>
+                                </div>
+                                <h4>Axiom Overdrive ◤A-S◢</h4>
+                                <p>External, magnetically coupled intelligent liquid cooling architecture engineered for ultra-dense mobile SoC. Governed by a hard real-time hardware loop that dynamically scales thermal dissipation based on direct telemetry.</p>
+                            </div>
+                            <div>
+                                <div class="tech-spec">
+                                    <i class="fa-solid fa-temperature-arrow-down"></i> Response: 1.5ms Adaptive | Coupling: Mag-Lock | Target: Zero-Throttling UMA
+                                </div>
+                                <a href="https://github.com/echeparesmanuel36-design/axiom-overdrive" target="_blank" class="btn-launch">
+                                    Inspect Architecture (GitHub) →
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- AXIOM NETRUN -->
+                        <div class="product-card">
+                            <div>
+                                <div class="product-meta">
+                                    <span class="product-status">Bare-Metal Routing Firmware</span>
+                                </div>
+                                <h4>Axiom NetRun ◤A-S◢</h4>
+                                <p>Bare-metal micro-firmware engineered in native Rust under #![no_std] for next-generation tactical networks. Establishes a direct interface with physical NIC registers to process data-in-transit encryption and line-rate DDoS mitigation.</p>
+                            </div>
+                            <div>
+                                <div class="tech-spec">
+                                    <i class="fa-solid fa-network-wired"></i> Architecture: Kernel Bypass | Filter: Line-Rate Drop | Cryptography: Quantum-Resistant
+                                </div>
+                                <a href="https://github.com/echeparesmanuel36-design/axiom-netrun" target="_blank" class="btn-launch">
+                                    Inspect Architecture (GitHub) →
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- AXIOM PULSE AUDIO -->
+                        <div class="product-card">
+                            <div>
+                                <div class="product-meta">
+                                    <span class="product-status">Low-Latency Audio Infrastructure</span>
+                                </div>
+                                <h4>Axiom Pulse Audio ◤A-S◢</h4>
+                                <p>High-performance Digital Signal Processing (DSP) and analog-modeled virtualization engine engineered in pure native Rust under #![no_std]. Routes live microphone feeds directly to hardware registers to achieve sub-1.2ms latency.</p>
+                            </div>
+                            <div>
+                                <div class="tech-spec">
+                                    <i class="fa-solid fa-sliders"></i> Architecture: Bare-Metal DSP | Latency: 1.2ms Target | Buffer: Lock-Free Chain
+                                </div>
+                                <a href="https://github.com/echeparesmanuel36-design/axiom-pulse-audio" target="_blank" class="btn-launch">
+                                    Inspect Architecture (GitHub) →
+                                </a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- ◤ SECCIÓN 06 ◢ SPATIAL ECOSYSTEM AND FLAGSHIP HUBS -->
+            <div class="section-accordion">
+                <button class="accordion-trigger">
+                    <span>◤06◢ Spatial Ecosystem & Flagship Hubs</span>
+                    <i class="fa-solid fa-chevron-down"></i>
+                </button>
+                <div class="accordion-content">
+                    <div class="grid-products">
+
+                        <!-- AXIOM HOLOTRACK -->
+                        <div class="product-card">
+                            <div>
+                                <div class="product-meta">
+                                    <span class="product-status">Live Mobile Engine</span>
+                                </div>
+                                <h4>Axiom HoloTrack ◤A-S◢</h4>
+                                <p>Real-time VFX engine for low latency (1.3ms) 3D hyper-realistic asset compositing on live mobile video feeds. Driven by custom Vulkan/Metal compute shaders under #![no_std] to eliminate OS bottlenecks.</p>
+                            </div>
+                            <div>
+                                <div class="tech-spec">
+                                    <i class="fa-solid fa-video"></i> Latency: 1.3ms Target | Ingestion: Zero-Copy | Architecture: Unified Memory (UMA)
+                                </div>
+                                <a href="https://github.com/echeparesmanuel36-design/axiom-holotrack" target="_blank" class="btn-launch">
+                                    Inspect Architecture (GitHub) →
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- AXIOM REFLEX -->
+                        <div class="product-card">
+                            <div>
+                                <div class="product-meta">
+                                    <span class="product-status">Bare-Metal Cybernetics</span>
+                                </div>
+                                <h4>Axiom Reflex ◤A-S◢</h4>
+                                <p>Experimental neuro-synchronization firmware engineered in pure Rust for active cybernetic prosthetics. Bypasses standard OS scheduler layers to map peripheral nervous system micro-volt potentials directly into actuators.</p>
+                            </div>
+                            <div>
+                                <div class="tech-spec">
+                                    <i class="fa-solid fa-bolt"></i> Target: Cortex-M4/M7 / RISC-V | Allocation: Zero-Heap | Jitter: Asymptotically Zero
+                                </div>
+                                <a href="https://github.com/echeparesmanuel36-design/axiom-reflex" target="_blank" class="btn-launch">
+                                    Inspect Architecture (GitHub) →
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- AXIOM NEURAL-UI -->
+                        <div class="product-card">
+                            <div>
+                                <div class="product-meta">
+                                    <span class="product-status">Neural Interface Graphics</span>
+                                </div>
+                                <h4>Axiom Neural-UI ◤A-S◢</h4>
+                                <p>Bare-metal interface engine and neural synchronization framework written in native Rust. Processes real-time eye-tracking and volumetric telemetry to project high-frequency vector layouts directly onto smart glass HUD layers.</p>
+                            </div>
+                            <div>
+                                <div class="tech-spec">
+                                    <i class="fa-solid fa-eye"></i> Core: Rust (no_std) | Target Refresh: 240 Hz Native | Telemetry: Retina Async
+                                </div>
+                                <a href="https://github.com/echeparesmanuel36-design/axiom-neural-ui" target="_blank" class="btn-launch">
+                                    Inspect Architecture (GitHub) →
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- AXIOM KINETIC -->
+                        <div class="product-card">
+                            <div>
+                                <div class="product-meta">
+                                    <span class="product-status">Real-Time Physics Engine</span>
+                                </div>
+                                <h4>Axiom Kinetic ◤A-S◢</h4>
+                                <p>Next-gen procedurally driven physics and destruction engine written in native Rust. Maps heavy matrix parallel compute pipelines directly to the GPU to simulate millions of fluid particles and structural collapses.</p>
+                            </div>
+                            <div>
+                                <div class="tech-spec">
+                                    <i class="fa-solid fa-display"></i> Core Engine: Rust Matrix | Performance: 4K @ 120 FPS | Compute Path: Direct GPU
+                                </div>
+                                <a href="https://github.com/echeparesmanuel36-design/axiom-kinetic" target="_blank" class="btn-launch">
+                                    Inspect Architecture (GitHub) →
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- AXIOM CORE INPUT -->
+                        <div class="product-card">
+                            <div>
+                                <div class="product-meta">
+                                    <span class="product-status">8000Hz Firmware</span>
+                                </div>
+                                <h4>Axiom Core Input ◤A-S◢</h4>
+                                <p>Next-gen bare-metal infrastructure optimized for magnetic levitation analog inputs. Bypasses operating system processing layers to achieve an absolute input telemetry pipeline of sub-1.1ms.</p>
+                            </div>
+                            <div>
+                                <div class="tech-spec">
+                                    <i class="fa-solid fa-microchip"></i> Core: Rust (no_std) | Native Polling: 8000 Hz | Hardware Link: Direct DMA
+                                </div>
+                                <a href="https://github.com/echeparesmanuel36-design/axiom-core-input" target="_blank" class="btn-launch">
+                                    Inspect Architecture (GitHub) →
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- AXIOM AEGIS -->
+                        <div class="product-card">
+                            <div>
+                                <div class="product-meta">
+                                    <span class="product-status">Recursive AI Defense</span>
+                                </div>
+                                <h4>Axiom Aegis ◤A-S◢</h4>
+                                <p>Type-1 micro-hypervisor engineered for safety-critical autonomous mobility. Delivers strict hardware-level MMU isolation, zero-allocation real-time runtime, and deterministic scheduling.</p>
+                            </div>
+                            <div>
+                                <div class="tech-spec">
+                                    <i class="fa-solid fa-microchip"></i> Target: ARMv8-A / RISC-V | Core: Bare-Metal Rust
+                                </div>
+                                <a href="https://github.com/echeparesmanuel36-design/axiom-aegis-core" target="_blank" class="btn-launch">
+                                    Inspect Architecture (GitHub) →
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- AXIOM FLORA -->
+                        <div class="product-card">
+                            <div>
+                                <div class="product-meta">
+                                    <span class="product-status">Biological Simulation Matrix</span>
+                                </div>
+                                <h4>Axiom Flora ◤A-S◢</h4>
+                                <p>The environmental AR layer and biological simulation matrix of Axiom Earth. Built with a bare-metal execution pipeline to render real-time, interactive ecological systems at 2.15ms latency.</p>
+                            </div>
+                            <div>
+                                <div class="tech-spec">
+                                    <i class="fa-solid fa-leaf"></i> Core: Ecological AR | Render: Bare-Metal Pipeline
+                                </div>
+                                <a href="https://github.com/echeparesmanuel36-design/Axiom-Flora" target="_blank" class="btn-launch">
+                                    Inspect Architecture (GitHub) →
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- AXIOM IRIS -->
+                        <div class="product-card">
+                            <div>
+                                <div class="product-meta">
+                                    <span class="product-status">Spatial Sensory Interface</span>
+                                </div>
+                                <h4>Axiom Iris ◤A-S◢</h4>
+                                <p>Ultra-thin smart contact lens system running a bare-metal Rust runtime. Delivers seamless spatial computing interfaces with sub-1.5ms sensory latency and integrated biocompatible telemetry.</p>
+                            </div>
+                            <div>
+                                <div class="tech-spec">
+                                    <i class="fa-solid fa-eye"></i> Runtime: Bare-Metal Rust | Latency: &lt; 1.5ms
+                                </div>
+                                <a href="https://github.com/echeparesmanuel36-design/axiom-iris" target="_blank" class="btn-launch">
+                                    Inspect Architecture (GitHub) →
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- AXIOM STREAM NETWORK -->
+                        <div class="product-card">
+                            <div>
+                                <div class="product-meta">
+                                    <span class="product-status">Decentralized Data Routing</span>
+                                </div>
+                                <h4>Axiom Stream Network ◤A-S◢</h4>
+                                <p>High-throughput decentralized data routing network (ASN). Bypasses legacy TCP/IP bottlenecks using custom P2P protocols in Rust to stream massive spatial geometries in hard real-time.</p>
+                            </div>
+                            <div>
+                                <div class="tech-spec">
+                                    <i class="fa-solid fa-network-wired"></i> Protocol: ASN Transport | Topology: Self-Healing Mesh
+                                </div>
+                                <a href="https://github.com/echeparesmanuel36-design/Axiom-Stream-Network" target="_blank" class="btn-launch">
+                                    Inspect Architecture (GitHub) →
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- SOVEREIGN APP -->
+                        <div class="product-card">
+                            <div>
+                                <div class="product-meta">
+                                    <span class="product-status">Sovereign User Interface</span>
+                                </div>
+                                <h4>Sovereign App ◤A-S◢</h4>
+                                <p>The unified decentralised flagship hub anchoring the Axiom matrix. Consolidates mesh networks, multi-agent AI nodes, 1:1 digital twins, and AR profiles into a single sovereign user interface.</p>
+                            </div>
+                            <div>
+                                <div class="tech-spec">
+                                    <i class="fa-solid fa-crown"></i> Platform: System Integrator | Security: Zero-Knowledge
+                                </div>
+                                <a href="https://github.com/echeparesmanuel36-design/sovereign" target="_blank" class="btn-launch">
+                                    Inspect Architecture (GitHub) →
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- AXIOM EARTH -->
+                        <div class="product-card">
+                            <div>
+                                <div class="product-meta">
+                                    <span class="product-status">Digital Twin Pipeline</span>
+                                </div>
+                                <h4>Axiom Earth ◤A-S◢</h4>
+                                <p>A 1:1 scale digital twin simulation pipeline mapping physical reality. Utilizes zero-copy geometry streaming in Rust to deliver high-fidelity spatial environments without server-side lag.</p>
+                            </div>
+                            <div>
+                                <div class="tech-spec">
+                                    <i class="fa-solid fa-earth-americas"></i> Engine: Spatial Map | Core: Zero-Copy Stream
+                                </div>
+                                <a href="https://github.com/echeparesmanuel36-design/Axiom-Earth" target="_blank" class="btn-launch">
+                                    Inspect Architecture (GitHub) →
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- AXIOM GLASS -->
+                        <div class="product-card">
+                            <div>
+                                <div class="product-meta">
+                                    <span class="product-status">Spatial Display Architecture</span>
+                                </div>
+                                <h4>Axiom Glass ◤A-S◢</h4>
+                                <p>Next-gen transparent hardware architecture featuring native, bare-metal spatial rendering. Bypasses standard OS display compositors to stream lag-free augmented environments under 1.5ms.</p>
+                            </div>
+                            <div>
+                                <div class="tech-spec">
+                                    <i class="fa-solid fa-glasses"></i> Engine: Waveguide Driver | Arch: Zero-Cache Direct
+                                </div>
+                                <a href="https://github.com/echeparesmanuel36-design/axiom-glass-core" target="_blank" class="btn-launch">
+                                    Inspect Architecture (GitHub) →
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- AXIOM AGENT -->
+                        <div class="product-card">
+                            <div>
+                                <div class="product-meta">
+                                    <span class="product-status">Robotics Inference Engine</span>
+                                </div>
+                                <h4>Axiom Agent ◤A-S◢</h4>
+                                <p>Decentralized multi-agent execution framework and Sentient robotics core. Compiles native AI inference engines in Rust to deliver hard real-time tactile and sensor fusion loops under 1.5ms.</p>
+                            </div>
+                            <div>
+                                <div class="tech-spec">
+                                    <i class="fa-solid fa-robot"></i> Core: Multi-Agent AI | Engine: Bare-Metal Inference
+                                </div>
+                                <a href="https://github.com/echeparesmanuel36-design/axiom-agent" target="_blank" class="btn-launch">
+                                    Inspect Architecture (GitHub) →
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- AXIOM SYNC -->
+                        <div class="product-card">
+                            <div>
+                                <div class="product-meta">
+                                    <span class="product-status">Wireless Protocol Core</span>
+                                </div>
+                                <h4>Axiom Sync ◤A-S◢</h4>
+                                <p>Ultra-wideband (UWB) wireless protocol engineered to replace legacy Bluetooth stack. Bypasses standard OS layers to stream raw bits with wire-like stability and ultra-low deterministic latencies.</p>
+                            </div>
+                            <div>
+                                <div class="tech-spec">
+                                    <i class="fa-solid fa-wifi"></i> Core: UWB Bare-Metal | Latency: 2.15ms
+                                </div>
+                                <a href="https://github.com/echeparesmanuel36-design/AXIOM-SYNC-PROTOCOL" target="_blank" class="btn-launch">
+                                    Inspect Architecture (GitHub) →
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- AXIOM OVNI -->
+                        <div class="product-card">
+                            <div>
+                                <div class="product-meta">
+                                    <span class="product-status">Propulsion Positioning Kernel</span>
+                                </div>
+                                <h4>Axiom Ovni ◤A-S◢</h4>
+                                <p>Advanced telemetry and spatial propulsion positioning kernel. Designed for zero-overhead matrix computing, providing sub-millisecond reaction times for multi-axis autonomous tracking.</p>
+                            </div>
+                            <div>
+                                <div class="tech-spec">
+                                    <i class="fa-solid fa-plane"></i> Stack: Matrix Processing | OS: Air-Gapped
+                                </div>
+                                <a href="https://github.com/echeparesmanuel36-design/axiom-ovni" target="_blank" class="btn-launch">
+                                    Inspect Architecture (GitHub) →
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- AXIOM HYPERION -->
+                        <div class="product-card">
+                            <div>
+                                <div class="product-meta">
+                                    <span class="product-status">Spatial Computing Runtime</span>
+                                </div>
+                                <h4>Axiom Hyperion ◤A-S◢</h4>
+                                <p>Spatial computing runtime and digital twin ecosystem powering Axiom Flora. Renders real-time 1:1 augmented reality environments without data caching or corporate middleware bottlenecks.</p>
+                            </div>
+                            <div>
+                                <div class="tech-spec">
+                                    <i class="fa-solid fa-vr-cardboard"></i> UI: Spatial Engine | Platform: AR Core
+                                </div>
+                                <a href="https://github.com/echeparesmanuel36-design/axiom-hyperion-core" target="_blank" class="btn-launch">
+                                    Inspect Architecture (GitHub) →
                                 </a>
                             </div>
                         </div>
@@ -843,7 +1392,6 @@
         </section>
     </main>
 
-    <!-- FOOTER TERMINAL CON BOTÓN CORREO DIRECTO -->
     <footer>
         <div class="container footer-content">
             <h5>BE SOVEREIGN. AXIOM SYSTEMS ◤A-S◢</h5>
@@ -859,9 +1407,8 @@
         </div>
     </footer>
 
-    <!-- INTERFAZ DE ANIMACIÓN Y COREOGRAFÍA DE COMPORTAMIENTO LOCAL INTERNO -->
     <script>
-        /* CONMUTACIÓN LUMÍNICA SÍNCRONA INTERNA DEL ENTORNO */
+        /* CONMUTACIÓN LUMÍNICA SÍNCRONA */
         const htmlElement = document.documentElement;
         const themeBtn = document.getElementById('themeBtn');
 
@@ -872,7 +1419,7 @@
             themeBtn.querySelector('i').className = newTheme === 'dark' ? 'fa-solid fa-circle-half-stroke' : 'fa-solid fa-sun';
         });
 
-        /* CONTROLADOR DE APERTURA DEL PANEL FLOTANTE DE LA CONSOLA DE CUENTAS */
+        /* CONSOLA DE CUENTAS FLOTANTE */
         const accountBtn = document.getElementById('accountBtn');
         const accountsDropdown = document.getElementById('accountsDropdown');
 
@@ -885,7 +1432,7 @@
             accountsDropdown.classList.remove('active');
         });
 
-        /* COREOGRAFÍA DE APERTURA DE SECCIONES MODULARES RETRACTILES */
+        /* CONTROLADOR ACORDEÓN ELÁSTICO AXIOM BARE-METRIC */
         const accordions = document.querySelectorAll('.section-accordion');
 
         accordions.forEach(accordion => {
@@ -893,7 +1440,6 @@
             trigger.addEventListener('click', () => {
                 const isActive = accordion.classList.contains('active');
                 
-                // Cierre de bloques adyacentes para limpieza del chasis visual
                 accordions.forEach(acc => acc.classList.remove('active'));
                 
                 if (!isActive) {
@@ -902,7 +1448,7 @@
             });
         });
 
-        /* RENDERIZADO INTERACTIVO SÍNCRONO DEL FONDO VECTORIAL BARE-METRIC */
+        /* FONDO VECTORIAL ACTIVO DE ENERGÍA DE GAS NOBLE CORRIENDO EN LOCAL */
         const canvas = document.getElementById('bg-mesh');
         const ctx = canvas.getContext('2d');
 
@@ -947,7 +1493,6 @@
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             const isDark = htmlElement.getAttribute('data-theme') === 'dark';
             
-            // Dibujar líneas de conexión del tensor local
             for (let i = 0; i < particles.length; i++) {
                 for (let j = i + 1; j < particles.length; j++) {
                     const dx = particles[i].x - particles[j].x;
