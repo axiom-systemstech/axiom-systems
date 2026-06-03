@@ -55,6 +55,9 @@ Axiom Systems engineers high-performance bare-metal software architectures, veri
 | **39** | Axiom Aero Sim | 3D Kinetic Wind Tunnel Simulator | `Vector Core 3D` | [🌍 Launch Web](https://echeparesmanuel36-design.github.io/AXIOM_AERO_SIM/) |
 | **40** | Axiom Recetas | 4D Matrix Local Gastronomic Indexer | `0.1ms Glass` | [🌍 Launch Web](https://echeparesmanuel36-design.github.io/Axiom-Recetas/) |
 | **41** | Axiom Animals | Taxonomy Metrics & Bio-History Ledger | `Deterministic` | [🌍 Launch Web](https://echeparesmanuel36-design.github.io/axiom-Animals/) |
+| **42** | Axiom Media Crusher | Local Media Optimization Buffer | `Buffer O(1)` | [🌍 Launch Web](https://echeparesmanuel36-design.github.io/AXIOM_MEDIA_CRUSHER/) |
+| **43** | Axiom Log Purge | Local Server Log Purification Matrix | `Structural` | [🌍 Launch Web](https://echeparesmanuel36-design.github.io/AXIOM_LOG_PURGE/) |
+| **44** | Axiom Mute Pop | Local Audio Isolation & Extractor | `DSP WebAudio` | [🌍 Launch Web](https://echeparesmanuel36-design.github.io/AXIOM_MUTE_POP/) |
 
 ---
 ## ◤ DEEP DIVE: LIVE WEB PRODUCTION LAYERS
