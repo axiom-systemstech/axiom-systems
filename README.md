@@ -26,12 +26,15 @@ Despojamos los entornos operativos de middleware inútil corporativo para permit
 
 Para establecer conexiones verificadas de auditoría, acceso a despliegues o adquisición de activos técnicos estratégicos, inyecte comandos directamente en los nodos principales del fundador:
 
-​⚡ Twitter Terminal: x.com/ManuelAxiom
+​⚡ Twitter Terminal: https://x.com/ManuelAxiom
 
 ​🔒 Inyectar Correo: echeparesmanuel36@gmail.com
 
-​📱 Canal WhatsApp: +34 652 60 75 12
+​📱 Canal WhatsApp: 
+```bash
++34 652 60 75 12
+```
 
-​💻 Perfil GitHub: github.com/echeparesmanuel36-design
+​💻 Perfil GitHub: 
 
 Axiom Systems © 2026. MANTÊN LA SOBERANÍA. OPTIMIZACIÓN ABSOLUTA DE BAJO NIVEL.
