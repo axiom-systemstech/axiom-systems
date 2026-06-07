@@ -35,6 +35,5 @@ Para establecer conexiones verificadas de auditoría, acceso a despliegues o adq
 +34 652 60 75 12
 ```
 
-​💻 Perfil GitHub: 
-
-Axiom Systems © 2026. MANTÊN LA SOBERANÍA. OPTIMIZACIÓN ABSOLUTA DE BAJO NIVEL.
+ 
+Axiom Systems © 2026. MANTEN LA SOBERANÍA. OPTIMIZACIÓN ABSOLUTA DE BAJO NIVEL.
