@@ -3,731 +3,378 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Manuel | Fundador de Axiom Systems ◤A-S◢</title>
+    <title>Manuel | Fundador de Axiom Systems</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Urbanist:wght@700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght=0,400;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
     <style>
-        /* ==========================================================================
-           CORE LOGIC & VARIABLES - LENGUAJE VISUAL AXIOM BARE-METRIC
-           ========================================================================== */
+        /* --- VARIABLES DE DISEÑO CON SOPORTE DE TEMAS (DISEÑO 1) --- */
         :root[data-theme="dark"] {
-            --bg-main: #0a1128; 
-            --bg-canvas: rgba(10, 25, 64, 0.5);
-            --text-main: #f5f5f7;
-            --text-muted: #8a9fc4;
-            --accent-blue: #007aff;
-            --accent-neon: #00f5ff;
-            --border-mercury: linear-gradient(135deg, rgba(255,255,255,0.2) 0%, rgba(0,122,255,0.4) 50%, rgba(255,255,255,0.05) 100%);
-            --card-bg: rgba(13, 27, 65, 0.5);
-            --glow-neon: rgba(0, 245, 255, 0.15);
-            --shadow-convex: 10px 10px 20px #050914, -10px -10px 20px #0f193c;
-            --shadow-concave: inset 5px 5px 10px #050914, inset -5px -5px 10px #0f193c;
-            --glass-refraction: rgba(255, 255, 255, 0.02);
-            --mesh-opacity: 0.5;
+            --bg-color: #050608;
+            --surface-color: rgba(13, 15, 22, 0.96);
+            --text-main: #F5F6F8;
+            --text-muted: #8E919A;
+            --accent-glow-1: #00ff66; /* Verde Esmeralda Cyberpunk */
+            --accent-glow-2: #00e5ff; /* Cyan Eléctrico */
+            --border-color: rgba(255, 255, 255, 0.07);
+            --code-bg: #0A0C12;
+            --glass-fill: rgba(255, 255, 255, 0.03);
+            --glass-stroke: rgba(255, 255, 255, 0.14);
         }
 
         :root[data-theme="light"] {
-            --bg-main: #f0f4f8; 
-            --bg-canvas: rgba(235, 242, 250, 0.5);
-            --text-main: #0a1128;
-            --text-muted: #5c6b89;
-            --accent-blue: #007aff;
-            --accent-neon: #0056b3;
-            --border-mercury: linear-gradient(135deg, rgba(0,122,255,0.4) 0%, rgba(255,255,255,0.8) 50%, rgba(0,122,255,0.1) 100%);
-            --card-bg: rgba(255, 255, 255, 0.7);
-            --glow-neon: rgba(0, 122, 255, 0.1);
-            --shadow-convex: 8px 8px 16px #cbd5e1, -8px -8px 16px #ffffff;
-            --shadow-concave: inset 4px 4px 8px #cbd5e1, inset -4px -4px 8px #ffffff;
-            --glass-refraction: rgba(0, 122, 255, 0.01);
-            --mesh-opacity: 0.2;
+            --bg-color: #F4F6F9;
+            --surface-color: rgba(255, 255, 255, 0.94);
+            --text-main: #12141C;
+            --text-muted: #626673;
+            --accent-glow-1: #00cc52; 
+            --accent-glow-2: #00b8cc; 
+            --border-color: rgba(0, 0, 0, 0.08);
+            --code-bg: #EAEFF5;
+            --glass-fill: rgba(0, 0, 0, 0.01);
+            --glass-stroke: rgba(0, 0, 0, 0.12);
         }
 
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            -webkit-font-smoothing: antialiased;
-        }
-
-        html, body {
-            scroll-behavior: smooth;
         }
 
         body {
-            background-color: var(--bg-main);
+            background-color: var(--bg-color);
             color: var(--text-main);
             font-family: 'Inter', sans-serif;
-            overflow-x: hidden;
-            position: relative;
             min-height: 100vh;
-            transition: background-color 0.4s cubic-bezier(0.16, 1, 0.3, 1), color 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        #viewport-container {
-            position: fixed;
-            top: 0; left: 0;
-            width: 100vw; height: 100vh;
-            z-index: -1;
-            pointer-events: none;
-        }
-
-        #canvas-3d, #canvas-shader {
-            position: absolute;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-        }
-
-        #canvas-shader {
-            opacity: var(--mesh-opacity);
-            mix-blend-mode: screen;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 24px;
-            position: relative;
-        }
-
-        /* ==========================================================================
-           HEADER & NAVIGATION CONTROLS
-           ========================================================================== */
-        header {
-            width: 100%;
-            border-bottom: 1px solid rgba(0, 122, 255, 0.1);
-            background-color: var(--bg-canvas);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            position: fixed;
-            top: 0; left: 0;
-            z-index: 100;
-        }
-
-        .nav-wrapper {
-            height: 80px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-family: 'Urbanist', sans-serif;
-            font-size: 24px;
-            font-weight: 900;
-            letter-spacing: 2px;
-        }
-
-        .logo span {
-            color: var(--accent-blue);
-        }
-
-        .header-controls {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-        }
-
-        /* TRANSLATION SELECTOR GOTO GOOGLE */
-        .lang-container {
-            position: relative;
-        }
-        .lang-select {
-            background: var(--card-bg);
-            border: 1px solid rgba(0, 122, 255, 0.2);
-            color: var(--text-main);
-            padding: 10px 16px;
-            border-radius: 12px;
-            font-size: 13px;
-            font-weight: 600;
-            cursor: pointer;
-            outline: none;
-            box-shadow: var(--shadow-convex);
-        }
-
-        .theme-toggle, .btn-terminal-toggle, .btn-action, .tech-btn {
-            background: var(--card-bg);
-            border: none;
-            color: var(--text-main);
-            padding: 12px 24px;
-            border-radius: 12px;
-            font-size: 14px;
-            font-weight: 600;
-            cursor: pointer;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            text-decoration: none;
-            box-shadow: var(--shadow-convex);
-            position: relative;
-            overflow: hidden;
-            user-select: none;
-            transition: all 0.2s ease;
-        }
-
-        .theme-toggle::before, .btn-terminal-toggle::before, .btn-action::before, .tech-btn::before {
-            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            background: var(--border-mercury); pointer-events: none; border-radius: inherit; padding: 1px;
-            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0); -webkit-mask-composite: xor; mask-composite: exclude;
-        }
-
-        .theme-toggle:active, .btn-terminal-toggle:active, .btn-action:active, .tech-btn:active {
-            box-shadow: var(--shadow-concave) !important;
-            transform: scale(0.97) translateY(2px) !important;
-        }
-
-        /* ==========================================================================
-           HERO & BIOGRAPHY LAYOUT
-           ========================================================================== */
-        .main-content {
-            margin-top: 80px;
-        }
-
-        .hero {
-            padding: 100px 0 60px 0;
-        }
-
-        .hero-content-wrapper {
-            max-width: 900px;
-        }
-
-        .hero-tag {
-            color: var(--accent-blue);
-            font-size: 13px;
-            font-weight: 700;
-            letter-spacing: 4px;
-            text-transform: uppercase;
-            margin-bottom: 24px;
-        }
-
-        .distort-title {
-            font-family: 'Urbanist', sans-serif;
-            font-size: 5vw;
-            font-weight: 900;
-            line-height: 0.95;
-            letter-spacing: -3px;
-            filter: url(#kinetic-distort);
-            will-change: filter;
-            margin-bottom: 32px;
-        }
-
-        .distort-title span {
-            color: var(--accent-blue);
-            text-shadow: 0 0 30px var(--glow-neon);
-        }
-
-        .hero-bio {
-            font-size: 18px;
-            color: var(--text-muted);
-            line-height: 1.7;
-            margin-bottom: 40px;
-        }
-
-        .telemetry-hud {
-            background: var(--card-bg);
-            border-radius: 12px;
-            padding: 16px 24px;
-            display: inline-flex;
-            align-items: center;
-            gap: 16px;
-            box-shadow: var(--shadow-convex);
-            font-family: monospace;
-            font-size: 13px;
-            color: var(--text-main);
-            margin-bottom: 45px;
-            position: relative;
-        }
-
-        .telemetry-hud::before {
-            content: ''; position: absolute; top:0; left:0; width:100%; height:100%;
-            background: var(--border-mercury); padding:1px; border-radius:12px; pointer-events:none;
-            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0); -webkit-mask-composite: xor; mask-composite: exclude;
-        }
-
-        .telemetry-value {
-            font-size: 18px;
-            font-weight: bold;
-            color: var(--accent-neon);
-            text-shadow: 0 0 10px var(--glow-neon);
-        }
-
-        /* ==========================================================================
-           TECHNOLOGY RADAR / SKILLS CONTROL LAYER
-           ========================================================================== */
-        .section-headline {
-            font-family: 'Urbanist', sans-serif;
-            font-size: 32px;
-            font-weight: 800;
-            margin: 60px 0 24px 0;
-            letter-spacing: -1px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .tech-grid-buttons {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 16px;
-            margin-bottom: 40px;
-        }
-
-        .tech-btn {
-            padding: 14px 28px;
-            font-family: monospace;
-            font-size: 15px;
-        }
-        
-        .tech-btn.active {
-            box-shadow: var(--shadow-concave);
-            color: var(--accent-neon);
-            background: rgba(0, 122, 255, 0.15);
-        }
-
-        /* ==========================================================================
-           SPATIAL & AR CARDS (THE MATRIX PURGED)
-           ========================================================================== */
-        .grid-products {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 28px;
-            perspective: 1200px;
-            margin-bottom: 60px;
-        }
-
-        .product-card {
-            background: var(--card-bg);
-            border-radius: 16px;
-            padding: 32px;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            box-shadow: var(--shadow-convex);
+            overflow-x: hidden;
             position: relative;
-            overflow: hidden;
-            border: 1px solid rgba(0, 122, 255, 0.05);
-            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
+            transition: background-color 0.5s ease, color 0.5s ease;
         }
 
-        .product-card::before {
-            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            background: var(--border-mercury); pointer-events: none; border-radius: 16px; padding: 1px;
-            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0); -webkit-mask-composite: xor; mask-composite: exclude;
+        /* --- GRADIENTES ORGÁNICOS DE FONDO --- */
+        .background-blob-1 {
+            position: absolute;
+            top: 20%;
+            left: 10%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, var(--accent-glow-1) 0%, transparent 65%);
+            opacity: 0.18;
+            z-index: 1;
+            pointer-events: none;
         }
 
-        .product-status {
-            font-size: 10px;
-            font-weight: 700;
+        .background-blob-2 {
+            position: absolute;
+            top: 40%;
+            right: 10%;
+            width: 450px;
+            height: 450px;
+            background: radial-gradient(circle, var(--accent-glow-2) 0%, transparent 65%);
+            opacity: 0.15;
+            z-index: 1;
+            pointer-events: none;
+        }
+        /* --- ESTILOS DE ESTRUCTURA Y ETIQUETAS (DISEÑO 1) --- */
+        header {
+            width: 100%;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 40px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 10;
+        }
+
+        .logo {
+            font-weight: 600;
+            font-size: 13px;
+            letter-spacing: 0.25em;
             text-transform: uppercase;
-            letter-spacing: 1.5px;
-            padding: 6px 12px;
-            border-radius: 20px;
-            display: inline-block;
-            background: rgba(0, 245, 255, 0.06);
-            color: var(--accent-neon);
-            border: 1px solid rgba(0, 245, 255, 0.15);
-            margin-bottom: 20px;
-            box-shadow: 0 0 12px var(--glow-neon);
         }
 
-        .product-card h4 {
-            font-family: 'Urbanist', sans-serif;
-            font-size: 24px;
-            font-weight: 800;
+        /* BOTÓN INTERCAMBIADOR DE TEMA */
+        .theme-toggle {
+            background: none;
+            border: 1px solid var(--border-color);
             color: var(--text-main);
-            margin-bottom: 14px;
+            padding: 8px 16px;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            cursor: pointer;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+        }
+        .theme-toggle:hover {
+            background: var(--text-main);
+            color: var(--bg-color);
         }
 
-        .product-card p {
-            font-size: 14px;
+        main {
+            max-width: 900px;
+            width: 100%;
+            margin: auto;
+            padding: 20px 24px 80px 24px;
+            text-align: center;
+            z-index: 5;
+        }
+
+        .category-tag {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
             color: var(--text-muted);
-            line-height: 1.6;
+            margin-bottom: 24px;
+            display: block;
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 400;
+            font-size: 52px;
+            line-height: 1.15;
+            letter-spacing: -0.02em;
             margin-bottom: 24px;
         }
 
-        .tech-spec {
-            font-family: monospace;
-            background-color: rgba(0, 122, 255, 0.02);
-            border: 1px solid rgba(0, 122, 255, 0.04);
-            padding: 12px;
-            border-radius: 8px;
-            color: var(--accent-blue);
-            font-size: 12px;
+        .subtitle {
+            font-size: 17px;
+            color: var(--text-muted);
+            line-height: 1.65;
+            max-width: 620px;
+            margin: 0 auto 48px auto;
+            font-weight: 300;
         }
 
-        /* ==========================================================================
-           CHANNELS AND INJECTION CONTROLS (CONTACT INFRASTRUCTURE)
-           ========================================================================== */
+        /* --- CONTENEDOR ESCENA DEL CRISTAL REFRACTIVO --- */
+        .glass-scene {
+            position: relative;
+            width: 100%;
+            max-width: 750px;
+            margin: 0 auto 48px auto;
+            border-radius: 40px;
+            overflow: hidden;
+            box-shadow: 0 40px 100px rgba(0, 0, 0, 0.4);
+            border: 1px solid var(--border-color);
+        }
+
+        .glass-bg {
+            background-color: var(--surface-color);
+            padding: 40px;
+            text-align: left;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            transition: background-color 0.5s ease;
+        }
+
+        .glass-wrapper {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            z-index: 10;
+        }
+        /* --- ESTILOS ESPECÍFICOS PARA LOS BOTONES DE CONTACTO (FUSIÓN) --- */
         .contact-channels {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            margin-top: 40px;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 16px;
+            margin-top: 24px;
         }
 
-        .btn-action {
-            width: 100%;
-            padding: 18px;
-            justify-content: center;
-            font-size: 16px;
-            font-weight: 700;
-        }
-        .btn-action.x-btn { color: #00f5ff; }
-        .btn-action.mail-btn { color: #007aff; }
-        .btn-action.whatsapp-btn { color: #00ff66; }
-
-        footer {
-            border-top: 1px solid rgba(0, 122, 255, 0.1);
-            padding: 80px 0;
-            background-color: var(--bg-canvas);
-            text-align: center;
-            margin-top: 100px;
-        }
-
-        .footer-content h5 {
-            font-family: 'Urbanist', sans-serif;
-            font-size: 32px;
-            font-weight: 900;
-            margin-bottom: 16px;
-            letter-spacing: -1px;
-        }
-
-        .footer-bottom {
-            font-size: 12px;
-            color: var(--text-muted);
-            letter-spacing: 1px;
+        .btn-contact {
+            background-color: var(--code-bg);
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+            padding: 16px 24px;
+            font-size: 11px;
+            font-weight: 600;
             text-transform: uppercase;
-            opacity: 0.5;
-            margin-top: 30px;
+            letter-spacing: 0.15em;
+            cursor: pointer;
+            border-radius: 8px;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        @media (max-width: 992px) {
-            .distort-title { font-size: 9vw; letter-spacing: -1px; }
-            .grid-products { grid-template-columns: 1fr; gap: 24px; }
+        .btn-contact:hover {
+            border-color: var(--text-main);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Colores de acento sutiles en hover para cada red */
+        .btn-contact.x-btn:hover { color: #00e5ff; border-color: #00e5ff; }
+        .btn-contact.mail-btn:hover { color: #007aff; border-color: #007aff; }
+        .btn-contact.whatsapp-btn:hover { color: #00ff66; border-color: #00ff66; }
+        .btn-contact.github-btn:hover { color: #ffffff; border-color: #ffffff; }
+
+        @media (max-width: 600px) {
             .contact-channels { grid-template-columns: 1fr; }
+        }
+
+        /* --- ESTILO FOOTER (DISEÑO 1) --- */
+        footer {
+            padding: 40px 24px;
+            text-align: center;
+            font-size: 11px;
+            color: var(--text-muted);
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            border-top: 1px solid var(--border-color);
+            width: 100%;
+            z-index: 10;
         }
     </style>
 </head>
 <body>
 
-    <svg style="display: none;">
-        <filter id="kinetic-distort">
-            <feTurbulence type="fractalNoise" baseFrequency="0.01 0.04" numOctaves="2" result="noise" />
-            <feDisplacementMap in="SourceGraphic" in2="noise" scale="0" xChannelSelector="R" yChannelSelector="G" id="map-scale" />
-        </filter>
-    </svg>
-
-    <div id="viewport-container">
-        <canvas id="canvas-shader"></canvas> 
-        <div id="canvas-3d"></div> 
-    </div>
+    <div class="background-blob-1"></div>
+    <div class="background-blob-2"></div>
 
     <header>
-        <div class="container nav-wrapper">
-            <div class="logo">AXIOM<span>SYSTEMS</span></div>
-            <div class="header-controls">
-                <div class="lang-container">
-                    <select class="lang-select" id="langSelect" onchange="translatePage(this.value)">
-                        <option value="es">🇪🇸 ES</option>
-                        <option value="en">🇺🇸 EN</option>
-                        <option value="de">🇩🇪 DE</option>
-                        <option value="fr">🇫🇷 FR</option>
-                    </select>
-                </div>
-                <button class="theme-toggle" id="themeBtn" title="Chroma-Shifting Lumínico">
-                    <i class="fa-solid fa-circle-half-stroke"></i>
-                </button>
-            </div>
-        </div>
+        <div class="logo">Axiom Systems</div>
+        <button class="theme-toggle" id="themeToggle">Light Mode</button>
     </header>
 
-    <main class="main-content">
-        <section class="hero">
-            <div class="container">
-                <div class="hero-content-wrapper">
-                    <div class="hero-tag">MANUEL · FUNDADOR Y ARQUITECTO PRINCIPAL</div>
-                    <h2 class="distort-title" id="distort-text">AXIOM<br><span>FOUNDER.</span></h2>
-                    
-                    <div class="telemetry-hud">
-                        <i class="fa-solid fa-bolt" style="color: var(--accent-blue);"></i>
-                        <span>ESTADO DE INYECCIÓN DE SISTEMAS:</span>
-                        <span class="telemetry-value" id="hud-counter">0</span><span> COMPILING</span>
-                    </div>
+    <main>
+        <span class="category-tag">FUNDADOR Y ARQUITECTO PRINCIPAL</span>
+        <h1>Manuel // AXIOM SYSTEMS</h1>
+        <p class="subtitle">Bienvenidos a la capa base. Soy Manuel, fundador e ingeniero jefe de Axiom Systems. No diseñamos software genérico ni plantillas corporativas infladas de código muerto. Nos metemos directamente en el metal (Bare-Metal Design) para construir infraestructuras DeepTech puras.</p>
 
-                    <div class="hero-bio">
-                        <p style="margin-bottom: 20px;">Bienvenidos a la capa base. Soy Manuel, fundador e ingeniero jefe de Axiom Systems. No diseñamos software genérico ni plantillas corporativas infladas de código muerto. Nos metemos directamente en el metal (Bare-Metal Design) para construir infraestructuras DeepTech puras, núcleos de Inteligencia Artificial paralela multinúcleo, sistemas criptográficos deterministas en pila sin heap y capas de simulación espacial en tiempo real.</p>
-                        <p>Nuestra filosofía es radical y cristalina: Ingeniería Soberana. Despojamos los entornos operativos de middleware inútiles para otorgar al silicio el control absoluto del flujo de datos en microsegundos planos. Si buscas rendimiento extremo empaquetado para misiones de cómputo crítico, estás mirando los planos del búnker correcto.</p>
-                    </div>
+        <div class="glass-scene" id="glassScene">
+
+            <div class="glass-bg">
+                <p style="color: var(--text-muted); font-size: 14px; line-height: 1.7; margin-bottom: 20px;">Nuestra filosofía es radical y cristalina: Ingeniería Soberana. Despojamos los entornos operativos de middleware inútiles para otorgar al silicio el control absoluto del flujo de datos en microsegundos planos.</p>
+
+                <label>INYECCIÓN DE COMANDOS / CONTACTO CANAL DIRECTO</label>
+
+                <div class="contact-channels">
+                    <!-- Los botones de contacto van aquí -->
                 </div>
             </div>
-        </section>
 
-        <section class="container">
-            <h3 class="section-headline">◤ INFRAESTRUCTURA DE CONOCIMIENTO CONTROLADO ◢</h3>
-            <p style="color: var(--text-muted); margin-bottom: 20px; font-size: 14px; max-width: 600px;">Haz clic en los nodos tecnológicos para sincronizar las matrices de refracción del prisma de mercurio 3D en tiempo real.</p>
-            <div class="tech-grid-buttons">
-                <button class="tech-btn active" onclick="syncTechMatrix(0x007aff, 0.15, this)">[ RUST / NO_STD ]</button>
-                <button class="tech-btn" onclick="syncTechMatrix(0x00f5ff, 0.05, this)">[ BARE-METAL C++ ]</button>
-                <button class="tech-btn" onclick="syncTechMatrix(0xff00ff, 0.1, this)">[ WEBASSEMBLY BINARY ]</button>
-                <button class="tech-btn" onclick="syncTechMatrix(0x00ff66, 0.25, this)">[ SHADERS GLSL / COMPUTE ]</button>
-                <button class="tech-btn" onclick="syncTechMatrix(0xffff00, 0.02, this)">[ HARDWARE TELEMETRY ]</button>
+            <div class="glass-wrapper" id="glassWrapper"></div>
+
+        </div>
+                <div class="contact-channels">
+                    <a href="https://x.com/ManuelAxiom" target="_blank" class="btn-contact x-btn">
+                        <i class="fa-brands fa-x-twitter"></i> Twitter Terminal
+                    </a>
+                    <a href="mailto:echeparesmanuel36@gmail.com" class="btn-contact mail-btn">
+                        <i class="fa-solid fa-envelope"></i> Inyectar Correo
+                    </a>
+                    <a href="https://wa.me/34652607512" target="_blank" class="btn-contact whatsapp-btn">
+                        <i class="fa-brands fa-whatsapp"></i> Canal WhatsApp
+                    </a>
+                    <a href="https://github.com/echeparesmanuel36-design" target="_blank" class="btn-contact github-btn">
+                        <i class="fa-brands fa-github"></i> GitHub Perfil
+                    </a>
+                </div>
             </div>
 
-            <h3 class="section-headline">◤ NÓDULOS DE AR & CÓMPUTO ESPACIAL CONFIGURADOS ◢</h3>
-            <div class="grid-products" style="margin-top: 24px;">
+            <div class="glass-wrapper" id="glassWrapper"></div>
 
-                <div class="product-card">
-                    <div>
-                        <span class="product-status">Bare-Metal Fluid Kinematics</span>
-                        <h4>Axiom Graff ◤A-S◢</h4>
-                        <p>Low-level spatial computing core engineered in native Rust under #![no_std] constraints. Tracks raw urban surface and wall meshes using direct LiDAR/ToF register mapping, enabling persistent 3D holographic art structures that project ray-traced physical illumination.</p>
-                    </div>
-                    <div class="tech-spec"><i class="fa-solid fa-palette"></i> Core: Fluid Dynamics | Latency: 1.4ms Flat</div>
-                </div>
-
-                <div class="product-card">
-                    <div>
-                        <span class="product-status">Bare-Metal Photon Occlusion</span>
-                        <h4>Axiom ShadowPlay AR ◤A-S◢</h4>
-                        <p>Low-level software infrastructure engineered in native Rust under #![no_std] constraints. Tracks raw environmental photon interruption boundaries directly at the hardware sensor layer, transforming physical transient silhouettes into portals.</p>
-                    </div>
-                    <div class="tech-spec"><i class="fa-solid fa-moon"></i> Core: Penumbra Tracking | Latency: 1.2ms Flat</div>
-                </div>
-
-                <div class="product-card">
-                    <div>
-                        <span class="product-status">Bare-Metal Spatial Optics</span>
-                        <h4>Axiom Mirror-Self AR ◤A-S◢</h4>
-                        <p>High-performance volumetric body-scanning and real-time cloth deformation matrix written in native Rust under #![no_std]. Bypasses operating system rendering layers to stream a hyper-realistic digital twin directly into optical layers.</p>
-                    </div>
-                    <div class="tech-spec"><i class="fa-solid fa-shirt"></i> Core: Mass-Spring Kinetics | Latency: 1.5ms Flat</div>
-                </div>
-
-                <div class="product-card">
-                    <div>
-                        <span class="product-status">Live Mobile Engine</span>
-                        <h4>Axiom HoloTrack ◤A-S◢</h4>
-                        <p>Real-time VFX engine for low latency (1.3ms) 3D hyper-realistic asset compositing on live mobile video feeds. Driven by custom Vulkan/Metal compute shaders under #![no_std] to eliminate OS bottlenecks.</p>
-                    </div>
-                    <div class="tech-spec"><i class="fa-solid fa-video"></i> Latency: 1.3ms Target | Ingestion: Zero-Copy</div>
-                </div>
-
-                <div class="product-card">
-                    <div>
-                        <span class="product-status">Spatial Display Architecture</span>
-                        <h4>Axiom Glass ◤A-S◢</h4>
-                        <p>Next-gen transparent hardware architecture featuring native, bare-metal spatial rendering. Bypasses standard OS display compositors to stream lag-free augmented environments under 1.5ms.</p>
-                    </div>
-                    <div class="tech-spec"><i class="fa-solid fa-glasses"></i> Engine: Waveguide Driver | Arch: Zero-Cache Direct</div>
-                </div>
-
-                <div class="product-card">
-                    <div>
-                        <span class="product-status">Spatial Computing Runtime</span>
-                        <h4>Axiom Hyperion ◤A-S◢</h4>
-                        <p>Spatial computing runtime and digital twin ecosystem powering Axiom Flora. Renders real-time 1:1 augmented reality environments without data caching or corporate middleware bottlenecks.</p>
-                    </div>
-                    <div class="tech-spec"><i class="fa-solid fa-vr-cardboard"></i> UI: Spatial Engine | Platform: AR Core</div>
-                </div>
-
-            </div>
-
-            <h3 class="section-headline">◤ INYECCIÓN DE COMANDOS / CONTACTO CANAL DIRECTO ◢</h3>
-            <div class="contact-channels">
-                <a href="https://x.com/ManuelAxiom" target="_blank" class="btn-action x-btn">
-                    <i class="fa-brands fa-x-twitter"></i> Abrir X Terminal (@ManuelAxiom)
-                </a>
-                <a href="mailto:echeparesmanuel36@gmail.com" class="btn-action mail-btn">
-                    <i class="fa-solid fa-envelope"></i> Inyectar Correo (echeparesmanuel36@gmail.com)
-                </a>
-                <a href="https://wa.me/34652607512" target="_blank" class="btn-action whatsapp-btn">
-                    <i class="fa-brands fa-whatsapp"></i> Canal Directo WhatsApp
-                </a>
-                <a href="https://github.com/echeparesmanuel36-design" target="_blank" class="btn-action github-btn">
-                    <i class="fa-brands fa-github"></i> Perfil de Github
-            </div>
-        </section>
+        </div>
     </main>
 
     <footer>
-        <div class="container footer-content">
-            <h5>MANTÉN LA SOBERANÍA. MANUEL // AXIOM SYSTEMS</h5>
-            <p>Infraestructuras DeepTech propietarias de alto rendimiento listo para adquisición industrial.</p>
-            <div class="footer-bottom">
-                &copy; 2026 Axiom Systems. Todos los derechos reservados. Fundador Manuel.
-            </div>
-        </div>
+        © 2026 Axiom Systems. MANTÉN LA SOBERANÍA. FUNDADOR MANUEL.
     </footer>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    
-    <script type="module">
-        import * as THREE from 'https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.module.js';
+    <script>
+        // --- GESTOR EXCLUSIVO DE MODO CLARO / OSCURO (DISEÑO 1) ---
+        const themeToggle = document.getElementById('themeToggle');
+        const htmlElement = document.documentElement;
 
-        document.addEventListener("DOMContentLoaded", () => {
-            const htmlElement = document.documentElement;
-            const themeBtn = document.getElementById('themeBtn');
-
-            /* TELEMETRÍA AUTOMÁTICA AL CARGAR */
-            function triggerTelemetry(targetValue) {
-                let obj = { value: 0 };
-                gsap.to(obj, {
-                    value: targetValue,
-                    duration: 2.0,
-                    ease: "power3.out",
-                    onUpdate: () => {
-                        document.getElementById('hud-counter').innerText = Math.floor(obj.value) + "%";
-                    },
-                    onComplete: () => {
-                        document.getElementById('hud-counter').innerText = "CORE STABLE";
-                    }
-                });
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = htmlElement.getAttribute('data-theme');
+            if (currentTheme === 'dark') {
+                htmlElement.setAttribute('data-theme', 'light');
+                themeToggle.innerText = 'Dark Mode';
+            } else {
+                htmlElement.setAttribute('data-theme', 'dark');
+                themeToggle.innerText = 'Light Mode';
             }
-            triggerTelemetry(100);
-
-            /* ENTORNOS TRIDIMENSIONALES DE PRISMA INTERPOLADO (THREE.JS) */
-            const container3D = document.getElementById('canvas-3d');
-            const scene = new THREE.Scene();
-            const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-            const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
-            renderer.setSize(window.innerWidth, window.innerHeight);
-            renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-            container3D.appendChild(renderer.domElement);
-
-            // Chasis de la lata Axiom Bare-Metric / Prisma Fundador
-            const geometry = new THREE.CylinderGeometry(1.5, 1.5, 4.8, 32);
-            const material = new THREE.MeshStandardMaterial({ 
-                color: 0x007aff, 
-                metalness: 0.9, 
-                roughness: 0.12,
-                clearcoat: 1.0,
-                clearcoatRoughness: 0.05
-            });
-            const productMesh = new THREE.Mesh(geometry, material);
-            scene.add(productMesh);
-
-            const dirLight1 = new THREE.DirectionalLight(0x00f5ff, 2.5);
-            dirLight1.position.set(5, 5, 5);
-            scene.add(dirLight1);
-
-            const dirLight2 = new THREE.DirectionalLight(0xffffff, 1.5);
-            dirLight2.position.set(-5, -5, 3);
-            scene.add(dirLight2);
-
-            const ambientLight = new THREE.AmbientLight(0xffffff, 0.3);
-            scene.add(ambientLight);
-
-            camera.position.z = window.innerWidth > 768 ? 6.0 : 7.5;
-
-            let mouseX = 0, mouseY = 0;
-            window.addEventListener('mousemove', (e) => {
-                mouseX = (e.clientX / window.innerWidth) - 0.5;
-                mouseY = (e.clientY / window.innerHeight) - 0.5;
-
-                const textDistortScale = Math.min(35, Math.abs(mouseX * 90) + Math.abs(mouseY * 90));
-                document.getElementById('map-scale').setAttribute('scale', textDistortScale);
-            });
-
-            // Función global para cambiar la skin al pulsar los botones de tecnologías
-            window.syncTechMatrix = function(hexColor, roughnessValue, btnElement) {
-                document.querySelectorAll('.tech-btn').forEach(b => b.classList.remove('active'));
-                btnElement.classList.add('active');
-                
-                gsap.to(productMesh.material.color, {
-                    r: ((hexColor >> 16) & 0xFF) / 255,
-                    g: ((hexColor >> 8) & 0xFF) / 255,
-                    b: (hexColor & 0xFF) / 255,
-                    duration: 0.6
-                });
-                productMesh.material.roughness = roughnessValue;
-            }
-
-            // Conmutador del tema reactivo al motor 3D Claro/Oscuro
-            themeBtn.addEventListener('click', () => {
-                const currentTheme = htmlElement.getAttribute('data-theme');
-                const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-                htmlElement.setAttribute('data-theme', newTheme);
-                themeBtn.querySelector('i').className = newTheme === 'dark' ? 'fa-solid fa-circle-half-stroke' : 'fa-solid fa-sun';
-                
-                if (newTheme === 'light') {
-                    gsap.to(productMesh.material.color, {r: 1, g: 1, b: 1, duration: 0.5});
-                    productMesh.material.roughness = 0.4;
-                } else {
-                    gsap.to(productMesh.material.color, {r: 0, g: 0.47, b: 1, duration: 0.5});
-                    productMesh.material.roughness = 0.12;
-                }
-            });
-
-            function animate() {
-                requestAnimationFrame(animate);
-                productMesh.rotation.y += (mouseX * 2.0 - productMesh.rotation.y) * 0.05;
-                productMesh.rotation.x += (mouseY * 1.5 - productMesh.rotation.x) * 0.05;
-                productMesh.rotation.y += 0.002; 
-                renderer.render(scene, camera);
-            }
-            animate();
-
-            window.addEventListener('scroll', () => {
-                const scrollPercent = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight);
-                if(window.innerWidth > 768) {
-                    productMesh.position.x = scrollPercent * 3.5;
-                    productMesh.position.y = -scrollPercent * 1.2;
-                }
-            });
-
-            window.addEventListener('resize', () => {
-                camera.aspect = window.innerWidth / window.innerHeight;
-                camera.position.z = window.innerWidth > 768 ? 6.0 : 7.5;
-                camera.updateProjectionMatrix();
-                renderer.setSize(window.innerWidth, window.innerHeight);
-            });
-
-            /* FRAGMENT SHADER FONDO RADAR */
-            const shaderCanvas = document.getElementById('canvas-shader');
-            const gl = shaderCanvas.getContext('webgl');
-            if (gl) {
-                const vsSource = `attribute vec2 position; void main() { gl_Position = vec4(position, 0.0, 1.0); }`;
-                const fsSource = `
-                    precision mediump float;
-                    uniform vec2 u_resolution;
-                    uniform float u_time;
-                    void main() {
-                        vec2 uv = gl_FragCoord.xy / u_resolution.xy;
-                        float dist = distance(uv, vec2(0.5, 0.5));
-                        float radarPulse = sin(dist * 40.0 - u_time * 5.0) * 0.5 + 0.5;
-                        radarPulse *= max(0.0, 1.0 - dist * 2.2);
-                        float scanline = step(1.5, mod(gl_FragCoord.y, 3.0)) * 0.2 + 0.8;
-                        gl_FragColor = vec4(0.0, radarPulse * 1.5 * scanline, 0.3 * radarPulse, 0.12);
-                    }
-                `;
-                const vs = gl.createShader(gl.VERTEX_SHADER); gl.shaderSource(vs, vsSource); gl.compileShader(vs);
-                const fs = gl.createShader(gl.FRAGMENT_SHADER); gl.shaderSource(fs, fsSource); gl.compileShader(fs);
-                const program = gl.createProgram(); gl.attachShader(program, vs); gl.attachShader(program, fs); gl.linkProgram(program); gl.useProgram(program);
-                const buffer = gl.createBuffer(); gl.bindBuffer(gl.ARRAY_BUFFER, buffer);
-                gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1, 1,-1, -1,1, -1,1, 1,-1, 1,1]), gl.STATIC_DRAW);
-                const posLoc = gl.getAttribLocation(program, "position"); gl.enableVertexAttribArray(posLoc); gl.vertexAttribPointer(posLoc, 2, gl.FLOAT, false, 0, 0);
-                const resLoc = gl.getUniformLocation(program, "u_resolution"); const timeLoc = gl.getUniformLocation(program, "u_time");
-                function resizeShaderCanvas() { shaderCanvas.width = window.innerWidth; shaderCanvas.height = window.innerHeight; gl.viewport(0, 0, shaderCanvas.width, shaderCanvas.height); }
-                window.addEventListener('resize', resizeShaderCanvas); resizeShaderCanvas();
-                function renderShader(time) { gl.uniform2f(resLoc, shaderCanvas.width, shaderCanvas.height); gl.uniform1f(timeLoc, time * 0.001); gl.drawArrays(gl.TRIANGLES, 0, 6); requestAnimationFrame(renderShader); }
-                requestAnimationFrame(renderShader);
-            }
+            // Refrescar el cristal matemáticamente al cambiar de modo
+            applyAaveGlass();
         });
 
-        // SISTEMA DE TRADUCCIÓN DINÁMICO INTEGRADO
-        window.translatePage = function(lang) {
-            if(lang === 'en') {
-                window.location.href = "https://translate.google.com/translate?sl=es&tl=en&u=" + window.location.href;
-            } else if(lang === 'de') {
-                window.location.href = "https://translate.google.com/translate?sl=es&tl=de&u=" + window.location.href;
-            } else if(lang === 'fr') {
-                window.location.href = "https://translate.google.com/translate?sl=es&tl=fr&u=" + window.location.href;
+        // --- NÚCLEO MATEMÁTICO DE REFRACCIÓN DE CRISTAL (DISEÑO 1) ---
+        function applyAaveGlass() {
+            const wrapper = document.getElementById('glassWrapper');
+            const scene = document.getElementById('glassScene');
+
+            const w = scene.offsetWidth;
+            const h = scene.offsetHeight;
+
+            const canvas = document.createElement('canvas');
+            canvas.width = w; 
+            canvas.height = h;
+            const ctx = canvas.getContext('2d');
+
+            ctx.fillStyle = '#808080';
+            ctx.fillRect(0, 0, w, h);
+
+            const imgData = ctx.getImageData(0, 0, w, h);
+            const centerX = w / 2;
+            const centerY = h / 2;
+            const radius = Math.min(w, h) * 0.46;
+
+            for (let y = 0; y < h; y++) {
+                for (let x = 0; x < w; x++) {
+                    const dx = x - centerX;
+                    const dy = y - centerY;
+                    const dist = Math.hypot(dx, dy);
+
+                    if (dist < radius) {
+                        const i = (y * w + x) * 4;
+                        imgData.data[i]   = 128 + (dx / radius) * 115; 
+                        imgData.data[i+1] = 128 + (dy / radius) * 115; 
+                        imgData.data[i+2] = 128;
+                        imgData.data[i+3] = 255;
+                    }
+                }
             }
+            ctx.putImageData(imgData, 0, 0);
+            const mapUrl = canvas.toDataURL();
+
+            const theme = htmlElement.getAttribute('data-theme');
+            const rectFill = theme === 'dark' ? 'rgba(255, 255, 255, 0.02)' : 'rgba(0, 0, 0, 0.01)';
+            const rectStroke = theme === 'dark' ? 'rgba(255, 255, 255, 0.14)' : 'rgba(0, 0, 0, 0.10)';
+
+            wrapper.innerHTML = `
+                <svg width="${w}" height="${h}" xmlns="http://www.w3.org/2000/svg" style="display: block; position: absolute; inset:0;">
+                    <defs>
+                        <filter id="nomadGlassFilter" x="0%" y="0%" width="100%" height="100%" color-interpolation-filters="sRGB">
+                            <feImage href="${mapUrl}" result="displacementMap"/>
+                            <feDisplacementMap in="SourceGraphic" in2="displacementMap" scale="38" xChannelSelector="R" yChannelSelector="G"/>
+                            <feGaussianBlur in="SourceGraphic" stdDeviation="1.5" result="blur"/>
+                            <feComposite in="blur" in2="SourceGraphic" operator="arithmetic" k1="0" k2="1" k3="1" k4="0"/>
+                        </filter>
+                    </defs>
+                    <rect width="${w}" height="${h}" rx="40" ry="40" 
+                          fill="${rectFill}" 
+                          filter="url(#nomadGlassFilter)"
+                          stroke="${rectStroke}" 
+                          stroke-width="1.5"/>
+                </svg>
+            `;
         }
+
+        window.addEventListener('DOMContentLoaded', applyAaveGlass);
+        window.addEventListener('resize', applyAaveGlass);
     </script>
 </body>
 </html>
