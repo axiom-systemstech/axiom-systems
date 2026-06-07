@@ -22,11 +22,11 @@ Despojamos los entornos operativos de middleware inútil corporativo para permit
 | **⚡ Runtime Bare-Metal** | Interacción directa con registros de hardware (`#![no_std]`). | Eliminación del estrangulamiento del kernel tradicional. |
 | **⚙️ Flujo Determinista** | Estructuras de datos mapeadas directo a la memoria Stack. | Cero latencia por gestión dinámica de memoria (Heap). |
 
----## ◤ INYECCIÓN DE COMANDOS / CONTACTO CANAL DIRECTO
+## ◤ INYECCIÓN DE COMANDOS / CONTACTO CANAL DIRECTO
 
 Para establecer conexiones verificadas de auditoría, acceso a despliegues o adquisición de activos técnicos estratégicos, inyecte comandos directamente en los nodos principales del fundador:
 
-```bash
+
 # Canales de Comunicación Directa Autenticada
 $ axiom-connect --target=X            # @ManuelAxiom
 $ axiom-connect --target=MAIL         # echeparesmanuel36@gmail.com
