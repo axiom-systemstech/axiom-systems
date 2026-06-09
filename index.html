@@ -185,7 +185,7 @@
     /* --- ESTILOS ESPECÍFICOS PARA LOS BOTONES DE CONTACTO (FUSIÓN) --- */
     .contact-channels {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
         gap: 16px;
         margin-top: 24px;
     }
@@ -220,6 +220,7 @@
     .btn-contact.mail-btn:hover { color: #007aff; border-color: #007aff; }
     .btn-contact.whatsapp-btn:hover { color: #00ff66; border-color: #00ff66; }
     .btn-contact.github-btn:hover { color: #ffffff; border-color: #ffffff; }
+    .btn-contact.gumroad-btn:hover { color: #ff90e8; border-color: #ff90e8; }
 
     @media (max-width: 600px) {
         .contact-channels { grid-template-columns: 1fr; }
@@ -316,6 +317,10 @@
     .demo-btn-container {
         text-align: center;
         margin-top: 40px;
+        display: flex;
+        gap: 20px;
+        justify-content: center;
+        flex-wrap: wrap;
     }
     .btn-demo {
         display: inline-block;
@@ -335,6 +340,16 @@
         background: var(--text-main);
         color: var(--bg-color);
         transform: translateY(-2px);
+    }
+    .btn-gumroad {
+        background: linear-gradient(135deg, #ff90e8, #ff6bd4);
+        border: none;
+        color: #050608 !important;
+    }
+    .btn-gumroad:hover {
+        background: linear-gradient(135deg, #ff6bd4, #ff90e8);
+        transform: translateY(-2px);
+        box-shadow: 0 5px 20px rgba(255, 107, 212, 0.3);
     }
 
     /* --- ESTILO FOOTER (DISEÑO 1) --- */
@@ -390,6 +405,9 @@
                 <a href="https://github.com/axiom-systemstech" target="_blank" class="btn-contact github-btn">
                     <i class="fa-brands fa-github"></i> GitHub Perfil
                 </a>
+                <a href="https://manuelaxiomsystems.gumroad.com/" target="_blank" class="btn-contact gumroad-btn">
+                    <i class="fa-brands fa-gumroad"></i> Gumroad Shop
+                </a>
             </div>
         </div>
 
@@ -426,6 +444,9 @@
         <div class="demo-btn-container">
             <a href="mailto:echeparesmanuel36@gmail.com?subject=Solicitud%20de%20Demo%20Privada%20-%20Axiom%20Systems" class="btn-demo">
                 <i class="fa-solid fa-key" style="margin-right: 10px;"></i> Solicitar Demo Privada
+            </a>
+            <a href="https://manuelaxiomsystems.gumroad.com/" target="_blank" class="btn-demo btn-gumroad">
+                <i class="fa-brands fa-gumroad" style="margin-right: 10px;"></i> Gumroad Shop
             </a>
         </div>
     </section>
